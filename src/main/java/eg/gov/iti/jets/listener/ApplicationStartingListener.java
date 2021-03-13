@@ -14,7 +14,7 @@ public class ApplicationStartingListener implements ServletContextListener{
          sessionFactory = HibernateDatabaseFactory.getMysqlConnection();
         sessionFactory.openSession();
         System.out.println("Data base Connection is opened");
-        MailService.sendEmail("Mahmoud.alikhalil@gmail.com");
+        MailService.sendEmail("iti.jets.intake41.p2@tutanota.com");
     }
 
     @Override
