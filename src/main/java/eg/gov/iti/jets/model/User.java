@@ -1,12 +1,15 @@
 package eg.gov.iti.jets.model;
-
-
-
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "USERS")
+@NamedQueries({
+        @NamedQuery(name = "User.findByEmailAndPassword",
+                query = "SELECT u from User u where u.email=:email and u.password=:password"),
+        @NamedQuery(name = "User.findByEmail",
+                query = "SELECT u from User u where u.email=:email")
+})
 public class User {
 
     @Id
