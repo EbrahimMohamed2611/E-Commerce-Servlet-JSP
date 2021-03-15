@@ -1,8 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Registration Form</title>
-    <%@include file="common/header.jsp" %>
+    <%@include file="../common/header.jsp" %>
 </head>
 <body>
 
@@ -11,7 +11,7 @@
         <h3 class="card-title">
             Registration Form
         </h3>
-        <form method="post" action="register">
+        <form method="post" action="registration">
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
                 <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="emailHelp">
@@ -51,13 +51,26 @@
                     <label for="birthDate">Birth date</label>
                     <input name="birthDate" type="date" class="form-control" id="birthDate" required>
                 </div>
+                <div class="form-group col-md-6">
+                    <label for="balance">Balance</label>
+                    <input name="balance" type="number" class="form-control" id="balance" required>
+                </div>
             </div>
 
             <div class="form-row">
 
-                <div class="form-group col-md-6">
+<%--                <div class="form-group col-md-6">--%>
+<%--                    <label for="country">Country</label>--%>
+<%--                    <input name="country" type="text" class="form-control" id="country" required>--%>
+<%--                </div>--%>
+
+                <div class="form-group">
                     <label for="country">Country</label>
-                    <input name="country" type="text" class="form-control" id="country" required>
+                    <select name="country" class="form-control" id="country">
+                        <c:forEach items="${sessionScope.countries}" var="country">
+                            <option value="${country.value}">${country.value}</option>
+                        </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -98,6 +111,6 @@
     </div>
 </div>
 
-<%@include file="common/footer.jsp" %>
+<%@include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -13,7 +13,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <hibernate.version>5.4.27.Final</hibernate.version>
+        <hibernate.version>5.4.29.Final</hibernate.version>
         <jakarta.version>9.0.0</jakarta.version>
         <mysql.version>8.0.22</mysql.version>
         <oracle.version>19.8.0.0</oracle.version>
@@ -55,6 +55,34 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+        <!-- JSON-P API -->
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.4</version>
+            <!--        <scope>runtime</scope>-->
+        </dependency>
+
+<!--        From Google-->
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
 
         <!--      End Section :  Server Side Dependencies      -->
 
@@ -81,12 +109,11 @@
             <version>3.5.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.webjars/popper.js -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>popper.js</artifactId>
-            <version>1.16.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.webjars.npm</groupId>-->
+<!--            <artifactId>popper.js</artifactId>-->
+<!--            <version>1.16.1-lts</version>-->
+<!--        </dependency>-->
 
 
         <!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
@@ -97,20 +124,20 @@
         </dependency>
 
 <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/html5shiv &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>html5shiv</artifactId>-->
-<!--            <version>3.6.2</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>html5shiv</artifactId>
+            <version>3.6.2</version>
+        </dependency>
 
 
 
 <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/respond &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>respond</artifactId>-->
-<!--            <version>1.4.2</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>respond</artifactId>
+            <version>1.4.2</version>
+        </dependency>
 
 
         <!--         End Section :  Web Client Dependencies      -->
@@ -151,6 +178,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
 
         <!--  End Section :  End Junit -->
 

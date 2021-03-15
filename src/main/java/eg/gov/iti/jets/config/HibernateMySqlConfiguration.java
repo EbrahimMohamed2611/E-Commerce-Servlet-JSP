@@ -19,7 +19,7 @@ public class HibernateMySqlConfiguration {
 
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
-                settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
+                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/e-commerce-servlet-jsp");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "Ebra7imFCI");

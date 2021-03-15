@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 public class UserRepositoryImpl implements UserRepository {
-    SessionFactory sessionFactory = HibernateDatabaseFactory.getOracleConnection();
+    SessionFactory sessionFactory = HibernateDatabaseFactory.getMysqlConnection();
 
     @Override
     public User findByEmail(String email) {
