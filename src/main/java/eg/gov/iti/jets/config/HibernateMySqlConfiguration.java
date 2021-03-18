@@ -22,7 +22,7 @@ public class HibernateMySqlConfiguration {
                 settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/e-commerce-servlet-jsp");
                 settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "Ebra7imFCI");
+                settings.put(Environment.PASS, "jets");
 //              SQL dialect
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
 //              Echo all executed SQL to stdout
