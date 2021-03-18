@@ -15,7 +15,7 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
-public class EmailUtil{
+public class  EmailUtil{
 public static void sendEmail(Session session, String toEmail, String subject, String body){
     try
     {
