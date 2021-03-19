@@ -32,6 +32,11 @@ public class ApplicationStartingListener implements ServletContextListener{
         factory = Persistence.createEntityManagerFactory("e-commerce");
         System.out.println("Database is Opened");
         sce.getServletContext().setAttribute("countries",stringStringMap);
+
+//         sessionFactory = HibernateDatabaseFactory.getMysqlConnection();
+//        //sessionFactory.openSession();
+//        System.out.println("Data base Connection is opened");
+//        MailService.sendEmail("iti.jets.intake41.p2@tutanota.com");
     }
 
     @Override

@@ -1,6 +1,8 @@
 package eg.gov.iti.jets.service.impl;
 
 import eg.gov.iti.jets.adapter.UserAdapter;
+import eg.gov.iti.jets.adapter.UserProfileAdapter;
+import eg.gov.iti.jets.dto.UserProfileDto;
 import eg.gov.iti.jets.dto.UserRegistrationDto;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
@@ -33,4 +35,18 @@ public class UserServiceImpl implements UserService {
         System.out.println("User by Email is" + userRegistrationDto);
         return userRegistrationDto;
     }
+
+
+    public UserProfileDto updateUser(UserProfileDto userProfileDto) {
+        User user = UserProfileAdapter.convertFromUserProfileDtoToUserModel(userProfileDto);
+
+        User userupdated = userRepository.updateUser(user);
+
+        UserProfileDto userProfileDto1 = UserProfileAdapter.convertFromUserModelToUserProfileDto(userupdated);
+        System.out.println("From Service " + userupdated);
+
+        return userProfileDto1;
+    }
+
+
 }

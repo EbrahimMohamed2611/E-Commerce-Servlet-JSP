@@ -94,12 +94,6 @@
             <version>1.1.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
-            <scope>compile</scope>
-        </dependency>
 
 
         <!--      End Section :  Server Side Dependencies      -->
@@ -196,6 +190,22 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
 
         <!--  End Section :  End Junit -->
@@ -219,9 +229,9 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.0</version>
                 <configuration>
-                    <username>admin</username>
-                    <password>admin</password>
-                    <url>http://localhost:9090/manager/text</url>
+                    <username>jets</username>
+                    <password>jets</password>
+                    <url>http://localhost:9393/manager/text</url>
                     <path>/e-commerce</path>
                 </configuration>
             </plugin>
