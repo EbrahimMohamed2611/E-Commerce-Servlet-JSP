@@ -7,6 +7,7 @@ public class UserAdapter {
 
     public static UserRegistrationDto convertFromUserModelToUserRegistrationDto(User user) {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
+        userRegistrationDto.setUserId(user.getUserId());
         userRegistrationDto.setFirstName(user.getFirstName());
         userRegistrationDto.setLastName(user.getLastName());
         userRegistrationDto.setPhone(user.getPhone());

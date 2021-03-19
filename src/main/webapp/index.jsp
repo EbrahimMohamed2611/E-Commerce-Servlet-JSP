@@ -55,7 +55,7 @@
                 <div class="header-top">
                     <div class="container">
                         <div class="row">
-<%--                            ${sessionScope.userDto.firstName}--%>
+                            ${sessionScope.userDto.userId}
                             <!-- Begin Header Top Left Area -->
                             <div class="col-lg-3 col-md-4">
                                 <div class="header-top-left">

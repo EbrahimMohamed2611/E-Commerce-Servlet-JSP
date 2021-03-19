@@ -74,7 +74,7 @@
                             Email is Exist you can Login or try using another email
                         </div>
                         <div class="alert alert-success p-1" id="emailNotExist" hidden>
-                            Email is Exist you can Login or try using another email
+                            Nice go ahead
                         </div>
                     </div>
 
