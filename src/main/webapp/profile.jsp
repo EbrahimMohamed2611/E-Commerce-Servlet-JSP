@@ -46,11 +46,11 @@
                 document.getElementById("phoneNumber").value = myjsonobject.phone;
                 //var date = JSON.stringify(myjsonobject.birthDate);
                 document.getElementById("birthDate").value = date;
-                document.getElementById("country").value = myjsonobject.country;
-                document.getElementById("state").value = myjsonobject.state;
-                document.getElementById("city").value = myjsonobject.city;
-                document.getElementById("street").value = myjsonobject.street;
-                document.getElementById("zipCode").value = myjsonobject.zipCode;
+                document.getElementById("country").value = myjsonobject.address.country;
+                document.getElementById("state").value = myjsonobject.address.state;
+                document.getElementById("city").value = myjsonobject.address.city;
+                document.getElementById("street").value = myjsonobject.address.street;
+                document.getElementById("zipCode").value = myjsonobject.address.zipCode;
                 window.alert("Succeffully updated");
                 document.getElementById("firstName").readOnly = true;
                 document.getElementById("firstName").style.backgroundColor = "#6c757d";
