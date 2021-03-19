@@ -22,9 +22,9 @@ public class AllCountries {
             JsonValue code = jsonValue.asJsonObject().get("code");
             allCountries.put(code.toString().substring(1, code.toString().length()-1), country.toString().substring(1, country.toString().length()-1));
         }
-        allCountries.forEach((k, v) -> {
-            System.out.println("Code : " + k + " Country : " + v);
-        });
+//        allCountries.forEach((k, v) -> {
+//            System.out.println("Code : " + k + " Country : " + v);
+//        });
         return allCountries;
     }
 }

@@ -1,7 +1,7 @@
 
 <link href="webjars/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 
-<link href="CSS/style.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <link href="webjars/font-awesome/5.15.2/css/all.css" rel="stylesheet">
 <script src="webjars/html5shiv/3.6.2/html5shiv.min.js" ></script>
 

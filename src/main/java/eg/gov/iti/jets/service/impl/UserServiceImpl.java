@@ -7,6 +7,8 @@ import eg.gov.iti.jets.repository.UserRepository;
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserRepositoryFactory;
 
+import javax.persistence.NoResultException;
+
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository  = UserRepositoryFactory.getUserRepositoryInstance();
@@ -22,5 +24,13 @@ public class UserServiceImpl implements UserService {
         System.out.println("From Service " + userSaved);
 
         return userRegistrationDto1;
+    }
+
+    @Override
+    public UserRegistrationDto findByEmail(String email) throws NoResultException {
+        User user = userRepository.findByEmail(email);
+        UserRegistrationDto userRegistrationDto = UserAdapter.convertFromUserModelToUserRegistrationDto(user);
+        System.out.println("User by Email is" + userRegistrationDto);
+        return userRegistrationDto;
     }
 }

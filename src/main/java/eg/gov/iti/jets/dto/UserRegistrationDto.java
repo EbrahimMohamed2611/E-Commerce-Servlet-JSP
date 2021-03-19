@@ -1,6 +1,7 @@
 package eg.gov.iti.jets.dto;
 
 import eg.gov.iti.jets.model.Address;
+import eg.gov.iti.jets.model.Gender;
 import eg.gov.iti.jets.model.Role;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class UserRegistrationDto {
     private String email;
     private String password;
     private Role role;
+    private Gender gender;
     private double balance;
     private LocalDate birthDate;
     private Address address;
