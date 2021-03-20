@@ -370,160 +370,160 @@
     <div class="raw">
         <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
             <button type="button" onclick="editdata()">Edit profile</button>
-<form style="align-items: center">
-    <h3>Profile</h3>
-    <div class="row">
+            <form style="align-items: center">
+                <h3>Profile</h3>
+                <div class="row">
 
-<%--        <div class="col-md-6">--%>
-<%--            <div class="checkout-form-list">--%>
-<%--                <label for="firstName">First Name <span class="required">*</span></label>--%>
-<%--                <input placeholder="" name="firstName" id="firstName" type="text" required>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-        <div class="col-md-6">
-            <div class="checkout-form-list">
-        <label for="firstName" class="form-label">First Name</label>
-        <input style="background-color: #6c757d" readonly type="text" class="form-control" name="firstName"
-               id="firstName" value="salma"
-               aria-describedby="emailHelp" onblur="checkfirstname()">
-        <label id="firstnamelabel" style="color:red" hidden>Please enter your name</label>
-            </div>
-    </div>
-    <br>
+                    <%--        <div class="col-md-6">--%>
+                    <%--            <div class="checkout-form-list">--%>
+                    <%--                <label for="firstName">First Name <span class="required">*</span></label>--%>
+                    <%--                <input placeholder="" name="firstName" id="firstName" type="text" required>--%>
+                    <%--            </div>--%>
+                    <%--        </div>--%>
+                    <div class="col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input style="background-color: #6c757d" readonly type="text" class="form-control" name="firstName"
+                                   id="firstName" value="salma"
+                                   aria-describedby="emailHelp" onblur="checkfirstname()">
+                            <label id="firstnamelabel" style="color:red" hidden>Please enter your name</label>
+                        </div>
+                    </div>
+                    <br>
 
-        <div class="col-md-6">
-            <div class="checkout-form-list">
-        <label for="lastName" class="form-label">Last Name</label>
-        <input style="background-color: #6c757d" readonly type="text" class="form-control" name="lastName" id="lastName"
-               aria-describedby="emailHelp" value="elkady" onblur="checklastname()">
-        <label id="lastnamelabel" style="color:red" hidden>Please enter your lastname</label>
-            </div>
-    </div>
-    <br>
+                    <div class="col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input style="background-color: #6c757d" readonly type="text" class="form-control" name="lastName" id="lastName"
+                                   aria-describedby="emailHelp" value="elkady" onblur="checklastname()">
+                            <label id="lastnamelabel" style="color:red" hidden>Please enter your lastname</label>
+                        </div>
+                    </div>
+                    <br>
 
 
-        <div class="col-md-6">
-            <div class="checkout-form-list">
-        <label for="password" class="form-label">Password</label>
-        <input readonly style="background-color: #6c757d" type="password" name="password" class="form-control"
-               id="password" value="Salma123"
-               pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$" title="Weak Password" onblur="checkpass()">
-        <label id="passlabel" style="color:red" hidden>Please enter your password</label>
-        <label id="passlabe2" style="color:red" hidden>Must contains uppercase and numbers</label>
-            </div>
-    </div>
-    <br>
+                    <div class="col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="password" class="form-label">Password</label>
+                            <input readonly style="background-color: #6c757d" type="password" name="password" class="form-control"
+                                   id="password" value="Salma123"
+                                   pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$" title="Weak Password" onblur="checkpass()">
+                            <label id="passlabel" style="color:red" hidden>Please enter your password</label>
+                            <label id="passlabe2" style="color:red" hidden>Must contains uppercase and numbers</label>
+                        </div>
+                    </div>
+                    <br>
 
-    <div class="col-md-6">
-        <div class="checkout-form-list">
-        <label for="confirmPassword" class="form-label">Password</label>
-        <input readonly style="background-color: #6c757d" type="password" onkeyup="checkmatchpass2()"
-               name="confirmPassword" value="Salma123"
-               class="form-control"
-               id="confirmPassword" onblur="checkpass2()">
-        <label id="pass2label" style="color:red" hidden>Missmatch password</label>
-        <label id="pass22label" style="color:red" hidden>Please enter a password</label>
-        </div>
-    </div>
-    <br>
+                    <div class="col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="confirmPassword" class="form-label">Password</label>
+                            <input readonly style="background-color: #6c757d" type="password" onkeyup="checkmatchpass2()"
+                                   name="confirmPassword" value="Salma123"
+                                   class="form-control"
+                                   id="confirmPassword" onblur="checkpass2()">
+                            <label id="pass2label" style="color:red" hidden>Missmatch password</label>
+                            <label id="pass22label" style="color:red" hidden>Please enter a password</label>
+                        </div>
+                    </div>
+                    <br>
 
-<%--    <div class="form-row">--%>
+                    <%--    <div class="form-row">--%>
 
-<%--        <div class="form-group col-md-6">--%>
-    <div class="col-md-6">
-        <div class="checkout-form-list">
-            <label for="phoneNumber">Phone number</label>
-            <input readonly style="background-color: #6c757d" name="phoneNumber" type="text" class="form-control"
-                   id="phoneNumber" pattern="^(\\+2)?01\\d{9}$"
-                   title="Invalid phone number" onblur="checkphone()" value="01007320202">
-            <label id="phonelabel" style="color:red" hidden>Please enter a phone number</label>
-            <label id="phonelabel2" style="color:red" hidden>phone must be in formate 01XXXXXXXXX</label>
-        </div>
-        </div>
-        <br>
+                    <%--        <div class="form-group col-md-6">--%>
+                    <div class="col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="phoneNumber">Phone number</label>
+                            <input readonly style="background-color: #6c757d" name="phoneNumber" type="text" class="form-control"
+                                   id="phoneNumber" pattern="^(\\+2)?01\\d{9}$"
+                                   title="Invalid phone number" onblur="checkphone()" value="01007320202">
+                            <label id="phonelabel" style="color:red" hidden>Please enter a phone number</label>
+                            <label id="phonelabel2" style="color:red" hidden>phone must be in formate 01XXXXXXXXX</label>
+                        </div>
+                    </div>
+                    <br>
 
-<%--        <div class="form-group col-md-6">--%>
-    <div class="col-md-6">
-        <div class="checkout-form-list">
-            <label for="birthDate">Birth date</label>
-            <input readonly style="background-color: #6c757d" name="birthDate" type="date" class="form-control"
-                   id="birthDate" value="2018-07-22">
-        </div>
-        </div>
-        <br>
-<%--    </div>--%>
+                    <%--        <div class="form-group col-md-6">--%>
+                    <div class="col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="birthDate">Birth date</label>
+                            <input readonly style="background-color: #6c757d" name="birthDate" type="date" class="form-control"
+                                   id="birthDate" value="2018-07-22">
+                        </div>
+                    </div>
+                    <br>
+                    <%--    </div>--%>
 
-<%--    <div class="form-row">--%>
+                    <%--    <div class="form-row">--%>
 
-<%--        <div class="form-group col-md-6">--%>
-    <div class="col-md-6">
-        <div class="checkout-form-list">
-            <label for="country">Country</label>
-            <select id="country"  disabled="true" style="background-color: #6c757d;color: black">
-                <option selected>Egypt</option>
-                <option>Russia</option>
-                <option>India</option>
+                    <%--        <div class="form-group col-md-6">--%>
+                    <div class="col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="country">Country</label>
+                            <select id="country"  disabled="true" style="background-color: #6c757d;color: black">
+                                <option selected>Egypt</option>
+                                <option>Russia</option>
+                                <option>India</option>
 
-            </select>
-<%--            <input readonly style="background-color: #6c757d" name="country" type="text" class="form-control"--%>
-<%--                   id="country"--%>
-<%--                   onblur="checkcountry()" value="Egypt">--%>
-            <label id="countrylabel" style="color:red" hidden>Please enter a country</label>
-        </div>
-        </div>
-        <br>
+                            </select>
+                            <%--            <input readonly style="background-color: #6c757d" name="country" type="text" class="form-control"--%>
+                            <%--                   id="country"--%>
+                            <%--                   onblur="checkcountry()" value="Egypt">--%>
+                            <label id="countrylabel" style="color:red" hidden>Please enter a country</label>
+                        </div>
+                    </div>
+                    <br>
 
-        <div class="form-group col-md-6">
-            <div class="checkout-form-list">
-            <label for="state">State</label>
-            <input readonly style="background-color: #6c757d" name="state" type="text" class="form-control" id="state"
-                   onblur="checkstate()" value="state">
-            <label id="statelabel" style="color:red" hidden>Please enter a state</label>
-            </div>
-        </div>
-        <br>
+                    <div class="form-group col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="state">State</label>
+                            <input readonly style="background-color: #6c757d" name="state" type="text" class="form-control" id="state"
+                                   onblur="checkstate()" value="state">
+                            <label id="statelabel" style="color:red" hidden>Please enter a state</label>
+                        </div>
+                    </div>
+                    <br>
 
-<%--    </div>--%>
-<%--    <div class="form-row">--%>
+                    <%--    </div>--%>
+                    <%--    <div class="form-row">--%>
 
-        <div class="form-group col-md-6">
-            <div class="checkout-form-list">
-            <label for="city">City</label>
-            <input readonly style="background-color: #6c757d" name="city" type="text" class="form-control" id="city"
-                   onblur="checkcity()" value="Cairo">
-            <label id="citylabel" style="color:red" hidden>Please enter a city</label>
-            </div>
-        </div>
-        <br>
+                    <div class="form-group col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="city">City</label>
+                            <input readonly style="background-color: #6c757d" name="city" type="text" class="form-control" id="city"
+                                   onblur="checkcity()" value="Cairo">
+                            <label id="citylabel" style="color:red" hidden>Please enter a city</label>
+                        </div>
+                    </div>
+                    <br>
 
-        <div class="form-group col-md-6">
-            <div class="checkout-form-list">
-            <label for="street">Street</label>
-            <input readonly style="background-color: #6c757d" name="street" type="text" class="form-control" id="street"
-                   onblur="checkstreet()" value="Nasr">
-            <label id="streetlabel" style="color:red" hidden>Please enter a street</label>
-            </div>
-        </div>
-        <br>
+                    <div class="form-group col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="street">Street</label>
+                            <input readonly style="background-color: #6c757d" name="street" type="text" class="form-control" id="street"
+                                   onblur="checkstreet()" value="Nasr">
+                            <label id="streetlabel" style="color:red" hidden>Please enter a street</label>
+                        </div>
+                    </div>
+                    <br>
 
-        <div class="form-group col-md-6">
-            <div class="checkout-form-list">
-            <label for="zipCode">Zip Code</label>
-            <input readonly style="background-color: #6c757d" name="zipcode" type="text" class="form-control"
-                   id="zipCode"
-                   pattern="^\d{5}(?:[-\s]\d{4})?$" title="invalid code" onblur="checkzipcode()"
-                   value="5555-5555-5555-5555">
-            <label id="codelabel" style="color:red" hidden>Please enter a zip code</label>
-            <label id="codelabel2" style="color:red" hidden>Enter a zip code in write formate</label>
-            </div>
-        </div>
-        <br>
+                    <div class="form-group col-md-6">
+                        <div class="checkout-form-list">
+                            <label for="zipCode">Zip Code</label>
+                            <input readonly style="background-color: #6c757d" name="zipcode" type="text" class="form-control"
+                                   id="zipCode"
+                                   pattern="^\d{5}(?:[-\s]\d{4})?$" title="invalid code" onblur="checkzipcode()"
+                                   value="5555-5555-5555-5555">
+                            <label id="codelabel" style="color:red" hidden>Please enter a zip code</label>
+                            <label id="codelabel2" style="color:red" hidden>Enter a zip code in write formate</label>
+                        </div>
+                    </div>
+                    <br>
 
-<%--    </div>--%>
-    </div>
-    <button id="updbtn" hidden type="button" class="btn btn-primary" onclick="update()">Update</button>
+                    <%--    </div>--%>
+                </div>
+                <button id="updbtn" hidden type="button" class="btn btn-primary" onclick="update()">Update</button>
 
-</form>
+            </form>
         </div>
     </div>
 </div>
