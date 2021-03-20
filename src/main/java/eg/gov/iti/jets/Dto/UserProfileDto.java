@@ -9,16 +9,16 @@ import java.time.LocalDate;
 
 @Data
 public class UserProfileDto {
-   // private int id;
-   // private String email;
-   // private Role role;
-    //private double balance;
+    private int id;
+    private String email;
+    private Role role;
+    private double balance;
     private String firstName;
     private String lastName;
     private String phone;
     private String password;
     private LocalDate birthDate;
     private Address address;
-  //  private Gender gender;
+    private Gender gender;
 
 }

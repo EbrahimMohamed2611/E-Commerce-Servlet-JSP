@@ -59,9 +59,9 @@
                 xmlHttp = new XMLHttpRequest();
         }
 
-        function handleStateChange() {
-            console.log("beofr condition");
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+           function handleStateChange() {
+            console.log("beofr condition"+xmlHttp.status+"---response ",xmlHttp.responseText);
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 console.log("after condition");
                 var val = xmlHttp.responseText;
                 var myjsonobject = eval('(' + val + ')');

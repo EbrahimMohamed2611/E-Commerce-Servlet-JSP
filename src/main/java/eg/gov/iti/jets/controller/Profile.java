@@ -55,13 +55,11 @@ public class Profile extends HttpServlet {
         user.setPassword(obj.getString("password"));
         user.setPhone(obj.getString("phoneNumber"));
         //todo get the id from the jsp from the session
-//        user.setId(2);
-//        user.setEmail("salma2016170207@cis.asu.edu.eg");
-//        user.setRole(Role.USER_ROLE);
-//        user.setGender(Gender.FEMALE);
-//
-//
-//        user.setBalance(5.5);
+        user.setId(2);
+        user.setEmail("salma2016170207@cis.asu.edu.eg");
+        user.setRole(Role.USER_ROLE);
+        user.setGender(Gender.FEMALE);
+        user.setBalance(5.5);
         LocalDate birthDate = LocalDate.parse(obj.getString("birthDate"));
         user.setBirthDate(birthDate);
         String country = obj.getString("country");
@@ -77,14 +75,17 @@ public class Profile extends HttpServlet {
         user.setAddress(address);
         System.out.println("333");
         System.out.println("userr "+user);
-        //UserProfileDto updateduser = userService.updateUser(user);
-       // System.out.println("updated "+updateduser);
+        UserProfileDto updateduser = userService.updateUser(user);
+        //todo must put the new object on the session
+        System.out.println("updated "+updateduser);
         System.out.println(user.getPhone() + "-------phone");
         // todo update db by user object and return user object
         PrintWriter out = resp.getWriter();
         //todo pass the function the returned user from db  after update
-        System.out.println(buildGsonFromObject(user));
-        out.write(buildGsonFromObject(user));
+        System.out.println(buildGsonFromObject(updateduser));
+        out.write(buildGsonFromObject(updateduser));
+        System.out.println("end of post");
+
 
     }
 
