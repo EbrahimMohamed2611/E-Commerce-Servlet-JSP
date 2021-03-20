@@ -75,11 +75,12 @@ public class UserRepositoryImpl implements UserRepository {
 //        session.beginTransaction();
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(user);
+        User updatedUser = entityManager.merge(user);
+        System.out.println("User merged " + updatedUser);
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("User updated " + user);
-        return user;
+        System.out.println("User updated " + updatedUser);
+        return updatedUser;
     }
 
 }

@@ -1,14 +1,54 @@
 <%@ page import="java.time.LocalDate" %><%--
+
   Created by IntelliJ IDEA.
   User: Salma El-kady
   Date: 3/14/2021
   Time: 10:01 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Profile</title>
+    <%--    <%@include file="common/header.jsp" %>--%>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- Material Design Iconic Font-V2.2.0 -->
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Font Awesome Stars-->
+    <link rel="stylesheet" href="css/fontawesome-stars.css">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="css/meanmenu.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Jquery-ui CSS -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <!-- Venobox CSS -->
+    <link rel="stylesheet" href="css/venobox.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Bootstrap V4.1.3 Framework CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="css/helper.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Modernizr js -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/style.css"/>
+
+
     <script>
         var xmlHttp;
 
@@ -20,7 +60,9 @@
         }
 
         function handleStateChange() {
+            console.log("beofr condition");
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                console.log("after condition");
                 var val = xmlHttp.responseText;
                 var myjsonobject = eval('(' + val + ')');
 
@@ -152,6 +194,7 @@
             });
 
             console.log("befor send");
+            console.log(data);
             xmlHttp.send("data=" + data);
             console.log(data);
         }
@@ -323,38 +366,56 @@
     </script>
 </head>
 <body>
-
+<div class="container">
+    <div class="raw">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+            <button type="button" onclick="editdata()">Edit profile</button>
 <form style="align-items: center">
-    <button type="button" onclick="editdata()">Edit profile</button>
-    <div class="mb-3">
+    <h3>Profile</h3>
+    <div class="row">
+
+<%--        <div class="col-md-6">--%>
+<%--            <div class="checkout-form-list">--%>
+<%--                <label for="firstName">First Name <span class="required">*</span></label>--%>
+<%--                <input placeholder="" name="firstName" id="firstName" type="text" required>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+        <div class="col-md-6">
+            <div class="checkout-form-list">
         <label for="firstName" class="form-label">First Name</label>
         <input style="background-color: #6c757d" readonly type="text" class="form-control" name="firstName"
                id="firstName" value="salma"
                aria-describedby="emailHelp" onblur="checkfirstname()">
         <label id="firstnamelabel" style="color:red" hidden>Please enter your name</label>
+            </div>
     </div>
     <br>
 
-    <div class="mb-3">
+        <div class="col-md-6">
+            <div class="checkout-form-list">
         <label for="lastName" class="form-label">Last Name</label>
         <input style="background-color: #6c757d" readonly type="text" class="form-control" name="lastName" id="lastName"
                aria-describedby="emailHelp" value="elkady" onblur="checklastname()">
         <label id="lastnamelabel" style="color:red" hidden>Please enter your lastname</label>
+            </div>
     </div>
     <br>
 
 
-    <div class="mb-3">
+        <div class="col-md-6">
+            <div class="checkout-form-list">
         <label for="password" class="form-label">Password</label>
         <input readonly style="background-color: #6c757d" type="password" name="password" class="form-control"
                id="password" value="Salma123"
                pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$" title="Weak Password" onblur="checkpass()">
         <label id="passlabel" style="color:red" hidden>Please enter your password</label>
         <label id="passlabe2" style="color:red" hidden>Must contains uppercase and numbers</label>
+            </div>
     </div>
     <br>
 
-    <div class="mb-3">
+    <div class="col-md-6">
+        <div class="checkout-form-list">
         <label for="confirmPassword" class="form-label">Password</label>
         <input readonly style="background-color: #6c757d" type="password" onkeyup="checkmatchpass2()"
                name="confirmPassword" value="Salma123"
@@ -362,33 +423,41 @@
                id="confirmPassword" onblur="checkpass2()">
         <label id="pass2label" style="color:red" hidden>Missmatch password</label>
         <label id="pass22label" style="color:red" hidden>Please enter a password</label>
+        </div>
     </div>
     <br>
 
-    <div class="form-row">
+<%--    <div class="form-row">--%>
 
-        <div class="form-group col-md-6">
+<%--        <div class="form-group col-md-6">--%>
+    <div class="col-md-6">
+        <div class="checkout-form-list">
             <label for="phoneNumber">Phone number</label>
             <input readonly style="background-color: #6c757d" name="phoneNumber" type="text" class="form-control"
                    id="phoneNumber" pattern="^(\\+2)?01\\d{9}$"
                    title="Invalid phone number" onblur="checkphone()" value="01007320202">
             <label id="phonelabel" style="color:red" hidden>Please enter a phone number</label>
             <label id="phonelabel2" style="color:red" hidden>phone must be in formate 01XXXXXXXXX</label>
-
+        </div>
         </div>
         <br>
 
-        <div class="form-group col-md-6">
+<%--        <div class="form-group col-md-6">--%>
+    <div class="col-md-6">
+        <div class="checkout-form-list">
             <label for="birthDate">Birth date</label>
             <input readonly style="background-color: #6c757d" name="birthDate" type="date" class="form-control"
                    id="birthDate" value="2018-07-22">
         </div>
+        </div>
         <br>
-    </div>
+<%--    </div>--%>
 
-    <div class="form-row">
+<%--    <div class="form-row">--%>
 
-        <div class="form-group col-md-6">
+<%--        <div class="form-group col-md-6">--%>
+    <div class="col-md-6">
+        <div class="checkout-form-list">
             <label for="country">Country</label>
             <select id="country"  disabled="true" style="background-color: #6c757d;color: black">
                 <option selected>Egypt</option>
@@ -401,36 +470,44 @@
 <%--                   onblur="checkcountry()" value="Egypt">--%>
             <label id="countrylabel" style="color:red" hidden>Please enter a country</label>
         </div>
+        </div>
         <br>
 
         <div class="form-group col-md-6">
+            <div class="checkout-form-list">
             <label for="state">State</label>
             <input readonly style="background-color: #6c757d" name="state" type="text" class="form-control" id="state"
                    onblur="checkstate()" value="state">
             <label id="statelabel" style="color:red" hidden>Please enter a state</label>
+            </div>
         </div>
         <br>
 
-    </div>
-    <div class="form-row">
+<%--    </div>--%>
+<%--    <div class="form-row">--%>
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
+            <div class="checkout-form-list">
             <label for="city">City</label>
             <input readonly style="background-color: #6c757d" name="city" type="text" class="form-control" id="city"
                    onblur="checkcity()" value="Cairo">
             <label id="citylabel" style="color:red" hidden>Please enter a city</label>
+            </div>
         </div>
         <br>
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
+            <div class="checkout-form-list">
             <label for="street">Street</label>
             <input readonly style="background-color: #6c757d" name="street" type="text" class="form-control" id="street"
                    onblur="checkstreet()" value="Nasr">
             <label id="streetlabel" style="color:red" hidden>Please enter a street</label>
+            </div>
         </div>
         <br>
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
+            <div class="checkout-form-list">
             <label for="zipCode">Zip Code</label>
             <input readonly style="background-color: #6c757d" name="zipcode" type="text" class="form-control"
                    id="zipCode"
@@ -438,13 +515,61 @@
                    value="5555-5555-5555-5555">
             <label id="codelabel" style="color:red" hidden>Please enter a zip code</label>
             <label id="codelabel2" style="color:red" hidden>Enter a zip code in write formate</label>
+            </div>
         </div>
         <br>
 
+<%--    </div>--%>
     </div>
     <button id="updbtn" hidden type="button" class="btn btn-primary" onclick="update()">Update</button>
 
 </form>
+        </div>
+    </div>
+</div>
+<%--<%@include file="common/footer.jsp" %>--%>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<!-- Popper js -->
+<script src="js/vendor/popper.min.js"></script>
+<!-- Bootstrap V4.1.3 Fremwork js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Ajax Mail js -->
+<script src="js/ajax-mail.js"></script>
+<!-- Meanmenu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- Wow.min js -->
+<script src="js/wow.min.js"></script>
+<!-- Slick Carousel js -->
+<script src="js/slick.min.js"></script>
+<!-- Owl Carousel-2 js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Magnific popup js -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Isotope js -->
+<script src="js/isotope.pkgd.min.js"></script>
+<!-- Imagesloaded js -->
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<!-- Mixitup js -->
+<script src="js/jquery.mixitup.min.js"></script>
+<!-- Countdown -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Counterup -->
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Waypoints -->
+<script src="js/waypoints.min.js"></script>
+<!-- Barrating -->
+<script src="js/jquery.barrating.min.js"></script>
+<!-- Jquery-ui -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Venobox -->
+<script src="js/venobox.min.js"></script>
+<!-- Nice Select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/scrollUp.min.js"></script>
+<!-- Main/Activator js -->
+<script src="js/main.js"></script>
 
+<script src="js/user.js"></script>
 </body>
 </html>
