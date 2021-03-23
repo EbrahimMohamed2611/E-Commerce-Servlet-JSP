@@ -73,11 +73,11 @@
                                             <div class="ht-setting-trigger"><span>Setting</span></div>
                                             <div class="setting ht-setting">
                                                 <ul class="ht-setting-list">
-                                                    <li><a href="login-register.jsp
+                                                    <li><a href="login.jsp
 ">My Account</a></li>
                                                     <li><a href="checkout.jsp
 ">Checkout</a></li>
-                                                    <li><a href="login-register.jsp
+                                                    <li><a href="login.jsp
 ">Sign In</a></li>
                                                 </ul>
                                             </div>
@@ -441,7 +441,7 @@
                                                     <li><a href="index.jsp
 ">Other Pages</a>
                                                         <ul>
-                                                            <li><a href="login-register.jsp
+                                                            <li><a href="login.jsp
 ">My Account</a></li>
                                                             <li><a href="checkout.jsp
 ">Checkout</a></li>

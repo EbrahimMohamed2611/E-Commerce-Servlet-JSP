@@ -1,74 +1,41 @@
 package eg.gov.iti.jets.model;
 
-import javax.persistence.*;
+import lombok.*;
 
-@Embeddable
-public class Address {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name="ADDRESS")
+@Getter
+@Setter
+@NoArgsConstructor
+public class Address implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ADDRESS_ID")
+    private int addressId;
+    @Column(name = "COUNTRY")
     private String country;
+    @Column(name = "STATE")
     private String state;
+    @Column(name = "CITY")
     private String city;
+    @Column(name = "STREET")
     private String street;
+    @Column(name = "ZIP_CODE")
     private String zipCode;
 
-    public Address() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "USERS_ID")
+    private User user;
 
-    public Address(String country, String state, String city, String street, String zipCode) {
+    public Address(String country, String state, String city, String street, String zipcode) {
         this.country = country;
         this.state = state;
         this.city = city;
         this.street = street;
-        this.zipCode = zipCode;
+        this.zipCode = zipcode;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "country='" + country + '\'' +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                '}';
-    }
 }

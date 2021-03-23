@@ -1,13 +1,16 @@
 package eg.gov.iti.jets.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USERS_DETAILS")
 @NamedQueries({
         @NamedQuery(name = "User.findByEmailAndPassword",
                 query = "SELECT u from User u where u.email=:email and u.password=:password"),
@@ -16,8 +19,10 @@ import java.time.LocalDate;
         @NamedQuery(name = "User.getAllUsers",
                 query = "SELECT u from User u where u.role = eg.gov.iti.jets.model.Role.USER_ROLE")
 })
-@Data
-public class User {
+@Getter
+@Setter
+@NoArgsConstructor
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,10 +45,16 @@ public class User {
     private String password;
 
     @Column(name = "GENDER", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Column(name = "CUSTOMER_ROLE", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Column(name = "EMAIL_VERIFICATION")
+    @Enumerated(EnumType.STRING)
+    EmailVerification emailVerification;
 
     @Column(name = "BALANCE", nullable = false)
     private double balance;
@@ -51,10 +62,15 @@ public class User {
     @Column(name = "BIRTH_DATE")
     private LocalDate birthDate;
 
-    @Embedded
-    private Address address;
+    @OneToOne
+    @JoinColumn(name = "IMAGE_ID")
+    private Image userImage;
 
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-//    private Set<Order> orders = new HashSet<>(0);
+    @OneToMany(mappedBy = "user")
+    private Set<Address> address = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Order> orders = new HashSet<>();
+
 
 }

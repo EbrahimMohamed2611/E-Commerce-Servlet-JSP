@@ -36,30 +36,23 @@ public class UserRepositoryImpl implements UserRepository {
 
         entityManager.close();
 
-//        transaction.begin();
-//        System.out.println("entityManager is opened");
-//        User user = (User) entityManager.createNamedQuery("User.findByEmail").setParameter("email", email);
-//        System.out.println("User for this Email " + email + " is "+user);
-//        entityManager.close();
         return user;
     }
 
-    @Override
-    public User findByEmailAndPassword(String email, String password) {
-//        Session session = sessionFactory.openSession();
-//        session.beginTransaction();
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
-        entityManager.getTransaction().begin();
-        User user = (User) entityManager.createNamedQuery("User.findByEmailAndPassword")
-                .setParameter("email", email).setParameter("password",password).getSingleResult();
-        System.out.println("User for this Email " + email + " and this password is " + user);
-        return user;
-    }
+//    @Override
+//    public User findByEmailAndPassword(String email, String password) {
+////        Session session = sessionFactory.openSession();
+////        session.beginTransaction();
+//        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+//        entityManager.getTransaction().begin();
+//        User user = (User) entityManager.createNamedQuery("User.findByEmailAndPassword")
+//                .setParameter("email", email).setParameter("password",password).getSingleResult();
+//        System.out.println("User for this Email " + email + " and this password is " + user);
+//        return user;
+//    }
 
     @Override
     public User saveUser(User user) {
-//        Session session = sessionFactory.openSession();
-//        session.beginTransaction();
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(user);
@@ -71,15 +64,13 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User updateUser(User user) {
-//        Session session = sessionFactory.openSession();
-//        session.beginTransaction();
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(user);
+        User userUpdated = entityManager.merge(user);
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("User updated " + user);
-        return user;
+        System.out.println("User updated " + userUpdated);
+        return userUpdated;
     }
 
 }

@@ -1,0 +1,11 @@
+#profileImage {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ff3737;
+    font-size: 20px;
+    color: #fffef6;
+    text-align: center;
+    line-height: 47px;
+    margin: 0px 0;
+}

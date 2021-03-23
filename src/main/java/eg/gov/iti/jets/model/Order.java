@@ -1,11 +1,19 @@
 package eg.gov.iti.jets.model;
 
+import lombok.*;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
-@Table(name = "ORDERS")
-public class Order {
+@Table(name = "ORDER_DETAILS")
+@Getter
+@Setter
+@NoArgsConstructor
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,45 +21,11 @@ public class Order {
     private int orderId;
 
     @Column(name = "ORDER_TIMESTAMP")
-    private LocalDateTime orderTimestamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date orderTimestamp;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "USER_ID", nullable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "USERS_ID")
     private User user;
 
-    public Order() {
-    }
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public LocalDateTime getOrderTimestamp() {
-        return orderTimestamp;
-    }
-
-    public void setOrderTimestamp(LocalDateTime orderTimestamp) {
-        this.orderTimestamp = orderTimestamp;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "orderId=" + orderId +
-                ", orderTimestamp=" + orderTimestamp +
-                ", user=" + user +
-                '}';
-    }
 }

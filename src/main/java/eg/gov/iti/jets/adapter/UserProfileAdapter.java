@@ -1,11 +1,7 @@
 package eg.gov.iti.jets.adapter;
 
 import eg.gov.iti.jets.dto.UserProfileDto;
-import eg.gov.iti.jets.dto.UserRegistrationDto;
-import eg.gov.iti.jets.model.Address;
 import eg.gov.iti.jets.model.User;
-
-import java.time.LocalDate;
 
 public class UserProfileAdapter {
     public static UserProfileDto convertFromUserModelToUserProfileDto(User user) {

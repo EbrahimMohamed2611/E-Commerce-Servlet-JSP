@@ -12,7 +12,7 @@ public class MailService {
      * Use Authentication: Yes
      * Port for TLS/STARTTLS: 587
      */
-    public static void sendEmail(String to) {
+    public static void sendEmail(String to, String subject, String body) {
         final String fromEmail = "ebrahim.elmohamed26@gmail.com"; //requires valid gmail id
         final String password = "jakdzjhtgewyarum"; // correct password for gmail id
         final String toEmail = to; // can be any email id
@@ -33,7 +33,7 @@ public class MailService {
         };
         Session session = Session.getInstance(props, auth);
 
-        EmailUtil.sendEmail(session, toEmail, "TLSEmail Testing Subject", "TLSEmail Testing Body");
+        EmailUtil.sendEmail(session, toEmail, subject, body);
 
     }
 

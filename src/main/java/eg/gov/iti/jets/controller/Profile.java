@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 
-//@WebServlet("/profile")
+
 @WebServlet(name = "profile", value = "/profile")
 public class Profile extends HttpServlet {
     private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
@@ -64,7 +64,7 @@ public class Profile extends HttpServlet {
         Address address = new Address(country,  state, city, street, zipcode);
         System.out.println(address+"======");
         System.out.println("22");
-        user.setAddress(address);
+        user.getAddress().add(address);
         System.out.println("333");
         System.out.println("userr "+user);
         //UserProfileDto updateduser = userService.updateUser(user);

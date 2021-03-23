@@ -11,7 +11,7 @@ function checkEmail() {
         emailAjax = new ActiveXObject(Microsoft.XMLHTTP);
     }
     emailAjax.onreadystatechange = handleEmailUserValidation;
-    emailAjax.open("GET", "registration" + "?userEmail=" + userEmail + "&timeStamp=" + new Date().getTime(), true);
+    emailAjax.open("GET", "checkEmail" + "?userEmail=" + userEmail + "&timeStamp=" + new Date().getTime(), true);
     // emailAjax.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     emailAjax.send(null);
 
@@ -54,4 +54,11 @@ function passwordConfirmation(){
         console.log("Not matched")
 
     }
+}
+
+window.onload = function (){
+
+const fullName = document.getElementById('fullName').textContent;
+    document.getElementById('profileImage').innerHTML = fullName.split(' ').map(name => name[0]).join('').toUpperCase();
+    console.log(fullName);
 }

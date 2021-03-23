@@ -6,15 +6,30 @@
     <persistence-unit name="e-commerce" transaction-type="RESOURCE_LOCAL">
         <class>eg.gov.iti.jets.model.User</class>
         <class>eg.gov.iti.jets.model.Order</class>
+        <class>eg.gov.iti.jets.model.Address</class>
+        <class>eg.gov.iti.jets.model.Review</class>
+        <class>eg.gov.iti.jets.model.Feedback</class>
+        <class>eg.gov.iti.jets.model.Image</class>
         <properties>
+
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres" />-->
+<!--            <property name="javax.persistence.jdbc.user" value="postgres" />-->
+<!--            <property name="javax.persistence.jdbc.password" value="Ebra7imFCI" />-->
+<!--            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />-->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect" />-->
+<!--            -->
+<!--            -->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/e-commerce-servlet-jsp" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="Ebra7imFCI" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
+
+
+
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
-            <property name="hibernate.hbm2ddl.auto" value="validate" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
 
             <!-- Configuring Connection Pool -->
             <property name="hibernate.c3p0.min_size" value="5" />
