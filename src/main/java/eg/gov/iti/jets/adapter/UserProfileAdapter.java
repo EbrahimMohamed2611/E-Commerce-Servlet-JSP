@@ -7,18 +7,27 @@ public class UserProfileAdapter {
     public static UserProfileDto convertFromUserModelToUserProfileDto(User user) {
 
         UserProfileDto userProfileDto = new UserProfileDto();
+        userProfileDto.setUserId(user.getUserId());
+        userProfileDto.setBalance(user.getBalance());
+        userProfileDto.setRole(user.getRole());
+        userProfileDto.setEmail(user.getEmail());
         userProfileDto.setFirstName(user.getFirstName());
         userProfileDto.setLastName(user.getLastName());
         userProfileDto.setPhone(user.getPhone());
         userProfileDto.setPassword(user.getPassword());
         userProfileDto.setAddress(user.getAddress());
         userProfileDto.setBirthDate(user.getBirthDate());
+        userProfileDto.setGender(user.getGender());
 
         return userProfileDto;
     }
     public static User convertFromUserProfileDtoToUserModel(UserProfileDto userProfileDto) {
         User user = new User();
-
+        user.setGender(userProfileDto.getGender());
+        user.setUserId(userProfileDto.getUserId());
+        user.setBalance(userProfileDto.getBalance());
+        user.setEmail(userProfileDto.getEmail());
+        user.setRole(userProfileDto.getRole());
         user.setFirstName(userProfileDto.getFirstName());
         user.setLastName(userProfileDto.getLastName());
         user.setPhone(userProfileDto.getPhone());

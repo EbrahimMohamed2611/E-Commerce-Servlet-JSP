@@ -71,6 +71,7 @@ public class UserRepositoryImpl implements UserRepository {
         entityManager.close();
         System.out.println("User updated " + userUpdated);
         return userUpdated;
+
     }
 
 }

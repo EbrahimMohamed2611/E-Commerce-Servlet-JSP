@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import eg.gov.iti.jets.dto.UserProfileDto;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.Address;
+import eg.gov.iti.jets.model.Gender;
+import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,12 +30,13 @@ public class Profile extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        super.doPost(req, resp);
+        //super.doPost(req, resp);
 
         System.out.println("insisde the dopost");
         String data = req.getParameter("data");
         System.out.println(data);
         JSONObject obj = new JSONObject(data);
+        resp.setContentType("application/json");
 
         System.out.println(obj.getString("firstname"));
         System.out.println(obj.getString("lastName"));
@@ -52,6 +55,25 @@ public class Profile extends HttpServlet {
         user.setLastName(obj.getString("lastName"));
         user.setPassword(obj.getString("password"));
         user.setPhone(obj.getString("phoneNumber"));
+        user.setUserId(obj.getInt("id"));
+        user.setEmail(obj.getString("email"));
+        if(obj.getString("gender").equals(Gender.FEMALE))
+        {
+            user.setGender(Gender.FEMALE);
+        }else
+        {
+            user.setGender(Gender.MALE);
+        }
+        if(obj.getString("role").equals(Role.USER_ROLE))
+        {
+            user.setRole(Role.USER_ROLE);
+        }else
+        {
+            user.setRole(Role.ADMIN_ROLE);
+        }
+
+
+        user.setBalance(obj.getDouble("balance"));
         LocalDate birthDate = LocalDate.parse(obj.getString("birthDate"));
         user.setBirthDate(birthDate);
         String country = obj.getString("country");
@@ -67,14 +89,14 @@ public class Profile extends HttpServlet {
         user.getAddress().add(address);
         System.out.println("333");
         System.out.println("userr "+user);
-        //UserProfileDto updateduser = userService.updateUser(user);
-        System.out.println("updated "+user);
+        UserProfileDto updateduser = userService.updateUser(user);
+        //putting updated object on the session
+        req.getSession().setAttribute("userDto",updateduser);
+        System.out.println("updated "+updateduser);
         System.out.println(user.getPhone() + "-------phone");
-        // todo update db by user object and return user object
         PrintWriter out = resp.getWriter();
-        //todo pass the function the returned user from db  after update
-        System.out.println(buildGsonFromObject(user));
-        out.write(buildGsonFromObject(user));
+        System.out.println(buildGsonFromObject(updateduser));
+        out.write(buildGsonFromObject(updateduser));
 
     }
 
