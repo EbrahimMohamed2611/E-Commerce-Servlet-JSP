@@ -11,7 +11,7 @@ public class UserProfileAdapter {
     public static UserProfileDto convertFromUserModelToUserProfileDto(User user) {
 
         UserProfileDto userProfileDto = new UserProfileDto();
-        userProfileDto.setId(user.getUserId());
+        userProfileDto.setUserId(user.getUserId());
         userProfileDto.setBalance(user.getBalance());
         userProfileDto.setRole(user.getRole());
         userProfileDto.setEmail(user.getEmail());
@@ -28,7 +28,7 @@ public class UserProfileAdapter {
     public static User convertFromUserProfileDtoToUserModel(UserProfileDto userProfileDto) {
         User user = new User();
         user.setGender(userProfileDto.getGender());
-        user.setUserId(userProfileDto.getId());
+        user.setUserId(userProfileDto.getUserId());
         user.setBalance(userProfileDto.getBalance());
         user.setEmail(userProfileDto.getEmail());
         user.setRole(userProfileDto.getRole());

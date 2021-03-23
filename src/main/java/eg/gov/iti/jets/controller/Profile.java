@@ -30,12 +30,13 @@ public class Profile extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        //super.doPost(req, resp);
 
         System.out.println("insisde the dopost");
         String data = req.getParameter("data");
         System.out.println(data);
         JSONObject obj = new JSONObject(data);
+        resp.setContentType("application/json");
 
         System.out.println(obj.getString("firstname"));
         System.out.println(obj.getString("lastName"));
@@ -54,12 +55,25 @@ public class Profile extends HttpServlet {
         user.setLastName(obj.getString("lastName"));
         user.setPassword(obj.getString("password"));
         user.setPhone(obj.getString("phoneNumber"));
-        //todo get the id from the jsp from the session
-        user.setId(2);
-        user.setEmail("salma2016170207@cis.asu.edu.eg");
-        user.setRole(Role.USER_ROLE);
-        user.setGender(Gender.FEMALE);
-        user.setBalance(5.5);
+        user.setUserId(obj.getInt("id"));
+        user.setEmail(obj.getString("email"));
+        if(obj.getString("gender").equals(Gender.FEMALE))
+        {
+            user.setGender(Gender.FEMALE);
+        }else
+        {
+            user.setGender(Gender.MALE);
+        }
+        if(obj.getString("role").equals(Role.USER_ROLE))
+        {
+            user.setRole(Role.USER_ROLE);
+        }else
+        {
+            user.setRole(Role.ADMIN_ROLE);
+        }
+
+
+        user.setBalance(obj.getDouble("balance"));
         LocalDate birthDate = LocalDate.parse(obj.getString("birthDate"));
         user.setBirthDate(birthDate);
         String country = obj.getString("country");
@@ -76,16 +90,13 @@ public class Profile extends HttpServlet {
         System.out.println("333");
         System.out.println("userr "+user);
         UserProfileDto updateduser = userService.updateUser(user);
-        //todo must put the new object on the session
+        //putting updated object on the session
+        req.getSession().setAttribute("userDto",updateduser);
         System.out.println("updated "+updateduser);
         System.out.println(user.getPhone() + "-------phone");
-        // todo update db by user object and return user object
         PrintWriter out = resp.getWriter();
-        //todo pass the function the returned user from db  after update
         System.out.println(buildGsonFromObject(updateduser));
         out.write(buildGsonFromObject(updateduser));
-        System.out.println("end of post");
-
 
     }
 
