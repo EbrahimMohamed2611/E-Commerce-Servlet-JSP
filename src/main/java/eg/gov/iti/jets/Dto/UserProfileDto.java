@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Data
 public class UserProfileDto {
-    private int id;
+    private int userId;
     private String email;
     private Role role;
     private double balance;
