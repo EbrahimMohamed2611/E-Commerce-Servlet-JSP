@@ -6,6 +6,8 @@ import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -83,4 +85,19 @@ public class UserRepositoryImpl implements UserRepository {
         return updatedUser;
     }
 
+    @Override
+    public List<User> fetchAllUsers() {
+        List<User> userList = new ArrayList<>();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        Query query = entityManager.createQuery("from User");
+        System.out.println( "query.getResultList()------> "+ query.getResultList());
+        userList = query.getResultList();
+        System.out.println("UserList-----> "+userList);
+
+
+        //entityManager.getTransaction().begin();
+
+        return userList;
+
+    }
 }

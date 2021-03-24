@@ -4,9 +4,11 @@ import eg.gov.iti.jets.dto.UserRegistrationDto;
 import eg.gov.iti.jets.model.Address;
 import eg.gov.iti.jets.model.Gender;
 import eg.gov.iti.jets.model.Role;
+import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 
 @WebServlet(name = "Registration", urlPatterns = "/registration")
@@ -80,6 +83,20 @@ public class Registration extends HttpServlet {
         System.out.println("User Registration Dto " + userRegistrationDto);
         UserRegistrationDto userDto = userService.registerUser(userRegistrationDto);
         req.getSession().setAttribute("userDto",userDto);
+        ServletContext servletContext = getServletContext();
+        //ana hena msh 3rfa ezai a7wel mn dto le user model 3shan ykon feh el orders w kda
+        List<User> userList = (List<User>)servletContext.getAttribute("userList");
+        System.out.println("userlist befor regiteration the new user---> "+userList);
+        //todo add new user model into the lsit and then put it intto the cotext
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        userList.add(user);
+        servletContext.setAttribute("userList" , userList);
+
+
+
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("");
         try {
             requestDispatcher.forward(req, resp);

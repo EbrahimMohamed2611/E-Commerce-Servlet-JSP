@@ -10,6 +10,8 @@ import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserRepositoryFactory;
 
 import javax.persistence.NoResultException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
@@ -48,5 +50,10 @@ public class UserServiceImpl implements UserService {
         return userProfileDto1;
     }
 
-
+    @Override
+    public List<User> fetchAllUsers() {
+        List<User> userList = new ArrayList<>();
+        userList = userRepository.fetchAllUsers();
+        return userList;
+    }
 }
