@@ -50,6 +50,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto updateUser(UserDto userDto) {
+        User user = UserAdapter.convertFromUserRegistrationDtoToUserModel(userDto);
+        User userUpdated = userRepository.updateUser(user);
+        UserDto userDto1 = UserAdapter.convertFromUserModelToUserRegistrationDto(userUpdated);
+        System.out.println("From Service Verification " + userDto1);
+        return userDto1;
+    }
+
+    @Override
     public UserDto updateUserVerification(UserDto userDto) {
         User user = UserAdapter.convertFromUserRegistrationDtoToUserModel(userDto);
         User userUpdated = userRepository.updateUser(user);

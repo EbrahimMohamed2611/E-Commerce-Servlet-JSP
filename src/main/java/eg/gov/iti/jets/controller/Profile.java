@@ -86,7 +86,7 @@ public class Profile extends HttpServlet {
         Address address = new Address(country,  state, city, street, zipcode);
         System.out.println(address+"======");
         System.out.println("22");
-        user.getAddress().add(address);
+        user.setAddress(address);
         System.out.println("333");
         System.out.println("userr "+user);
         UserProfileDto updateduser = userService.updateUser(user);

@@ -10,6 +10,7 @@ public interface UserService {
     UserDto registerUser(UserDto userDto);
     UserDto findByEmail(String email) throws NoResultException;
     UserProfileDto updateUser(UserProfileDto userProfileDto);
+    UserDto updateUser(UserDto userDto);
     UserDto updateUserVerification(UserDto userDto);
     User login(String email);
 

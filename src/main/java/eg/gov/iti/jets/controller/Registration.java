@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 
-@WebServlet(name = "Registration", urlPatterns = "/registration")
+@WebServlet(name = "Registration", urlPatterns = "/register")
 public class Registration extends HttpServlet {
 
     private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
@@ -83,7 +83,7 @@ public class Registration extends HttpServlet {
         userRegistrationDto.setGender(Gender.MALE);
         userRegistrationDto.setEmailVerification(EmailVerification.NOT_VERIFY);
         userRegistrationDto.setBalance(Double.parseDouble(balance));
-        userRegistrationDto.getAddress().add(address);
+        userRegistrationDto.setAddress(address);
         System.out.println("User Registration Dto " + userRegistrationDto);
         UserDto userDto = userService.registerUser(userRegistrationDto);
         req.getSession().setAttribute("userDto",userDto);

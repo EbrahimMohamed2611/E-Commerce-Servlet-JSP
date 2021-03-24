@@ -25,7 +25,7 @@
                         <div class="header-top-left">
                             <ul class="phone-wrap">
                                 <li>
-                                    <% if(request.getSession().getAttribute("userDto") != null){
+                                    <% if (request.getSession().getAttribute("userDto") != null) {
                                         out.println("  <div id=\"profileImage\" style=\"display: inline-grid;\"></div>");
                                     }%>
 
@@ -73,29 +73,27 @@
                                 <li>
                                     <div>
                                         <%
-                                        if(request.getSession().getAttribute("userDto") == null)
-                                        {
-                                            out.println(" <a href=\"login.jsp\" class=\"btn btn-primary\" style=\"\n" +
-                                                    "                            height: 30px;\n" +
-                                                    "                            line-height: 10px;\n" +
-                                                    "                            background: #fed700;\n" +
-                                                    "                            border-color: #fed700;\n" +
-                                                    "                            color: black;\n" +
-                                                    "                        \">Login\n" +
-                                                    "                                        </a>");
-                                        }
-                                        else{
-                                            out.println(" <button class=\"btn btn-primary\" style=\"\n" +
-                                                    "                            height: 30px;\n" +
-                                                    "                            line-height: 10px;\n" +
-                                                    "                            background: #fed700;\n" +
-                                                    "                            border-color: #fed700;\n" +
-                                                    "                            color: black;\n" +
-                                                    "                        \">logout\n" +
-                                                    "                                        </button>");
-                                        }
+                                            if (request.getSession().getAttribute("userDto") == null) {
+                                                out.println(" <a href=\"login.jsp\" class=\"btn btn-primary\" style=\"\n" +
+                                                        "                            height: 30px;\n" +
+                                                        "                            line-height: 15px;\n" +
+                                                        "                            background: #fed700;\n" +
+                                                        "                            border-color: #fed700;\n" +
+                                                        "                            color: black;\n" +
+                                                        "                        \">Login\n" +
+                                                        "                                        </a>");
+                                            } else {
+                                                out.println("<form action=\"logout\" method=\"post\">\n" +
+                                                        "  <button style=\"\n" +
+                                                        "                            height: 30px;\n" +
+                                                        "                            line-height: 10px;\n" +
+                                                        "                            background: #fed700;\n" +
+                                                        "                            border-color: #fed700;\n" +
+                                                        "                            color: black;\n" +
+                                                        "                        \" type=\"submit\" class=\"btn btn-warning btn-sm mb-2\" >logOut</button>\n" +
+                                                        "</form>");
+                                            }
                                         %>
-
 
 
                                     </div>

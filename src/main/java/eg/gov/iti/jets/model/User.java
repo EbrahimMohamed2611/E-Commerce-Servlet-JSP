@@ -66,8 +66,11 @@ public class User implements Serializable {
     @JoinColumn(name = "IMAGE_ID")
     private Image userImage;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Address> address = new HashSet<>();
+//    @OneToMany(mappedBy = "user")
+//    private Set<Address> address = new HashSet<>();
+
+    @Embedded
+    private Address address = new Address();
 
     @OneToMany(mappedBy = "user")
     private Set<Order> orders = new HashSet<>();

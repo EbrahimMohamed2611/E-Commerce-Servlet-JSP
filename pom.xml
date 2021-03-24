@@ -274,10 +274,10 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.0</version>
                 <configuration>
-                    <username>jets</username>
-                    <password>jets</password>
-                    <url>http://localhost:9393/manager/text</url>
-                    <path>/e-commerce</path>
+                    <username>admin</username>
+                    <password>admin</password>
+                    <url>http://localhost:9595/manager/text</url>
+                    <path>/E_Commerce</path>
                 </configuration>
             </plugin>
 
