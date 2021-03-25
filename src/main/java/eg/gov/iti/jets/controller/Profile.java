@@ -7,6 +7,7 @@ import eg.gov.iti.jets.model.Address;
 import eg.gov.iti.jets.model.Gender;
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.service.UserService;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
