@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
-                            <a href="#"> Forgotten password ?</a>
+                            <a href="forget-password.jsp"> Forgotten password ?</a>
                         </div>
                         <div class="col-md-12" style="text-align: center;   margin-left: 34%;                    ">
                             <button class="register-button mt-0" type="submit">Login</button>

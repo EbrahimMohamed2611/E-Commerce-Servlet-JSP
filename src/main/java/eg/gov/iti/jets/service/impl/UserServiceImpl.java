@@ -11,6 +11,8 @@ import eg.gov.iti.jets.factory.UserRepositoryFactory;
 import eg.gov.iti.jets.utils.HashPassword;
 
 import javax.persistence.NoResultException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
@@ -50,6 +52,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto updateUser(UserDto userDto) {
+        User user = UserAdapter.convertFromUserRegistrationDtoToUserModel(userDto);
+        User userUpdated = userRepository.updateUser(user);
+        UserDto userDto1 = UserAdapter.convertFromUserModelToUserRegistrationDto(userUpdated);
+        System.out.println("From Service Verification " + userDto1);
+        return userDto1;
+    }
+
+    @Override
     public UserDto updateUserVerification(UserDto userDto) {
         User user = UserAdapter.convertFromUserRegistrationDtoToUserModel(userDto);
         User userUpdated = userRepository.updateUser(user);
@@ -63,6 +74,12 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email);
         System.out.println("login " + user);
         return user;
+    }
+    @Override
+    public List<User> fetchAllUsers() {
+        List<User> userList = new ArrayList<>();
+        userList = userRepository.fetchAllUsers();
+        return userList;
     }
 
 

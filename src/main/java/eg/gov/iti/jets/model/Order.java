@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "ORDER_DETAILS")
@@ -24,8 +26,15 @@ public class Order implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderTimestamp;
 
+    @Column(name = "ORDER_STATE")
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
     @ManyToOne
     @JoinColumn(name = "USERS_ID")
     private User user;
+
+    @ManyToMany
+    private Set<Product> products = new HashSet<>();
 
 }

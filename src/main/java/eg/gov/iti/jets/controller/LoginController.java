@@ -36,7 +36,8 @@ public class LoginController extends HttpServlet {
         UserDto userDto = null;
         try{
          userDto = userService.findByEmail(email);
-        System.out.println("userDto" + userDto);
+            System.out.println("email" + email +"password" + password );
+        System.out.println("userDto" + userDto.getPassword()+" "+userDto.getEmail());
         if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password)){
 //            if(remember!=null){
 //                if(remember[0].equals("checked")){

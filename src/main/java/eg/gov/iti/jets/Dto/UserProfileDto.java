@@ -13,7 +13,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 //@Data
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserProfileDto {
     private int userId;
     private String email;
@@ -24,21 +26,9 @@ public class UserProfileDto {
     private String phone;
     private String password;
     private LocalDate birthDate;
-    private Set<Address> address = new HashSet<>(0);
+    private Address address = new Address();
 
     private Gender gender;
-
-
-
-
-    public UserProfileDto(String firstName, String lastName, String phone, String password, LocalDate birthDate, Set<Address> address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.password = password;
-        this.birthDate = birthDate;
-        this.address = address;
-    }
 
 
 }

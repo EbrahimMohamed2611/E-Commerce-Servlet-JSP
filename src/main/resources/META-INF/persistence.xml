@@ -6,7 +6,7 @@
     <persistence-unit name="e-commerce" transaction-type="RESOURCE_LOCAL">
         <class>eg.gov.iti.jets.model.User</class>
         <class>eg.gov.iti.jets.model.Order</class>
-        <class>eg.gov.iti.jets.model.Address</class>
+<!--        <class>eg.gov.iti.jets.model.Address</class>-->
         <class>eg.gov.iti.jets.model.Review</class>
         <class>eg.gov.iti.jets.model.Feedback</class>
         <class>eg.gov.iti.jets.model.Image</class>

@@ -1,15 +1,13 @@
 package eg.gov.iti.jets.controller;
 
 import eg.gov.iti.jets.dto.UserDto;
-import eg.gov.iti.jets.model.Address;
-import eg.gov.iti.jets.model.EmailVerification;
-import eg.gov.iti.jets.model.Gender;
-import eg.gov.iti.jets.model.Role;
+import eg.gov.iti.jets.model.*;
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.utils.HashPassword;
 import eg.gov.iti.jets.utils.MailService;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,6 +19,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -83,10 +83,17 @@ public class Registration extends HttpServlet {
         userRegistrationDto.setGender(Gender.MALE);
         userRegistrationDto.setEmailVerification(EmailVerification.NOT_VERIFY);
         userRegistrationDto.setBalance(Double.parseDouble(balance));
-        userRegistrationDto.getAddress().add(address);
+        userRegistrationDto.setAddress(address);
         System.out.println("User Registration Dto " + userRegistrationDto);
         UserDto userDto = userService.registerUser(userRegistrationDto);
         req.getSession().setAttribute("userDto",userDto);
+        ServletContext servletContext = getServletContext();
+        List<User> userList = (List<User>)servletContext.getAttribute("userList");
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        userList.add(user);
+        servletContext.setAttribute("userList", userList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("email-verification.jsp");
 
         String verificationCode = UUID.randomUUID().toString();
