@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<web-app xmlns= "https://jakarta.ee/xml/ns/jakartaee"
-			xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
-			xsi:schemaLocation= "https://jakarta.ee/xml/ns/jakartaee
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
 			https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
-			version= "5.0" metadata-complete= "false">
+         version="5.0" metadata-complete="false">
 
+
+    <filter>
+        <filter-name>CookieFilter</filter-name>
+        <description>This filter is applied to all pages, and is to be activated if the user cookies are disabled
+        </description>
+        <filter-class>eg.gov.iti.jets.filter.CookieFilter</filter-class>
+        <init-param>
+            <param-name>excludedUrls</param-name>
+			<description>this parameter includes a list of the URLs to be excluded from applying  the cookies filter</description>
+            <!-- Comma separated list of excluded servlets  -->
+            <param-value>enable-cookies.jsp,index.jsp</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CookieFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

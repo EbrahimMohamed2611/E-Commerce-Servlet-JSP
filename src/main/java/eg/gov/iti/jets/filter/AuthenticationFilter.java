@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/shopping-cart.jsp", "/checkout.jsp","registration"})
+@WebFilter(urlPatterns = {"/shopping-cart.jsp", "/checkout.jsp","/registration"})
 public class AuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
