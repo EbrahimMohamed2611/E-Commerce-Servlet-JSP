@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 
-@WebServlet(name = "Registration", urlPatterns = "/register")
+@WebServlet(name = "Registration", urlPatterns = "/registration")
 public class Registration extends HttpServlet {
 
     private final UserService userService = UserServiceFactory.getUserRepositoryInstance();

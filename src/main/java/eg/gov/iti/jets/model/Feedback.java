@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Feedback implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "FEEDBACK_ID")
     private int feedbackId;
 

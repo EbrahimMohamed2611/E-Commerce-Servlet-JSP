@@ -9,14 +9,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="PRODUCT")
+@Table(name="PRODUCT_DETAILS")
 @Getter
 @Setter
 @NoArgsConstructor
+//@NamedQueries({
+//        @NamedQuery(name = "Product.findByNameLike",
+//                query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false"),
+//        @NamedQuery(name = "Product.findByCategory",
+//                query = "SELECT p from Product p where :category member of p.category and p.isDeleted = false"),
+//        @NamedQuery(name = "Product.findBetweenTwoPrices",
+//                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false")
+//})
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "PRODUCT_ID", nullable = false)
     private int productId;
 
@@ -35,21 +43,23 @@ public class Product implements Serializable {
     @Column(name = "PRODUCT_DELETED", nullable = false)
     private boolean isDeleted;
 
-    @ManyToMany()
-    @JoinTable(
-            name = "PRODUCT_CATEGORIES",
-            joinColumns = @JoinColumn(name = "PRODUCT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CATEGORY_ID")
-    )
-    private Set<Category> category = new HashSet<>(0);
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_ID")
+    private Category category ;
 
 
     @OneToOne
     @JoinColumn(name = "IMAGE_ID")
     private Image productImage;
 
-
     @OneToMany(mappedBy = "product")
     private Set<Review> reviews = new HashSet<>();
+
+    @OneToMany(mappedBy = "product")
+    private Set<Purchase> purchase = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "ORDER_ID")
+    private Order order;
 
 }

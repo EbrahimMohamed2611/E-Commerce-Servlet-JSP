@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import javax.persistence.NoResultException;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 @WebServlet(name = "UserInformationController", urlPatterns = "/checkEmail")
 public class UserInformationController extends HttpServlet {
 
@@ -21,14 +22,14 @@ public class UserInformationController extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String userEmail = req.getParameter("userEmail");
         System.out.println("Email from Ajax Request " + userEmail);
-        try {
-            UserDto userByEmail = userService.findByEmail(userEmail);
-            System.out.println("userByEmail " + userByEmail);
-            if (userByEmail.getEmail().equals(userEmail))
-                out.write("Exist");
-        } catch (NoResultException e) {
+
+        UserDto userByEmail = userService.findByEmail(userEmail);
+        System.out.println("userByEmail " + userByEmail);
+        if (userByEmail == null)
             out.write("Not Exist");
-        }
+        else
+            out.write("Exist");
+
 
     }
 }

@@ -12,8 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Embeddable
 public class Address implements Serializable {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "ADDRESS_ID")
     private int addressId;
     @Column(name = "COUNTRY")
@@ -27,9 +26,6 @@ public class Address implements Serializable {
     @Column(name = "ZIP_CODE")
     private String zipCode;
 
-//    @ManyToOne
-//    @JoinColumn(name = "USERS_ID")
-//    private User user;
 
     public Address(String country, String state, String city, String street, String zipcode) {
         this.country = country;

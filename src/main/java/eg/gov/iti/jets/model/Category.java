@@ -7,22 +7,22 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 @Entity
-@Table(name = "CATEGORY")
+@Table(name = "CATEGORY_DETAILS")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Category implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "CATEGORY_ID", nullable = false)
-    private Long categoryId;
+    @GeneratedValue
+    @Column(name = "CATEGORY_ID")
+    private int categoryId;
 
     @Column(name = "CATEGORY_NAME", nullable = false)
     private String categoryName;
 
-    @ManyToMany(mappedBy = "category")
-    private Set<Product> products = new HashSet<>(0);
+    @OneToMany(mappedBy = "category")
+    private Set<Product> products = new HashSet<>();
 
 
 }

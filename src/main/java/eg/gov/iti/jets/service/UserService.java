@@ -8,7 +8,7 @@ import javax.persistence.NoResultException;
 
 public interface UserService {
     UserDto registerUser(UserDto userDto);
-    UserDto findByEmail(String email) throws NoResultException;
+    UserDto findByEmail(String email);
     UserProfileDto updateUser(UserProfileDto userProfileDto);
     UserDto updateUser(UserDto userDto);
     UserDto updateUserVerification(UserDto userDto);

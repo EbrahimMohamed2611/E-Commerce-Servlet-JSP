@@ -7,14 +7,17 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Review")
+@Table(name = "Review_DETAILS")
 @Getter
 @Setter
 @NoArgsConstructor
+//@NamedQueries(
+//        @NamedQuery(name = "Review.findByProduct", query = "select r from Review r where r.product = :product")
+//)
 public class Review {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "REVIEW_ID", nullable = false)
     private int reviewId;
 
