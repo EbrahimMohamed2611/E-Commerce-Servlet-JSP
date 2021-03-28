@@ -2,6 +2,7 @@ package eg.gov.iti.jets.service;
 
 import eg.gov.iti.jets.dto.UserProfileDto;
 import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.model.Order;
 import eg.gov.iti.jets.model.User;
 
 import javax.persistence.NoResultException;
@@ -14,6 +15,7 @@ public interface UserService {
     UserDto updateUser(UserDto userDto);
     UserDto updateUserVerification(UserDto userDto);
     User login(String email);
-     List<User> fetchAllUsers();
+     List<UserDto> fetchAllUsers();
+     List<Order> fetchAllOrders(int userId);
 
 }

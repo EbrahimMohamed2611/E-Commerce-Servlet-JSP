@@ -12,6 +12,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "ORDER_DETAILS")
+@NamedQueries({
+        @NamedQuery(name = "Order.getallorders",
+                query = "SELECT o from Order o where o.user =:user")
+})
 @Getter
 @Setter
 @NoArgsConstructor

@@ -2,6 +2,7 @@ package eg.gov.iti.jets.listener;
 
 import eg.gov.iti.jets.config.HibernateMySqlConfiguration;
 import eg.gov.iti.jets.config.PersistenceManager;
+import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.factory.HibernateDatabaseFactory;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.User;
@@ -37,7 +38,7 @@ public class ApplicationStartingListener implements ServletContextListener{
         factory = Persistence.createEntityManagerFactory("e-commerce");
         System.out.println("Database is Opened");
         sce.getServletContext().setAttribute("countries",stringStringMap);
-        List<User> userList = userService.fetchAllUsers();
+        List<UserDto> userList = userService.fetchAllUsers();
         System.out.println("Inside initialize of conttext->userlist "+userList);
         sce.getServletContext().setAttribute("userList",userList);
         System.out.println("put it into the ocntext scope ");

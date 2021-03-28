@@ -88,11 +88,12 @@ public class Registration extends HttpServlet {
         UserDto userDto = userService.registerUser(userRegistrationDto);
         req.getSession().setAttribute("userDto",userDto);
         ServletContext servletContext = getServletContext();
-        List<User> userList = (List<User>)servletContext.getAttribute("userList");
-        User user = new User();
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        userList.add(user);
+        List<UserDto> userList = (List<UserDto>)servletContext.getAttribute("userList");
+//        User user = new User();
+//        user.setFirstName(userDto.getFirstName());
+//        user.setLastName(userDto.getLastName());
+//
+        userList.add(userDto);
         servletContext.setAttribute("userList", userList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("email-verification.jsp");
 

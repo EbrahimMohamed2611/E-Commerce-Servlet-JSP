@@ -2,6 +2,8 @@ package eg.gov.iti.jets.repository.impl;
 
 import eg.gov.iti.jets.config.ConnectToMysqlDatabase;
 import eg.gov.iti.jets.config.PersistenceManager;
+import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.model.Order;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
 
@@ -77,8 +79,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> fetchAllUsers() {
-        List<User> userList = new ArrayList<>();
+    public List<UserDto> fetchAllUsers() {
+        List<UserDto> userList = new ArrayList<>();
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         Query query = entityManager.createQuery("from User");
         System.out.println( "query.getResultList()------> "+ query.getResultList());
@@ -89,6 +91,26 @@ public class UserRepositoryImpl implements UserRepository {
         //entityManager.getTransaction().begin();
 
         return userList;
+
+    }
+
+    @Override
+    public List<Order> fetchAllOrders(int userId) {
+        System.out.println("entityManager is opened");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+//        Order order = (Order) entityManager
+//                .createNamedQuery("Order.getallorders").
+//                        setParameter("user", userId).getResultList();
+
+        Query query = entityManager.createNamedQuery("Order.getallorders").setParameter("user",userId);
+        List results = query.getResultList();
+        entityManager.getTransaction().commit();
+        System.out.println("inside fetchallorderss----> "+results);
+        entityManager.close();
+
+        return results;
 
     }
 }

@@ -4,6 +4,7 @@ import eg.gov.iti.jets.adapter.UserAdapter;
 import eg.gov.iti.jets.adapter.UserProfileAdapter;
 import eg.gov.iti.jets.dto.UserProfileDto;
 import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.model.Order;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
 import eg.gov.iti.jets.service.UserService;
@@ -29,6 +30,13 @@ public class UserServiceImpl implements UserService {
 //        userDto1.setPassword(passwordBeforeHashing);
         System.out.println("From Service " + userSaved);
         return userDto1;
+    }
+
+    @Override
+    public List<Order> fetchAllOrders(int userId) {
+
+        List<Order>orders = userRepository.fetchAllOrders(userId);
+        return orders;
     }
 
     @Override
@@ -76,8 +84,8 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     @Override
-    public List<User> fetchAllUsers() {
-        List<User> userList = new ArrayList<>();
+    public List<UserDto> fetchAllUsers() {
+        List<UserDto> userList = new ArrayList<>();
         userList = userRepository.fetchAllUsers();
         return userList;
     }
