@@ -1,6 +1,5 @@
 package eg.gov.iti.jets.listener;
 
-import eg.gov.iti.jets.config.HibernateMySqlConfiguration;
 import eg.gov.iti.jets.config.PersistenceManager;
 
 
@@ -9,11 +8,9 @@ import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.service.UserService;
 
 import eg.gov.iti.jets.utils.AllCountries;
-import eg.gov.iti.jets.utils.MailService;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
-import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -26,7 +23,7 @@ import java.util.Map;
 public class ApplicationStartingListener implements ServletContextListener{
     EntityManagerFactory factory ;
 
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
 
     @Override

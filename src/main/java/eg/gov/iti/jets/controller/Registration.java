@@ -9,7 +9,6 @@ import eg.gov.iti.jets.model.User;
 
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserServiceFactory;
-import eg.gov.iti.jets.utils.HashPassword;
 import eg.gov.iti.jets.utils.MailService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -25,18 +24,15 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import java.util.UUID;
-
-import java.util.List;
 
 
 @WebServlet(name = "Registration", urlPatterns = "/registration")
 public class Registration extends HttpServlet {
 
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
 //    @Override
 //    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

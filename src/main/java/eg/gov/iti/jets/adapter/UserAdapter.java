@@ -3,6 +3,8 @@ package eg.gov.iti.jets.adapter;
 import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.model.User;
 
+import java.util.stream.Collectors;
+
 public class UserAdapter {
 
     public static UserDto convertFromUserModelToUserRegistrationDto(User user) {
@@ -18,8 +20,9 @@ public class UserAdapter {
         userDto.setAddress(user.getAddress());
         userDto.setBirthDate(user.getBirthDate());
         userDto.setBalance(user.getBalance());
-//        userDto.setOrders(user.getOrders());
         userDto.setEmailVerification(user.getEmailVerification());
+        user.getOrders().stream().map(OrderAdapter::convertFromOrderModelToOrderDto).forEach(userDto.getOrders()::add);
+
         return userDto;
     }
 

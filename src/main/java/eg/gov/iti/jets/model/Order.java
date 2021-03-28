@@ -34,7 +34,9 @@ public class Order implements Serializable {
     @JoinColumn(name = "USERS_ID")
     private User user;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<Purchase> purchase = new HashSet<>();
 
 }
+
+/* image , product , price , quantity ---->> if orderstatus not completed */

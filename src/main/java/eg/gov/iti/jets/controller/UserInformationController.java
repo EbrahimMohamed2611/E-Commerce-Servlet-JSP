@@ -8,14 +8,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import javax.persistence.NoResultException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "UserInformationController", urlPatterns = "/checkEmail")
 public class UserInformationController extends HttpServlet {
 
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

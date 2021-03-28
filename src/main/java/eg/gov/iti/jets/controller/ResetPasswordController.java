@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet(name = "ResetPasswordController", urlPatterns = "/updatePassword")
 public class ResetPasswordController extends HttpServlet {
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
 
     @Override

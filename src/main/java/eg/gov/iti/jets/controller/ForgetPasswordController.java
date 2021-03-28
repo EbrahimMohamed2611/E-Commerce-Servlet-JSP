@@ -4,7 +4,6 @@ import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.utils.MailService;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +17,7 @@ import java.util.UUID;
 @WebServlet(name = "ForgetPasswordController", urlPatterns = "/forgetPassword")
 public class ForgetPasswordController extends HttpServlet {
 
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

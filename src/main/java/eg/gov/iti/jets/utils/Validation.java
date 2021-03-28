@@ -6,7 +6,7 @@ import eg.gov.iti.jets.service.UserService;
 import javax.persistence.NoResultException;
 
 public class Validation {
-    private static final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private static final UserService userService = UserServiceFactory.getUserServiceInstance();
 
 
 

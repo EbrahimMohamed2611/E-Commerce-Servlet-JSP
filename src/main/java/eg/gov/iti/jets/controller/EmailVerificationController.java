@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "EmailVerificationController", urlPatterns = "/verify")
 public class EmailVerificationController extends HttpServlet {
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
