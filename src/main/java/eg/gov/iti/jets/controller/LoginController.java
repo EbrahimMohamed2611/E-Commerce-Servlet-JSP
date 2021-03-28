@@ -33,27 +33,19 @@ public class LoginController extends HttpServlet {
         String []remember=request.getParameterValues("remember");
         System.out.println("email" + email +"password" + password );
 //        String passwordHashing = HashPassword.hashPassword(password);
-        UserDto userDto = null;
-        try{
-         userDto = userService.findByEmail(email);
-            System.out.println("email" + email +"password" + password );
-        System.out.println("userDto" + userDto.getPassword()+" "+userDto.getEmail());
-        if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password)){
-//            if(remember!=null){
-//                if(remember[0].equals("checked")){
-//                    Cookie c1=new Cookie(USER_NAME,email);
-//                    response.addCookie(c1);
-//                }
-//            }
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-            request.getSession().setAttribute("userDto",userDto);
-            requestDispatcher.forward(request, response);
-        }else{
-            response.sendRedirect("login.jsp?invalid");
-        }
-        } catch (NoResultException e) {
+        UserDto userDto = userService.findByEmail(email);
+        if(userDto == null){
             response.sendRedirect("login.jsp?notFound");
+        }else{
+            if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password)){
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+                request.getSession().setAttribute("userDto",userDto);
+                requestDispatcher.forward(request, response);
+            }else{
+                response.sendRedirect("login.jsp?invalid");
+            }
         }
+
 
     }
 }

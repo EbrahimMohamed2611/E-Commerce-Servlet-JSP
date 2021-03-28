@@ -32,5 +32,21 @@ public class UserDto {
     private Set<Order> orders = new HashSet<>(0);
     private EmailVerification emailVerification;
 
-
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", gender=" + gender +
+                ", balance=" + balance +
+                ", birthDate=" + birthDate +
+                ", address=" + address +
+                ", emailVerification=" + emailVerification +
+                '}';
+    }
 }

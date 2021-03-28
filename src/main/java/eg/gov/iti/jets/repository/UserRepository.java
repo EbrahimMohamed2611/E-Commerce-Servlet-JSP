@@ -1,5 +1,6 @@
 package eg.gov.iti.jets.repository;
 
+import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
 
 import javax.persistence.NoResultException;
@@ -11,5 +12,9 @@ public interface UserRepository {
     User saveUser(User user);
     User updateUser(User user);
     List<User> fetchAllUsers ();
+    List<User> findALlAdminUsers();
+    List<User> findALlCustomerUsers();
+    User updateUserRole(String email, Role role);
+
 
 }

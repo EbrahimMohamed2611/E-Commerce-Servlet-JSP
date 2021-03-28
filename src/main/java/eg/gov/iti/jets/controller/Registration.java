@@ -30,7 +30,7 @@ import java.util.List;
 
 
 
-@WebServlet(name = "Registration", urlPatterns = "/register")
+@WebServlet(name = "Registration", urlPatterns = "/registration")
 public class Registration extends HttpServlet {
 
     private final UserService userService = UserServiceFactory.getUserRepositoryInstance();

@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Image implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "IMAGE_ID", nullable = false)
     private int imageId;
 

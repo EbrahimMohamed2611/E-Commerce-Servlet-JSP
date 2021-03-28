@@ -6,11 +6,11 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import javax.persistence.NoResultException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-//@WebFilter("/registration")
 public class RegistrationFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,7 +30,7 @@ public class RegistrationFilter implements Filter {
             String birthDate = request.getParameter("birthDate");
             String balance = request.getParameter("balance");
             String gender = request.getParameter("gender");
-            System.out.println("+++++++"+birthDate);
+            System.out.println("+++++++" + birthDate);
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate dateOfBirth = LocalDate.parse(birthDate, dateTimeFormatter);
 
@@ -39,19 +39,24 @@ public class RegistrationFilter implements Filter {
             String city = request.getParameter("city");
             String street = request.getParameter("street");
             String zipCode = request.getParameter("zipcode");
+            System.out.println("email filter " + email);
 
-        if (!Validation.validateString(firstName) || !Validation.validateString(lastName) || !Validation.validateEmail(email)
-                || !Validation.validatePassword(password) || !Validation.validatePhone(phone) || !Validation.validateBirthDate(birthDate)
-                || !Validation.validateString(country) || !Validation.validateString(state) || !Validation.validateString(city)
-                || !Validation.validateString(street) || !Validation.validateZipCode(zipCode)) {
+            try {
 
-            ((HttpServletResponse) response).sendRedirect("register.jsp?invalid=true");
-            return;
+                if (!Validation.validateString(firstName) || !Validation.validateString(lastName) || !Validation.validateEmail(email)
+                        || !Validation.validatePassword(password) || !Validation.validatePhone(phone) || !Validation.validateBirthDate(birthDate)
+                        || !Validation.validateString(country) || !Validation.validateString(state) || !Validation.validateString(city)
+                        || !Validation.validateString(street) || !Validation.validateZipCode(zipCode)) {
+
+                    ((HttpServletResponse) response).sendRedirect("register.jsp?invalid=true");
+                    return;
+                }
+            } catch (NoResultException e) {
+                ((HttpServletResponse) response).sendRedirect("register.jsp?invalid=true");
+            }
+            chain.doFilter(request, response);
         }
-
-        chain.doFilter(request, response);
-        }
-}
+    }
 
     @Override
     public void destroy() {

@@ -17,7 +17,9 @@ import java.util.Set;
         @NamedQuery(name = "User.findByEmail",
                 query = "SELECT u from User u where u.email=:email"),
         @NamedQuery(name = "User.getAllUsers",
-                query = "SELECT u from User u where u.role = eg.gov.iti.jets.model.Role.USER_ROLE")
+                query = "SELECT u from User u where u.role = eg.gov.iti.jets.model.Role.USER_ROLE"),
+        @NamedQuery(name = "User.getAllAdminUsers",
+                query = "SELECT u from User u where u.role = eg.gov.iti.jets.model.Role.ADMIN_ROLE"),
 })
 @Getter
 @Setter
@@ -25,7 +27,7 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "USERS_ID", updatable = false, unique = true, nullable = false)
     private int userId;
 
@@ -75,5 +77,22 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private Set<Order> orders = new HashSet<>();
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", gender=" + gender +
+                ", role=" + role +
+                ", emailVerification=" + emailVerification +
+                ", balance=" + balance +
+                ", birthDate=" + birthDate +
+                ", userImage=" + userImage +
+                ", address=" + address +
+                '}';
+    }
 }

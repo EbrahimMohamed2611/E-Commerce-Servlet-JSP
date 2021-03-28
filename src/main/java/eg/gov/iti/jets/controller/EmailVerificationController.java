@@ -23,6 +23,7 @@ public class EmailVerificationController extends HttpServlet {
             UserDto userDto = (UserDto)req.getSession().getAttribute("userDto");
             userDto.setEmailVerification(EmailVerification.VERIFY);
             UserDto userDto1 = userService.updateUserVerification(userDto);
+            System.out.println("After Verification is " + userDto1);
             req.getSession().setAttribute("userDto", userDto1);
             resp.sendRedirect("index.jsp");
         }else{

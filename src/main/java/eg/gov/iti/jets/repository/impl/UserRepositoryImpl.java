@@ -2,6 +2,7 @@ package eg.gov.iti.jets.repository.impl;
 
 import eg.gov.iti.jets.config.ConnectToMysqlDatabase;
 import eg.gov.iti.jets.config.PersistenceManager;
+import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
 
@@ -28,17 +29,17 @@ public class UserRepositoryImpl implements UserRepository {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
-        User user = (User) entityManager
+        List<User> resultList = (ArrayList<User>) entityManager
                 .createNamedQuery("User.findByEmail").
-                        setParameter("email", email).
-                        getSingleResult();
-
-        entityManager.getTransaction()
-                .commit();
-
+                        setParameter("email", email).getResultList();
+        entityManager.getTransaction().commit();
         entityManager.close();
 
-        return user;
+        for(User user :resultList){
+            if(user.getEmail().equals(email))
+                return user;
+        }
+        return null;
     }
 
 //    @Override
@@ -55,6 +56,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User saveUser(User user) {
+        System.out.println("saveUser" + user.getEmail());
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(user);
@@ -81,14 +83,43 @@ public class UserRepositoryImpl implements UserRepository {
         List<User> userList = new ArrayList<>();
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         Query query = entityManager.createQuery("from User");
-        System.out.println( "query.getResultList()------> "+ query.getResultList());
+        System.out.println("query.getResultList()------> " + query.getResultList());
         userList = query.getResultList();
-        System.out.println("UserList-----> "+userList);
+        System.out.println("UserList-----> " + userList);
 
 
         //entityManager.getTransaction().begin();
 
         return userList;
+    }
+    public List<User> findALlAdminUsers() {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+        List<User> resultList = entityManager.createNamedQuery("User.getAllAdminUsers").getResultList();
 
+        return resultList;
+    }
+
+    @Override
+    public List<User> findALlCustomerUsers() {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+        List<User> resultList = (List<User>)  entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+        return resultList;
+    }
+
+    @Override
+    public User updateUserRole(String email, Role role) {
+        User user = findByEmail(email);
+        user.setRole(role);
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+        User userUpdated = entityManager.merge(user);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return userUpdated;
     }
 }

@@ -6,7 +6,9 @@
     <persistence-unit name="e-commerce" transaction-type="RESOURCE_LOCAL">
         <class>eg.gov.iti.jets.model.User</class>
         <class>eg.gov.iti.jets.model.Order</class>
-<!--        <class>eg.gov.iti.jets.model.Address</class>-->
+        <class>eg.gov.iti.jets.model.Product</class>
+        <class>eg.gov.iti.jets.model.Purchase</class>
+        <class>eg.gov.iti.jets.model.Category</class>
         <class>eg.gov.iti.jets.model.Review</class>
         <class>eg.gov.iti.jets.model.Feedback</class>
         <class>eg.gov.iti.jets.model.Image</class>
@@ -23,10 +25,10 @@
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="Ebra7imFCI" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
 
             <property name="hibernate.hbm2ddl.auto" value="update" />
 

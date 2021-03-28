@@ -18,7 +18,7 @@ import java.util.Set;
 public class Order implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "ORDER_ID")
     private int orderId;
 
@@ -34,7 +34,7 @@ public class Order implements Serializable {
     @JoinColumn(name = "USERS_ID")
     private User user;
 
-    @ManyToMany
-    private Set<Product> products = new HashSet<>();
+    @OneToMany(mappedBy = "order")
+    private Set<Purchase> purchase = new HashSet<>();
 
 }

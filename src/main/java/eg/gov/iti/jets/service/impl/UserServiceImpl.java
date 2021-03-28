@@ -32,11 +32,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findByEmail(String email) throws NoResultException {
+    public UserDto findByEmail(String email) {
         User user = userRepository.findByEmail(email);
+        if(user == null)
+            return null;
+        else{
         UserDto userDto = UserAdapter.convertFromUserModelToUserRegistrationDto(user);
-//        System.out.println("User by Email is" + userDto);
         return userDto;
+        }
     }
 
     @Override
