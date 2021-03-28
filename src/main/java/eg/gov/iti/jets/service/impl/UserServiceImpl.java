@@ -80,7 +80,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     public List<User> fetchAllUsers() {
         List<User> userList = new ArrayList<>();
         userList = userRepository.fetchAllUsers();

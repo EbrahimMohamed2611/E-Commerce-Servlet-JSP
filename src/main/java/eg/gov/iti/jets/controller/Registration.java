@@ -6,6 +6,7 @@ import eg.gov.iti.jets.model.EmailVerification;
 import eg.gov.iti.jets.model.Gender;
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
+
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.utils.HashPassword;
@@ -24,10 +25,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import java.util.UUID;
 
 import java.util.List;
-
 
 
 @WebServlet(name = "Registration", urlPatterns = "/registration")
@@ -93,22 +96,20 @@ public class Registration extends HttpServlet {
         System.out.println("User Registration Dto " + userRegistrationDto);
         UserDto userDto = userService.registerUser(userRegistrationDto);
         req.getSession().setAttribute("userDto",userDto);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("email-verification.jsp");
-
-        String verificationCode = UUID.randomUUID().toString();
-        req.getSession().setAttribute("verificationCode",verificationCode);
         ServletContext servletContext = getServletContext();
-        //ana hena msh 3rfa ezai a7wel mn dto le user model 3shan ykon feh el orders w kda
         List<User> userList = (List<User>)servletContext.getAttribute("userList");
-        System.out.println("userlist befor regiteration the new user---> "+userList);
-        //todo add new user model into the lsit and then put it intto the cotext
         User user = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         userList.add(user);
-        servletContext.setAttribute("userList" , userList);
+        servletContext.setAttribute("userList", userList);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("email-verification.jsp");
 
-//        RequestDispatcher requestDispatcher2 = req.getRequestDispatcher("");
+        String verificationCode = UUID.randomUUID().toString();
+        req.getSession().setAttribute("verificationCode",verificationCode);
+        //ana hena msh 3rfa ezai a7wel mn dto le user model 3shan ykon feh el orders w kda
+        System.out.println("userlist befor regiteration the new user---> "+userList);
+        //todo add new user model into the lsit and then put it intto the cotext
         try {
             MailService.sendEmail(email,"From E-Commerce", verificationCode);
             requestDispatcher.forward(req, resp);

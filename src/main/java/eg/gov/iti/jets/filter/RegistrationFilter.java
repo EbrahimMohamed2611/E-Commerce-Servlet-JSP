@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+
+@WebFilter("/registration")
+
 public class RegistrationFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

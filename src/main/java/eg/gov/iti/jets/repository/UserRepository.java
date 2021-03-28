@@ -12,6 +12,7 @@ public interface UserRepository {
     User saveUser(User user);
     User updateUser(User user);
     List<User> fetchAllUsers ();
+
     List<User> findALlAdminUsers();
     List<User> findALlCustomerUsers();
     User updateUserRole(String email, Role role);

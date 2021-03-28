@@ -83,14 +83,21 @@ public class UserRepositoryImpl implements UserRepository {
         List<User> userList = new ArrayList<>();
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         Query query = entityManager.createQuery("from User");
+
         System.out.println("query.getResultList()------> " + query.getResultList());
         userList = query.getResultList();
         System.out.println("UserList-----> " + userList);
+
+        System.out.println( "query.getResultList()------> "+ query.getResultList());
+        userList = query.getResultList();
+        System.out.println("UserList-----> "+userList);
+
 
 
         //entityManager.getTransaction().begin();
 
         return userList;
+
     }
     public List<User> findALlAdminUsers() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
@@ -121,5 +128,6 @@ public class UserRepositoryImpl implements UserRepository {
         entityManager.getTransaction().commit();
         entityManager.close();
         return userUpdated;
+
     }
 }
