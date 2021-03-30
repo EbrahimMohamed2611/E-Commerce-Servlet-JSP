@@ -10,4 +10,11 @@
 [![amazon aws badge](https://img.shields.io/badge/amazonaws-232F3E?style=flat&labelColor=232F3E&logo=amazon&logoColor=white)]()
 [![intellij idea badge](https://img.shields.io/badge/IntellijIdea-000000?style=flat&labelColor=000000&logo=intellij-idea&logoColor=white)]()
 
-![ChatTeamMembers ](E-Commerce.png)
+![E-Commerce ](E-Commerce.png)
+####Request And Response way
+![Request-Response ](Request-Response.png)
+#### Database Schema
+![databaseDiagram](databaseDiagram.png)
+#### Classes Relationship
+![Classes Diagram](classes.png)
+

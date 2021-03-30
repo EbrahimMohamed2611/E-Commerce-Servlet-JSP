@@ -13,8 +13,7 @@ import java.io.Serializable;
 @Embeddable
 public class Address implements Serializable {
 
-    @Column(name = "ADDRESS_ID")
-    private int addressId;
+
     @Column(name = "COUNTRY")
     private String country;
     @Column(name = "STATE")

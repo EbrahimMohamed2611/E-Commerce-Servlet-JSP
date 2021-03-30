@@ -13,14 +13,12 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-//@NamedQueries({
-//        @NamedQuery(name = "Product.findByNameLike",
-//                query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false"),
-//        @NamedQuery(name = "Product.findByCategory",
-//                query = "SELECT p from Product p where :category member of p.category and p.isDeleted = false"),
-//        @NamedQuery(name = "Product.findBetweenTwoPrices",
-//                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false")
-//})
+@NamedQueries({
+        @NamedQuery(name = "Product.findByNameLike",
+                query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false"),
+        @NamedQuery(name = "Product.findBetweenTwoPrices",
+                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false")
+})
 public class Product implements Serializable {
 
     @Id
