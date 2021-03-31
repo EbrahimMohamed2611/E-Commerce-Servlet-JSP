@@ -68,7 +68,7 @@ public class CookieFilter implements Filter {
                     System.out.println(request.getParameter("check"));
                     System.out.println("---------------------------------------------------");
 
-                    ((HttpServletResponse) response).sendRedirect("index.jsp?check=1");
+                    ((HttpServletResponse) response).sendRedirect("dashboard.jsp?check=1");
 
                 } else {
                     //means cookies are disabled, send him to the Enable Cookies page

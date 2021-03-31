@@ -188,14 +188,14 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="index.jsp"> <img alt="image" src="assets/img/logo.png" class="header-logo"/> <span
+                    <a href="dashboard.jsp"> <img alt="image" src="assets/img/logo.png" class="header-logo"/> <span
                             class="logo-name">Otika</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
                     <li class="dropdown">
-                        <a href="index.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                        <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
                     </li>
                     <li class="dropdown active">
                         <a href="#" class="menu-toggle nav-link has-dropdown"><i

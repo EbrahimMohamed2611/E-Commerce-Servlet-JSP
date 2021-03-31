@@ -195,7 +195,7 @@
         <ul class="sidebar-menu">
           <li class="menu-header">Main</li>
           <li class="dropdown">
-            <a href="index.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+            <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
           </li>
           <li class="dropdown active">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i

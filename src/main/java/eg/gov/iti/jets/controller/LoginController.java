@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("login.jsp?notFound");
         }else{
             if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password)){
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("dashboard.jsp");
                 request.getSession().setAttribute("userDto",userDto);
                 requestDispatcher.forward(request, response);
             }else{
