@@ -45,7 +45,7 @@ public class LoginController extends HttpServlet {
             }else if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password) && userDto.getRole() == Role.ADMIN_ROLE){
 //                RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/index.jsp");
                 request.getSession().setAttribute("userDto",userDto);
-                response.sendRedirect("pages/product.jsp");
+                response.sendRedirect("product.jsp");
 //                requestDispatcher.forward(request, response);
             }
             else{

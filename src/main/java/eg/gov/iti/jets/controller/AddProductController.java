@@ -65,7 +65,9 @@ public class AddProductController extends HttpServlet {
         int categoryId = 0;
         if(category.isPresent()){
            categoryId =   category.get().getCategoryId();
+            System.out.println("categoryId " + categoryId);
         }
+            System.out.println("after categoryId " + categoryId);
         productCategory.setCategoryId(categoryId);
         productCategory.setCategoryName(categoryName);
         product.setCategory(productCategory);

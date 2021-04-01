@@ -17,7 +17,7 @@ function handleCategory (){
             console.log("categoryName",categoryName);
             let tableStr2 ="";
             for (let i = 0; i < allCategory.length; i++) {
-                tableStr2 +=`<option value="${allCategory[i].categoryId}">${allCategory[i].categoryName}</option>`;
+                tableStr2 +=`<option value="${allCategory[i].categoryName}">${allCategory[i].categoryName}</option>`;
                 categoryName.innerHTML = tableStr2;
                 console.log("categoryName" , categoryName);
             }

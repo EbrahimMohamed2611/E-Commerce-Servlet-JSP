@@ -42,10 +42,9 @@ public class Product implements Serializable {
     @Column(name = "PRODUCT_DELETED", nullable = false)
     private boolean isDeleted;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
     private Category category ;
-
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IMAGE_ID")
