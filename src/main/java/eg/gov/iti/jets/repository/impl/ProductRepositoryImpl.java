@@ -1,5 +1,6 @@
 package eg.gov.iti.jets.repository.impl;
 
+import eg.gov.iti.jets.config.PersistenceManager;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
@@ -17,24 +18,35 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findByNameLike(String productName) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+
         return (List<Product>) entityManager.createNamedQuery("Product.findByNameLike").
                 setParameter("productName", "%" + productName + "%").getResultList();
     }
 
     @Override
     public List<Product> findByCategory(Category category) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+
         return (List<Product>) entityManager.createNamedQuery("Product.findByCategory").
                 setParameter("category", category).getResultList();
     }
 
     @Override
+    public Product addNewProduct(Product product) {
+        System.out.println(product);
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(product);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return product;
+    }
+
+    @Override
     public List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+
         return (List<Product>) entityManager
                 .createNamedQuery("Product.findBetweenTwoPrices")
                 .setParameter("price1", firstPrice)
@@ -47,7 +59,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
         EntityManager entityManager = factory.createEntityManager();
         Query from_product = entityManager.createQuery("FROM Product");
-        List<Product> resultList = (ArrayList<Product>)from_product.getResultList();
+        List<Product> resultList = (ArrayList<Product>) from_product.getResultList();
         return resultList;
     }
 }

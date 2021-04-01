@@ -9,6 +9,7 @@ public interface ProductRepository  {
 
     List<Product> findByNameLike(String productName);
     List<Product> findByCategory(Category category);
+    Product addNewProduct(Product product);
     List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice);
     List<Product> findAll();
 

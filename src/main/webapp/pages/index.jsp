@@ -202,8 +202,8 @@
                         <a href="#" class="menu-toggle nav-link has-dropdown"><i
                                 data-feather="briefcase"></i><span>Products</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="categories.jsp">Categories</a></li>
-                            <li><a class="nav-link" href="product.jsp">Products</a></li>
+                            <li><a class="nav-link" href="../categories.jsp">Categories</a></li>
+                            <li><a class="nav-link" href="../product.jsp">Products</a></li>
                         </ul>
                     </li>
 

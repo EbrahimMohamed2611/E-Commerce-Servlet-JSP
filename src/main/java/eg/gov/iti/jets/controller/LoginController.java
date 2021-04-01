@@ -2,6 +2,7 @@ package eg.gov.iti.jets.controller;
 
 import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.factory.UserServiceFactory;
+import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.utils.HashPassword;
 import jakarta.servlet.RequestDispatcher;
@@ -37,11 +38,17 @@ public class LoginController extends HttpServlet {
         if(userDto == null){
             response.sendRedirect("login.jsp?notFound");
         }else{
-            if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password)){
+            if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password) && userDto.getRole() == Role.USER_ROLE){
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
                 request.getSession().setAttribute("userDto",userDto);
                 requestDispatcher.forward(request, response);
-            }else{
+            }else if(userDto.getEmail().equals(email) && userDto.getPassword().equals(password) && userDto.getRole() == Role.ADMIN_ROLE){
+//                RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/index.jsp");
+                request.getSession().setAttribute("userDto",userDto);
+                response.sendRedirect("pages/product.jsp");
+//                requestDispatcher.forward(request, response);
+            }
+            else{
                 response.sendRedirect("login.jsp?invalid");
             }
         }

@@ -19,6 +19,7 @@ import java.util.Set;
         @NamedQuery(name = "Product.findBetweenTwoPrices",
                 query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false")
 })
+@ToString
 public class Product implements Serializable {
 
     @Id
@@ -41,12 +42,12 @@ public class Product implements Serializable {
     @Column(name = "PRODUCT_DELETED", nullable = false)
     private boolean isDeleted;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "CATEGORY_ID")
     private Category category ;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IMAGE_ID")
     private Image productImage;
 
