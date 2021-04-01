@@ -3,11 +3,13 @@ package eg.gov.iti.jets.controller;
 import com.google.gson.Gson;
 import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.dto.UserProfileDto;
+import eg.gov.iti.jets.factory.OrderRepositoryFactory;
 import eg.gov.iti.jets.factory.OrderServiceFactory;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.Order;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.model.Purchase;
+import eg.gov.iti.jets.repository.OrderRepository;
 import eg.gov.iti.jets.service.OrderService;
 import eg.gov.iti.jets.service.UserService;
 import jakarta.servlet.RequestDispatcher;
@@ -28,7 +30,7 @@ import java.util.Set;
 
 @WebServlet(name = "getorders", value = "/getorders")
 public class GetOrders extends HttpServlet {
-    private final OrderService orderService = OrderServiceFactory.getOrderRepositoryInstance();
+    private final OrderRepository orderRepository = OrderRepositoryFactory.getOrderRepositoryInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +38,7 @@ public class GetOrders extends HttpServlet {
         String userId = req.getParameter("data");
         System.out.println(userId + "iddddddddddddddddddddddd");
         //todo must check the returned set and send it tp jsp instead of static set
-       // Set<Order>orders = orderService.getAllOrders(Integer.parseInt(userId));
+       /// Set<Order>orders = orderRepository.getUserOrders(Integer.parseInt(userId));
         //JSONObject obj = new JSONObject(data);
         resp.setContentType("text/html");
         //  System.out.println("name "+obj.getString("firstName"));

@@ -429,7 +429,7 @@
                                                         <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
                                                            data-rel="back">Cancel</a>
                                                         <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
-                                                           data-transition="flow" onclick="deleteProd(${p.getProductId()})">Delete</a>
+                                                           data-transition="flow" onclick="deleteProd(${p.getProductId()} , )">Delete</a>
                                                     </div>
                                                 </div>
 

@@ -1,6 +1,7 @@
 package eg.gov.iti.jets.controller;
 
 import eg.gov.iti.jets.factory.OrderRepositoryFactory;
+import eg.gov.iti.jets.factory.ProductRepositoryFactory;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.OrderRepository;
@@ -18,12 +19,12 @@ import java.util.List;
 
 @WebServlet(name = "adminhome", value = "/adminhome")
 public class ViewProducts extends HttpServlet {
-   // public static final ProductRepository productRepsitory =
+    public static final ProductRepository productRepsitory = ProductRepositoryFactory.getProductRepositoryInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //todo get all products from db
-      //  List<Product>products = .findAll();
+       // List<Product>products = productRepsitory.findAll();
 
         Product product = new Product();
         product.setProductId(1);

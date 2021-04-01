@@ -1,7 +1,9 @@
 package eg.gov.iti.jets.controller;
 
+import eg.gov.iti.jets.factory.ProductRepositoryFactory;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
+import eg.gov.iti.jets.repository.ProductRepository;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,6 +32,7 @@ public class EditProduct extends HttpServlet {
         Category category = new Category();
         category.setCategoryName(cat);
         product.setCategory(category);
+
 
         System.out.println("inside Editproduct servlet  name ="+name +" desc"+desc);
         req.setAttribute("data", product);

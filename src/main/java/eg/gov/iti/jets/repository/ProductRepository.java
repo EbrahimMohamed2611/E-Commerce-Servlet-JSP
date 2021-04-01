@@ -11,5 +11,7 @@ public interface ProductRepository  {
     List<Product> findByCategory(Category category);
     List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice);
     List<Product> findAll();
+    Product updateProduct(Product product);
+    void removeProduct(int productId);
 
 }

@@ -1,7 +1,9 @@
 package eg.gov.iti.jets.controller;
 
+import eg.gov.iti.jets.factory.ProductRepositoryFactory;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
+import eg.gov.iti.jets.repository.ProductRepository;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @WebServlet(name = "editprodb", value = "/editprodb")
 public class EditProductDb extends HttpServlet {
+    public static final ProductRepository productRepsitory = ProductRepositoryFactory.getProductRepositoryInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -34,6 +37,8 @@ public class EditProductDb extends HttpServlet {
         category.setCategoryName(cat);
         product.setCategory(category);
         //todo call method the update this object in the db
+//        Product ubdateProduct = productRepsitory.updateProduct(product);
+//        List<Product> products = productRepsitory.findAll();
         //todo fetch all product again from db and get list of products and pass it in the fn
 
 

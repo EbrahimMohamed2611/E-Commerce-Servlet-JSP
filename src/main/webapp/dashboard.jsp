@@ -532,8 +532,8 @@
                                 <h4>All Cusotomers</h4>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table" id="userTable">
+                                <div class="table-responsive-sm">
+                                    <table class="table " id="userTable">
 <%--                                        <thead>--%>
 <%--                                        <tr>--%>
 <%--                                            <th class="text-center">--%>
