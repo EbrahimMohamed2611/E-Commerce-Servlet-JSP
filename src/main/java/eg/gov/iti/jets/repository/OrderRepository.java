@@ -9,7 +9,7 @@ import java.util.Set;
 public interface OrderRepository {
     Order createOrder(User user, Set<Purchase> purchaseSet, Double orderTotal);
 
-    Set<Order> getAllOrders(int userID);
+//    Set<Order> getAllOrders(int userID);
 }
 
 

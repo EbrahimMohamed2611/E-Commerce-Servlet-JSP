@@ -22,15 +22,15 @@ public class OrderRepositoryImpl  implements OrderRepository {
     public Order createOrder(User user, Set<Purchase> purchaseSet, Double orderTotal) {
         return null;
     }
-    @Override
-    public Set<Order> getAllOrders(int userID) {
-        Set<Order>orders = new HashSet<>();
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
-        entityManager.getTransaction().begin();
-        orders = (Set<Order>)entityManager.createNamedQuery("Order.getUserOrder").setParameter("id", userID).getResultList();
-
-        return orders;
-    }
+//    @Override
+//    public Set<Order> getAllOrders(int userID) {
+//        Set<Order>orders = new HashSet<>();
+//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+//        EntityManager entityManager = factory.createEntityManager();
+//        entityManager.getTransaction().begin();
+//        orders = (Set<Order>)entityManager.createNamedQuery("Order.getUserOrder").setParameter("id", userID).getResultList();
+//
+//        return orders;
+//    }
 
 }
