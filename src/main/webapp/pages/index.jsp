@@ -206,6 +206,11 @@
                             <li><a class="nav-link" href="../product.jsp">Products</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="/E_Commerce_Servlet_JSP_war_exploded/admin-show-users.jsp" class="nav-link"><i
+                                data-feather="briefcase"></i><span>Users</span></a>
+
+                    </li>
 
 
 

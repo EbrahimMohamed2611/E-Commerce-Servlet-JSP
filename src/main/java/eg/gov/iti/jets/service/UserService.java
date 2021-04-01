@@ -15,7 +15,7 @@ public interface UserService {
     UserDto updateUser(UserDto userDto);
     UserDto updateUserVerification(UserDto userDto);
     User login(String email);
-     List<User> fetchAllUsers();
+     List<UserDto> fetchAllUsers();
 
 
 }

@@ -2,6 +2,7 @@ package eg.gov.iti.jets.repository.impl;
 
 import eg.gov.iti.jets.config.ConnectToMysqlDatabase;
 import eg.gov.iti.jets.config.PersistenceManager;
+import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
@@ -79,8 +80,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> fetchAllUsers() {
-        List<User> userList = new ArrayList<>();
+    public List<UserDto> fetchAllUsers() {
+        List<UserDto> userList = new ArrayList<>();
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         Query query = entityManager.createQuery("from User");
 
