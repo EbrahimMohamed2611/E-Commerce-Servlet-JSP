@@ -8,7 +8,5 @@ import lombok.NoArgsConstructor;
 public class PurchaseDTO {
 
     private int quantity;
-    private double price;
-    private ProductDTO product;
-
+    private OrderedProductDTO orderedProductDTO;
 }

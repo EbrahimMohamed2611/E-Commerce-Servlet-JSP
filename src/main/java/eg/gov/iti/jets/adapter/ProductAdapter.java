@@ -14,12 +14,25 @@ public class ProductAdapter {
         productDTO.setImagePath(product.getProductImage().getImagePath());
         productDTO.setPrice(product.getPrice());
         productDTO.setQuantity(product.getQuantity());
-
-
         product.getReviews().stream().map(ReviewAdapter::convertFromReviewModelToReviewDto)
                 .forEach(productDTO.getReviews()::add);
 
 
         return productDTO;
     }
+
+
+    public static Product convertFromProductDTOTOProductModel(ProductDTO productDTO){
+        Product product = new Product();
+        product.setProductId(productDTO.getProductId());
+        product.setProductName(productDTO.getProductName());
+        product.setDescription(productDTO.getDescription());
+        product.setPrice(productDTO.getPrice());
+        product.setQuantity(productDTO.getQuantity());
+        productDTO.getReviews().stream().map(ReviewAdapter::convertFromReviewDTOToReviewModel)
+                .forEach(product.getReviews()::add);
+        // TODO: Add Image
+        return product;
+    }
+
 }

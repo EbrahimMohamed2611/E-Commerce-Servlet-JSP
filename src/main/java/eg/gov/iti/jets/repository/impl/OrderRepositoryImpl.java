@@ -5,17 +5,15 @@ import eg.gov.iti.jets.model.*;
 import eg.gov.iti.jets.repository.OrderRepository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
 import javax.persistence.TypedQuery;
-import java.time.LocalDateTime;
-import java.util.Date;
+import javax.transaction.Transactional;
+
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class OrderRepositoryImpl implements OrderRepository {
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+    private final PersistenceManager persistenceManager = PersistenceManager.INSTANCE;
 
     @Override
     public Order createOrder(User user, Set<Purchase> purchaseSet, Double orderTotal) {
@@ -24,9 +22,11 @@ public class OrderRepositoryImpl implements OrderRepository {
 
 
     @Override
+    @Transactional
     public Order saveOrder(Order order) {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
+        entityManager.detach(new Product());
         entityManager.persist(order);
         entityManager.getTransaction().commit();
         entityManager.close();
@@ -36,7 +36,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order updateOrder(Order order) {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         Order orderUpdated = entityManager.merge(order);
         entityManager.getTransaction().commit();
@@ -48,7 +48,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public Boolean deleteOrder(int orderId) {
 
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         int isSuccessful = entityManager.createQuery("delete from order o where o.order_id=:id")
                 .setParameter("id", orderId)
@@ -58,16 +58,12 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public Order getOrder(int id) {
+    public Order getOrder(int orderId) {
         System.out.println("entityManager is opened");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
-        Order order = entityManager.createNamedQuery("FindOrderById", Order.class)
-                .setParameter("order_id", id).getSingleResult();
-
+        Order order = entityManager.find(Order.class, orderId);
         entityManager.getTransaction().commit();
-
         entityManager.close();
 
         return order;
@@ -77,8 +73,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> getUserOrdersByStatus(int userId, OrderStatus orderStatus) {
         System.out.println("entityManager is opened");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
 
         TypedQuery<Order> query =
@@ -92,6 +87,5 @@ public class OrderRepositoryImpl implements OrderRepository {
         return listOfOrders;
 
     }
-
 
 }

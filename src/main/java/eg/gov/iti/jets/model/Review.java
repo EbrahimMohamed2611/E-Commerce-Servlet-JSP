@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 //@NamedQueries(
-//        @NamedQuery(name = "Review.findByProduct", query = "select r from Review r where r.product = :product")
+//        @NamedQuery(name = "Review.findByProduct", query = "select r from Review r where r.orderedProductDTO = :orderedProductDTO")
 //)
 public class Review {
 

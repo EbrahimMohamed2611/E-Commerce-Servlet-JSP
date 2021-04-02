@@ -12,4 +12,6 @@ public interface ProductRepository  {
     List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice);
     List<Product> findAll();
 
+    Product findProductById(int productId);
+
 }

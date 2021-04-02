@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,9 +32,9 @@ public class Order implements Serializable {
     @JoinColumn(name = "USERS_ID")
     private User user;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade={CascadeType.MERGE, CascadeType.REMOVE})
     private Set<Purchase> purchase = new HashSet<>();
 
 }
 
-/* image , product , price , quantity ---->> if orderstatus not completed */
+/* image , orderedProductDTO , price , quantity ---->> if orderstatus not completed */
