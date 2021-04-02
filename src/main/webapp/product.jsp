@@ -20,6 +20,7 @@
   <link rel='stylesheet'  href='css/style.css'/>
 </head>
 
+
 <body onload="getAllCategory()">
 <div class="loader"></div>
 <div id="app">

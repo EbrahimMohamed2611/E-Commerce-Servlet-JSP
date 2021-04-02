@@ -398,6 +398,7 @@
 <!-- General JS Scripts -->
 <script src="pages/assets/js/app.min.js"></script>
 <!-- JS Libraies -->
+
 <script src="pages/assets/bundles/chartjs/chart.min.js"></script>
 <script src="pages/assets/bundles/jquery.sparkline.min.js"></script>
 <script src="pages/assets/bundles/apexcharts/apexcharts.min.js"></script>
