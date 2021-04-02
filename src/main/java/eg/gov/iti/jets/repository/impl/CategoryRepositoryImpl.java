@@ -24,17 +24,16 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public List<Category> getAllCategories() {
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
-        Query from_category = entityManager.createQuery("FROM Category");
-        List<Category> categories = (List<Category>) from_category.getResultList();
+        List<Category> categories = entityManager.createQuery("FROM Category").getResultList();
+        entityManager.close();
         return categories;
     }
 
     @Override
     public Optional<Category> getCategoryByName(String name) {
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
-        Query from_category = entityManager.createQuery("FROM Category");
-        List<Category> categories = (List<Category>) from_category.getResultList();
+        List<Category> categories = entityManager.createQuery("FROM Category").getResultList();
+        entityManager.close();
         return categories.stream().filter(c -> c.getCategoryName().equals(name)).findFirst();
-
     }
 }

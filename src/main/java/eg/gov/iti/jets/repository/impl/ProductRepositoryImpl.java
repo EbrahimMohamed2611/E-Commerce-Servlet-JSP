@@ -1,35 +1,39 @@
 package eg.gov.iti.jets.repository.impl;
 
 import eg.gov.iti.jets.config.PersistenceManager;
+import eg.gov.iti.jets.exceptions.ProductNotFoundException;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
-import org.hibernate.Criteria;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import java.util.ArrayList;
+import javax.persistence.PersistenceException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProductRepositoryImpl implements ProductRepository {
 
+    private static final EntityManager ENTITY_MANAGER = PersistenceManager.INSTANCE.getEntityManager();
+
     @Override
     public List<Product> findByNameLike(String productName) {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
-
-        return (List<Product>) entityManager.createNamedQuery("Product.findByNameLike").
+        return (List<Product>) ENTITY_MANAGER.createNamedQuery("Product.findByNameLike").
                 setParameter("productName", "%" + productName + "%").getResultList();
     }
 
     @Override
     public List<Product> findByCategory(Category category) {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
-
-        return (List<Product>) entityManager.createNamedQuery("Product.findByCategory").
+        return (List<Product>) ENTITY_MANAGER.createNamedQuery("Product.findByCategory").
                 setParameter("category", category).getResultList();
+    }
+
+    @Override
+    public Product findById(int id) {
+        try {
+            return (Product) ENTITY_MANAGER.createQuery("from Product where productId = :id")
+                    .setParameter("id", id).getSingleResult();
+        } catch (PersistenceException exception) {
+            throw new ProductNotFoundException("Product with id=" + id + " not found!");
+        }
     }
 
     @Override
@@ -45,9 +49,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice) {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
-
-        return (List<Product>) entityManager
+        return (List<Product>) ENTITY_MANAGER
                 .createNamedQuery("Product.findBetweenTwoPrices")
                 .setParameter("price1", firstPrice)
                 .setParameter("price2", secondPrice)
@@ -56,10 +58,15 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findAll() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
-        Query from_product = entityManager.createQuery("FROM Product");
-        List<Product> resultList = (ArrayList<Product>) from_product.getResultList();
-        return resultList;
+        return ENTITY_MANAGER.createQuery("FROM Product").getResultList();
+    }
+
+    @Override
+    public double getAvgRating(int id) {
+        try {
+            return (double) ENTITY_MANAGER.createNamedQuery("Product.getAvgRating").setParameter("productId", id).getSingleResult();
+        } catch (PersistenceException exception) {
+            throw new ProductNotFoundException("Product with id=" + id + " not found!");
+        }
     }
 }

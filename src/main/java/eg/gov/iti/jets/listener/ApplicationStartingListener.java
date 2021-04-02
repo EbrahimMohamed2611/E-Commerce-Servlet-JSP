@@ -25,7 +25,6 @@ import java.util.Map;
 
 @WebListener
 public class ApplicationStartingListener implements ServletContextListener{
-    EntityManagerFactory factory ;
 
     private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
 
@@ -40,7 +39,6 @@ public class ApplicationStartingListener implements ServletContextListener{
             System.out.println("Can't read json file ");
             e.printStackTrace();
         }
-        factory = Persistence.createEntityManagerFactory("e-commerce");
         System.out.println("Database is Opened");
         sce.getServletContext().setAttribute("countries",stringStringMap);
 

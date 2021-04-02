@@ -1,7 +1,6 @@
 let getAllCategoryRequest = null;
 document.onload = getAllCategory;
 function getAllCategory(){
-    console.log("Ajax ??!")
     getAllCategoryRequest = new XMLHttpRequest();
     getAllCategoryRequest.open("GET", "addCategory?timeStamp=" + new Date().getTime(), true);
     getAllCategoryRequest.onreadystatechange = handleCategory;
@@ -9,7 +8,6 @@ function getAllCategory(){
 }
 
 function handleCategory (){
-    console.log("getAllCategoryRequest.readyState "  +getAllCategoryRequest.readyState)
     if (getAllCategoryRequest.readyState === 4 && getAllCategoryRequest.status === 200) {
         if(getAllCategoryRequest.responseText){
             const allCategory = JSON.parse(getAllCategoryRequest.responseText);

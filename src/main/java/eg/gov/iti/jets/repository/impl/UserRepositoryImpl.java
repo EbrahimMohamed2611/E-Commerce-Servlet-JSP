@@ -27,8 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findByEmail(String email) throws NoResultException{
         System.out.println("entityManager is opened");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         List<User> resultList = (ArrayList<User>) entityManager
                 .createNamedQuery("User.findByEmail").
@@ -81,7 +80,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<UserDto> fetchAllUsers() {
-        List<UserDto> userList = new ArrayList<>();
+        List<UserDto> userList;
         EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         Query query = entityManager.createQuery("from User");
 
@@ -101,20 +100,17 @@ public class UserRepositoryImpl implements UserRepository {
 
     }
     public List<User> findALlAdminUsers() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
-        entityManager.getTransaction().begin();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         List<User> resultList = entityManager.createNamedQuery("User.getAllAdminUsers").getResultList();
-
+        entityManager.close();
         return resultList;
     }
 
     @Override
     public List<User> findALlCustomerUsers() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
-        entityManager.getTransaction().begin();
-        List<User> resultList = (List<User>)  entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        List<User> resultList = entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+        entityManager.close();
         return resultList;
     }
 
@@ -122,8 +118,7 @@ public class UserRepositoryImpl implements UserRepository {
     public User updateUserRole(String email, Role role) {
         User user = findByEmail(email);
         user.setRole(role);
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         User userUpdated = entityManager.merge(user);
         entityManager.getTransaction().commit();

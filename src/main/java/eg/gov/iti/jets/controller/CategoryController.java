@@ -1,6 +1,7 @@
 package eg.gov.iti.jets.controller;
 
 import com.google.gson.Gson;
+import eg.gov.iti.jets.convertors.JsonConvertor;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.repository.CategoryRepository;
 import eg.gov.iti.jets.repository.impl.CategoryRepositoryImpl;
@@ -23,7 +24,6 @@ public class CategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter printWriter = resp.getWriter();
         resp.setContentType("application/json");
-        Gson json = new Gson();
         List<Category> allCategories = categoryRepository.getAllCategories();
         List<Category> newListOfCategory = new ArrayList<>();
         for (Category c : allCategories) {
@@ -32,7 +32,7 @@ public class CategoryController extends HttpServlet {
             category1.setCategoryName(c.getCategoryName());
             newListOfCategory.add(category1);
         }
-        printWriter.write(json.toJson(newListOfCategory));
+        printWriter.write(JsonConvertor.toJson(newListOfCategory));
 
     }
 
@@ -40,7 +40,6 @@ public class CategoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter printWriter = response.getWriter();
         response.setContentType("application/json");
-        Gson json = new Gson();
 
         String categoryName = request.getParameter("categoryName");
         Category category = new Category();
@@ -56,7 +55,7 @@ public class CategoryController extends HttpServlet {
         newListOfCategory.add(category1);
         }
         if (newCategory != null) {
-            printWriter.write(json.toJson(newListOfCategory));
+            printWriter.write(JsonConvertor.toJson(newListOfCategory));
         } else {
             printWriter.write("Error Try Again");
         }

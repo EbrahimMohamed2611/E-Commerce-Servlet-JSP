@@ -11,13 +11,17 @@
 
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <hibernate.version>5.4.29.Final</hibernate.version>
         <jakarta.version>9.0.0</jakarta.version>
         <mysql.version>8.0.22</mysql.version>
         <oracle.version>19.8.0.0</oracle.version>
-        <junit.version>5.4.0</junit.version>
+        <junit.version>5.5.2</junit.version>
+        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <org.projectlombok.version>1.18.18</org.projectlombok.version>
+        <org.projectlombok.mapstruct.version>0.2.0</org.projectlombok.mapstruct.version>
     </properties>
 
     <dependencies>
@@ -50,16 +54,16 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-<!--        <dependency>-->
-<!--            <groupId>org.postgresql</groupId>-->
-<!--            <artifactId>postgresql</artifactId>-->
-<!--            <version>42.2.18</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.sun.mail</groupId>-->
-<!--            <artifactId>javax.mail</artifactId>-->
-<!--            <version>1.5.5</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.postgresql</groupId>-->
+        <!--            <artifactId>postgresql</artifactId>-->
+        <!--            <version>42.2.18</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.sun.mail</groupId>-->
+        <!--            <artifactId>javax.mail</artifactId>-->
+        <!--            <version>1.5.5</version>-->
+        <!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
         <dependency>
@@ -132,13 +136,12 @@
             <!--        <scope>runtime</scope>-->
         </dependency>
 
-<!--        From Google-->
+        <!--        From Google-->
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
         </dependency>
-
 
 
         <!--      End Section :  Server Side Dependencies      -->
@@ -147,54 +150,53 @@
         <!--      Start Section :  Web Client Dependencies      -->
 
         <!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>bootstrap</artifactId>-->
-<!--            <version>4.5.0</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.webjars</groupId>-->
+        <!--            <artifactId>bootstrap</artifactId>-->
+        <!--            <version>4.5.0</version>-->
+        <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>webjars-locator</artifactId>-->
-<!--            <version>0.30</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.webjars</groupId>-->
+        <!--            <artifactId>webjars-locator</artifactId>-->
+        <!--            <version>0.30</version>-->
+        <!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>jquery</artifactId>-->
-<!--            <version>3.5.1</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.webjars</groupId>-->
+        <!--            <artifactId>jquery</artifactId>-->
+        <!--            <version>3.5.1</version>-->
+        <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.webjars.npm</groupId>-->
-<!--            <artifactId>popper.js</artifactId>-->
-<!--            <version>1.16.1-lts</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.webjars.npm</groupId>-->
+        <!--            <artifactId>popper.js</artifactId>-->
+        <!--            <version>1.16.1-lts</version>-->
+        <!--        </dependency>-->
 
 
         <!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>font-awesome</artifactId>-->
-<!--            <version>5.15.2</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.webjars</groupId>-->
+        <!--            <artifactId>font-awesome</artifactId>-->
+        <!--            <version>5.15.2</version>-->
+        <!--        </dependency>-->
 
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/html5shiv &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>html5shiv</artifactId>-->
-<!--            <version>3.6.2</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/html5shiv &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.webjars</groupId>-->
+        <!--            <artifactId>html5shiv</artifactId>-->
+        <!--            <version>3.6.2</version>-->
+        <!--        </dependency>-->
 
 
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/respond &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.webjars</groupId>-->
-<!--            <artifactId>respond</artifactId>-->
-<!--            <version>1.4.2</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/respond &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.webjars</groupId>-->
+        <!--            <artifactId>respond</artifactId>-->
+        <!--            <version>1.4.2</version>-->
+        <!--        </dependency>-->
 
 
         <!--         End Section :  Web Client Dependencies      -->
@@ -211,11 +213,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
-<!--        <dependency>-->
-<!--            <groupId>com.oracle.database.jdbc</groupId>-->
-<!--            <artifactId>ojdbc10</artifactId>-->
-<!--            <version>${oracle.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.oracle.database.jdbc</groupId>-->
+        <!--            <artifactId>ojdbc10</artifactId>-->
+        <!--            <version>${oracle.version}</version>-->
+        <!--        </dependency>-->
 
         <!--   End Section :  End Database Section-->
 
@@ -225,13 +227,6 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -248,24 +243,51 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
+            <version>${org.projectlombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
 
         <!--  End Section :  End Junit -->
 
+        <!-- Mapstruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
 
     </dependencies>
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
                     <release>11</release>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${org.projectlombok.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
@@ -274,10 +296,9 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <username>admin</username>
-                    <password>admin</password>
-                    <url>http://localhost:9090/manager/text</url>
-                    <path>/E_Commerce</path>
+                    <server>mak-tomcat-server</server>
+                    <url>http://localhost:9595/manager/text</url>
+                    <path>/PT</path>
                 </configuration>
             </plugin>
 

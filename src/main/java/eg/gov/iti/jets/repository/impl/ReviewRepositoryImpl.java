@@ -1,5 +1,6 @@
 package eg.gov.iti.jets.repository.impl;
 
+import eg.gov.iti.jets.config.PersistenceManager;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.model.Review;
 import eg.gov.iti.jets.repository.ReviewRepository;
@@ -15,8 +16,7 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 
     @Override
     public List<Review> findByProduct(Product product) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
-        EntityManager entityManager = factory.createEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         return entityManager.createNamedQuery("Review.findByProduct")
                 .setParameter("product", product)
