@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -63,5 +64,18 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product that = (Product) o;
+        return Objects.equals(productId, that.getProductId());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(productId);
+    }
 
 }

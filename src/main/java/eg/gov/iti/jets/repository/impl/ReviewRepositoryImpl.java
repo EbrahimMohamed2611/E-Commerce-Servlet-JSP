@@ -13,10 +13,12 @@ import java.util.Objects;
 
 public class ReviewRepositoryImpl implements ReviewRepository {
 
+    private final PersistenceManager persistenceManager = PersistenceManager.INSTANCE;
+
 
     @Override
     public List<Review> findByProduct(Product product) {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         return entityManager.createNamedQuery("Review.findByProduct")
                 .setParameter("product", product)

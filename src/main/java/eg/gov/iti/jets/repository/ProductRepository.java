@@ -19,6 +19,8 @@ public interface ProductRepository {
 
     List<Product> findAll();
 
+    Product findProductById(int productId);
+
     double getAvgRating(int id);
 
 }

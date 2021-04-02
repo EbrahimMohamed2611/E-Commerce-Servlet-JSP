@@ -6,9 +6,9 @@ import eg.gov.iti.jets.service.impl.UserServiceImpl;
 public class UserServiceFactory {
     private static UserService userService;
 
-    public static UserService getUserRepositoryInstance(){
+    public static UserService getUserServiceInstance() {
         if (userService == null) {
-            return new UserServiceImpl();
+            userService = new UserServiceImpl();
         }
         return userService;
     }

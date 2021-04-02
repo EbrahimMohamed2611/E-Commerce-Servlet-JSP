@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDto getProductById(int id) {
+    public ProductDto getProductDtoById(int id) {
         return ProductMapper.INSTANCE.productToProductDto(PRODUCT_REPOSITORY.findById(id));
     }
 
@@ -43,5 +43,23 @@ public class ProductServiceImpl implements ProductService {
     public int getProductRating(int id) {
         double avgRating = PRODUCT_REPOSITORY.getAvgRating(id);
         return (int) Math.ceil(avgRating);
+    }
+
+    @Override
+    public OrderedProductDTO getInStockProduct(int productId) {
+        Product product = getProductById(productId);
+        if (product != null) {
+            if (!product.isDeleted() && product.getQuantity() > 0) {
+                System.out.println("The returned Product Id is "+ product.getProductId() +
+                        " and its name is " + product.getProductName());
+                return OrderedProductAdapter.convertProductModelToOrderedItem(product);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Product getProductById(int productId) {
+        return ProductMapper.INSTANCE.findProductById(productId);
     }
 }

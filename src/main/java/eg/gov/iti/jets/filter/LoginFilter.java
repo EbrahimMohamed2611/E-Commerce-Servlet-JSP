@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.filter;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public class LoginFilter  implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         System.out.println("From Filter");
-        UserDto user = (UserDto) httpRequest.getSession().getAttribute("userDto");
+        UserDTO user = (UserDTO) httpRequest.getSession().getAttribute("userDto");
         if (user != null) {
             ((HttpServletResponse) response).sendRedirect("index.jsp");
         } else {

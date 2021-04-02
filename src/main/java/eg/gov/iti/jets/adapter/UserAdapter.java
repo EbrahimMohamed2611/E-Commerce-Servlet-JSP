@@ -1,12 +1,12 @@
 package eg.gov.iti.jets.adapter;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.model.User;
 
 public class UserAdapter {
 
-    public static UserDto convertFromUserModelToUserRegistrationDto(User user) {
-        UserDto userDto = new UserDto();
+    public static UserDTO convertFromUserModelToUserRegistrationDto(User user) {
+        UserDTO userDto = new UserDTO();
         userDto.setUserId(user.getUserId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
@@ -18,12 +18,13 @@ public class UserAdapter {
         userDto.setAddress(user.getAddress());
         userDto.setBirthDate(user.getBirthDate());
         userDto.setBalance(user.getBalance());
-//        userDto.setOrders(user.getOrders());
         userDto.setEmailVerification(user.getEmailVerification());
+        user.getOrders().stream().map(OrderAdapter::convertOrderModelToOrderDTO).forEach(userDto.getOrders()::add);
+
         return userDto;
     }
 
-    public static User convertFromUserRegistrationDtoToUserModel(UserDto userDto) {
+    public static User convertFromUserRegistrationDtoToUserModel(UserDTO userDto) {
         User user = new User();
         user.setUserId(userDto.getUserId());
         user.setFirstName(userDto.getFirstName());

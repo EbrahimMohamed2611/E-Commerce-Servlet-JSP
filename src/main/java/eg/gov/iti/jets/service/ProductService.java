@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ProductService {
 
+    Product getProductById(int productId);
+
     /**
      * this method responsible for return the minimal information of products for display purposes
      *
@@ -33,7 +35,7 @@ public interface ProductService {
      * @exception ProductNotFoundException in runtime if product with specified Id not Found
      * @Author MAK
      */
-    ProductDto getProductById(int id);
+    ProductDto getProductDtoById(int id);
     /**
      * this method responsible for getting the avg rating for specific product
      *
@@ -43,4 +45,14 @@ public interface ProductService {
      * @Author MAK
      */
     int getProductRating(int id);
+
+    /**
+     * Query the database for specific orderedProductDTO and return
+     * if and only if the orderedProductDTO state is not deleted
+     * and the orderedProductDTO quantity > 0
+     * @param productId which is the primary key for orderedProductDTO Table
+     * @return ProductDTO
+     */
+    OrderedProductDTO getInStockProduct(int productId);
+
 }

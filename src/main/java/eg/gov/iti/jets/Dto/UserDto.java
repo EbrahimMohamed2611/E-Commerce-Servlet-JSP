@@ -16,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDto {
+public class UserDTO {
 
     private int userId;
     private String firstName;
@@ -29,7 +29,7 @@ public class UserDto {
     private double balance;
     private LocalDate birthDate;
     private Address address = new Address();
-    private Set<Order> orders = new HashSet<>(0);
+    private Set<OrderDTO> orders = new HashSet<>();
     private EmailVerification emailVerification;
 
     @Override

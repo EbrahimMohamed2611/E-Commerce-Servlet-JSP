@@ -20,11 +20,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 @WebListener
 public class ApplicationStartingListener implements ServletContextListener{
+    EntityManagerFactory factory ;
 
     private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
 
@@ -42,7 +47,7 @@ public class ApplicationStartingListener implements ServletContextListener{
         System.out.println("Database is Opened");
         sce.getServletContext().setAttribute("countries",stringStringMap);
 
-        List<UserDto> userList = userService.fetchAllUsers();
+        List<User> userList = userService.fetchAllUsers();
         System.out.println("Inside initialize of conttext->userlist "+userList);
         sce.getServletContext().setAttribute("userList",userList);
         System.out.println("put it into the ocntext scope ");
@@ -59,5 +64,32 @@ public class ApplicationStartingListener implements ServletContextListener{
     public void contextDestroyed(ServletContextEvent sce) {
         PersistenceManager.INSTANCE.close();
         System.out.println("Database is closed");
+
+        try {
+            ServletContextListener.super.contextDestroyed(sce);
+        }
+        finally {
+            deregisterJdbcDrivers(sce.getServletContext());
+        }
+    }
+
+
+
+
+
+    protected void deregisterJdbcDrivers(ServletContext servletContext) {
+        for (Driver driver : Collections.list(DriverManager.getDrivers())) {
+            if (driver.getClass().getClassLoader() == servletContext.getClassLoader()) {
+                try {
+                    DriverManager.deregisterDriver(driver);
+                    System.out.println("Mysql Connection Clean Up");
+                }
+                catch (SQLException ex) {
+                    System.out.println("Unable to CleanUp");
+                    // Continue
+                }
+            }
+        }
+        AbandonedConnectionCleanupThread.checkedShutdown();
     }
 }

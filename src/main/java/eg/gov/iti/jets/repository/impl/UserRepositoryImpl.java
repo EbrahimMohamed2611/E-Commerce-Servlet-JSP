@@ -13,7 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserRepositoryImpl implements UserRepository {
-//    SessionFactory sessionFactory = HibernateDatabaseFactory.getMysqlConnection();
+
+    private final PersistenceManager persistenceManager = PersistenceManager.INSTANCE;
+
+    //    SessionFactory sessionFactory = HibernateDatabaseFactory.getMysqlConnection();
 //    private final EntityManager entityManager = (EntityManager) ConnectToMysqlDatabase.getInstance().getEntityManager();
 //    @Override
 //    public User findByEmail(String email) {
@@ -27,7 +30,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findByEmail(String email) throws NoResultException{
         System.out.println("entityManager is opened");
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         List<User> resultList = (ArrayList<User>) entityManager
                 .createNamedQuery("User.findByEmail").
@@ -57,7 +60,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User saveUser(User user) {
         System.out.println("saveUser" + user.getEmail());
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(user);
         entityManager.getTransaction().commit();
@@ -68,7 +71,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User updateUser(User user) {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         User userUpdated = entityManager.merge(user);
         entityManager.getTransaction().commit();
@@ -79,9 +82,9 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<UserDto> fetchAllUsers() {
-        List<UserDto> userList;
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+    public List<User> fetchAllUsers() {
+        List<User> userList = new ArrayList<>();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         Query query = entityManager.createQuery("from User");
 
         System.out.println("query.getResultList()------> " + query.getResultList());
@@ -100,16 +103,20 @@ public class UserRepositoryImpl implements UserRepository {
 
     }
     public List<User> findALlAdminUsers() {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
+        entityManager.getTransaction().begin();
         List<User> resultList = entityManager.createNamedQuery("User.getAllAdminUsers").getResultList();
+        entityManager.getTransaction().commit();
         entityManager.close();
         return resultList;
     }
 
     @Override
     public List<User> findALlCustomerUsers() {
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
-        List<User> resultList = entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+        EntityManager entityManager = persistenceManager.getEntityManager();
+        entityManager.getTransaction().begin();
+        List<User> resultList = (List<User>)  entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+        entityManager.getTransaction().commit();
         entityManager.close();
         return resultList;
     }
@@ -118,7 +125,7 @@ public class UserRepositoryImpl implements UserRepository {
     public User updateUserRole(String email, Role role) {
         User user = findByEmail(email);
         user.setRole(role);
-        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         User userUpdated = entityManager.merge(user);
         entityManager.getTransaction().commit();
