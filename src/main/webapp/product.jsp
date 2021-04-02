@@ -20,7 +20,6 @@
   <link rel='stylesheet'  href='css/style.css'/>
 </head>
 
-
 <body onload="getAllCategory()">
 <div class="loader"></div>
 <div id="app">
@@ -218,13 +217,13 @@
         <div class="section-body">
           <div class="row">
             <%--              Add Category --%>
-              <%
-                if (request.getParameter("added") != null) {
-                  out.println("<div class=\"alert alert-success\" role=\"alert\" style=\" margin: auto; \">\n" +
-                          "Product is inserted\n" +
-                          "</div>");
-                }
-                %>
+            <%
+              if (request.getParameter("added") != null) {
+                out.println("<div class=\"alert alert-success\" role=\"alert\" style=\" margin: auto; \">\n" +
+                        "Product is inserted\n" +
+                        "</div>");
+              }
+            %>
             <div class="col-12 col-md-12 col-lg-12">
               <div class="card">
 
@@ -233,9 +232,9 @@
               </div>
 
             </div>
-              <div class="col-12 col-md-12 col-lg-12 text-right text-right" style=" margin-bottom: 11px;">
-                <button class="btn btn-primary mr-1" type="submit" data-toggle="modal" data-target="#exampleModal">Add New Product</button>
-              </div>
+            <div class="col-12 col-md-12 col-lg-12 text-right text-right" style=" margin-bottom: 11px;">
+              <button class="btn btn-primary mr-1" type="submit" data-toggle="modal" data-target="#exampleModal">Add New Product</button>
+            </div>
             <%--              Table --%>
             <div class="col-12 col-md-12 col-lg-12">
               <div class="card">
@@ -336,10 +335,10 @@
                 </div>
 
 
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
               </form>
             </div>
           </div>
