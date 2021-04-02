@@ -1,7 +1,7 @@
 package eg.gov.iti.jets.controller;
 
 import eg.gov.iti.jets.dto.OrderDTO;
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.OrderServiceFactory;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.OrderStatus;
@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet {
         String[] remember = request.getParameterValues("remember");
         System.out.println("email" + email + "password" + password);
 //        String passwordHashing = HashPassword.hashPassword(password);
-        UserDto userDto = userService.findByEmail(email);
+        UserDTO userDto = userService.findByEmail(email);
         if (userDto == null) {
             response.sendRedirect("login.jsp?notFound");
         } else {

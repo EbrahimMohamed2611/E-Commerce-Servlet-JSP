@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.controller;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.service.UserService;
 import jakarta.servlet.RequestDispatcher;
@@ -19,11 +19,11 @@ public class ResetPasswordController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDto userDto = (UserDto) req.getSession().getAttribute("userDto");
+        UserDTO userDto = (UserDTO) req.getSession().getAttribute("userDto");
         String newPassword = req.getParameter("resetPassword");
         userDto.setPassword(newPassword);
-        UserDto userDto1 = userService.updateUser(userDto);
-        System.out.println("User before updated " + userDto1.getPassword());
+        UserDTO userDTO1 = userService.updateUser(userDto);
+        System.out.println("User before updated " + userDTO1.getPassword());
         req.getSession().setAttribute("userDto",null);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("login.jsp");
 //        resp.sendRedirect("login.jsp");

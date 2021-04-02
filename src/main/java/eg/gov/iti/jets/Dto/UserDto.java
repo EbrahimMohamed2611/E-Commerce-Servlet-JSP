@@ -16,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDto {
+public class UserDTO {
 
     private int userId;
     private String firstName;

@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.utils;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.service.UserService;
 import javax.persistence.NoResultException;
@@ -21,7 +21,7 @@ public class Validation {
     }
 
     public static boolean checkIfEmailIsUnique(String email) {
-        UserDto user = null;
+        UserDTO user = null;
         try {
             user = userService.findByEmail(email);
         } catch (NoResultException e) {

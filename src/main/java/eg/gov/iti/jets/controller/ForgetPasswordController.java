@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.controller;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.utils.MailService;
@@ -24,7 +24,7 @@ public class ForgetPasswordController extends HttpServlet {
 
         String email = req.getParameter("email");
         try {
-            UserDto userByEmail = userService.findByEmail(email);
+            UserDTO userByEmail = userService.findByEmail(email);
             req.getSession().setAttribute("userDto",userByEmail);
             if (userByEmail.getEmail().equals(email)) {
                 String passwordCode = UUID.randomUUID().toString();

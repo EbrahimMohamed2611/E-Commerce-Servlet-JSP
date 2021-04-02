@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.controller;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.model.Address;
 import eg.gov.iti.jets.model.EmailVerification;
 import eg.gov.iti.jets.model.Gender;
@@ -73,7 +73,7 @@ public class Registration extends HttpServlet {
         Address address = new Address(country, state, city, street, zipCode);
         System.out.println(address);
 
-        UserDto userRegistrationDto = new UserDto();
+        UserDTO userRegistrationDto = new UserDTO();
         userRegistrationDto.setFirstName(firstName);
         userRegistrationDto.setLastName(lastName);
         userRegistrationDto.setEmail(email);
@@ -90,7 +90,7 @@ public class Registration extends HttpServlet {
         userRegistrationDto.setBalance(Double.parseDouble(balance));
         userRegistrationDto.setAddress(address);
         System.out.println("User Registration Dto " + userRegistrationDto);
-        UserDto userDto = userService.registerUser(userRegistrationDto);
+        UserDTO userDto = userService.registerUser(userRegistrationDto);
         req.getSession().setAttribute("userDto",userDto);
         ServletContext servletContext = getServletContext();
         List<User> userList = (List<User>)servletContext.getAttribute("userList");

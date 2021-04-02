@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.controller;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.service.UserService;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class UserInformationController extends HttpServlet {
         String userEmail = req.getParameter("userEmail");
         System.out.println("Email from Ajax Request " + userEmail);
 
-        UserDto userByEmail = userService.findByEmail(userEmail);
+        UserDTO userByEmail = userService.findByEmail(userEmail);
         System.out.println("userByEmail " + userByEmail);
         if (userByEmail == null)
             out.write("Not Exist");
