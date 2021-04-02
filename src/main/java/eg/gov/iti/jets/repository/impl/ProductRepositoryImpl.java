@@ -51,9 +51,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     public Product findProductById(int productId) {
 
         EntityManager entityManager = persistenceManager.getEntityManager();
-        entityManager.getTransaction().begin();
         Product product = entityManager.find(Product.class, productId);
-        entityManager.getTransaction().commit();
         entityManager.close();
         return product;
     }

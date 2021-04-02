@@ -108,6 +108,7 @@ public class OrderServiceImpl implements OrderService {
         Order orderToUpdate =  prepareTheOrderForDatabase(orderToUpdateDTO, OrderStatus.NOT_COMPLETED, userDTO);
         Order updatedOrder = orderRepository.updateOrder(orderToUpdate);
         if(updatedOrder != null){
+            updatedOrder.getPurchase().forEach(purchaseRepository::savePurchase);
             return OrderAdapter.convertOrderModelToOrderDTO(updatedOrder);
         }
         return null; // else

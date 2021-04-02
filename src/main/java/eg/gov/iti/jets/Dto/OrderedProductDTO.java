@@ -1,5 +1,6 @@
 package eg.gov.iti.jets.dto;
 
+import eg.gov.iti.jets.model.Image;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,6 @@ public class OrderedProductDTO {
     private String productName;
     private String description;
     private Double price;
-    private String productImagePath;
+    private Image productImage;
 
 }

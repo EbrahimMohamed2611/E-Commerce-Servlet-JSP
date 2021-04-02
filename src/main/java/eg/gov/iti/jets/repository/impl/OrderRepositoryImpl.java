@@ -26,11 +26,10 @@ public class OrderRepositoryImpl implements OrderRepository {
     public Order saveOrder(Order order) {
         EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.detach(new Product());
         entityManager.persist(order);
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println("Order saved " + order);
+        System.out.println("Order saved " + order.getOrderId());
         return order;
     }
 

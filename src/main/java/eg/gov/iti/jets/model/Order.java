@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -32,9 +33,19 @@ public class Order implements Serializable {
     @JoinColumn(name = "USERS_ID")
     private User user;
 
-    @OneToMany(mappedBy = "order", cascade={CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "order", cascade={CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private Set<Purchase> purchase = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order that = (Order) o;
+        return Objects.equals(orderId, that.getOrderId()) &&
+                Objects.equals(user, that.getUser());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderId, user);
+    }
 }
-
-/* image , orderedProductDTO , price , quantity ---->> if orderstatus not completed */

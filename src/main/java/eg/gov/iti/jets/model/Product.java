@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -12,14 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-//@NamedQueries({
-//        @NamedQuery(name = "Product.findByNameLike",
-//                query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false"),
-//        @NamedQuery(name = "Product.findByCategory",
-//                query = "SELECT p from Product p where :category member of p.category and p.isDeleted = false"),
-//        @NamedQuery(name = "Product.findBetweenTwoPrices",
-//                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false")
-//})
+
 public class Product implements Serializable {
 
     @Id
@@ -60,5 +54,18 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product that = (Product) o;
+        return Objects.equals(productId, that.getProductId());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(productId);
+    }
 
 }

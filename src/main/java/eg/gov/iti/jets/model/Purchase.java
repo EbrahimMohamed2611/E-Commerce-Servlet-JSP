@@ -6,12 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@Table(name="PURCHASES_DETAILS")
+@Table(name = "PURCHASES_DETAILS")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,12 +24,12 @@ public class Purchase implements Serializable {
 
     @ManyToOne
     @MapsId("orderId")
-    @JoinColumn(name = "ORDER_ID",insertable = false,updatable = false)
-    private Order order ;
+    @JoinColumn(name = "ORDER_ID", insertable = false, updatable = false)
+    private Order order;
 
     @ManyToOne
     @MapsId("productId")
-    @JoinColumn(name = "PRODUCT_ID",insertable = false,updatable = false)
+    @JoinColumn(name = "PRODUCT_ID", insertable = false, updatable = false)
     private Product product;
 
     public Purchase(int quantity, Order order, Product product) {
@@ -43,4 +41,17 @@ public class Purchase implements Serializable {
         product.getPurchase().add(this);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Purchase that = (Purchase) o;
+        return Objects.equals(order, that.getOrder()) &&
+                Objects.equals(product, that.getProduct());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(order, product);
+    }
 }
