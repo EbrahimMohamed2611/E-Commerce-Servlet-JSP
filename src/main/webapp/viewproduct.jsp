@@ -412,10 +412,10 @@
                                                     <%--                                                                <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop"--%>
                                                     <%--
            class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Delete</a>--%>
-                                                <td><a href="" style="background-color: black" type="button" class="btn btn-primary" onclick="edit('${p.getProductId()}','${p.getProductName()}' ,'${p.getDescription()} ' ,'${p.getPrice()}' , '${p.getQuantity()}','${p.category.getCategoryName()}')">Edit</a> </td>
+                                                <td><a href="" type="button" class="btn btn-primary" style="color: white;" onclick="edit('${p.getProductId()}','${p.getProductName()}' ,'${p.getDescription()} ' ,'${p.getPrice()}' , '${p.getQuantity()}','${p.category.getCategoryName()}')">Edit</a> </td>
                                                 <td><a href="#popupDialog" data-rel="popup" data-position-to="window"
                                                        data-transition="pop"
-                                                       class="btn btn-primary" style="background-color: black;fill: black">Delete</a>
+                                                       class="btn btn-primary" style="color: white;">Delete</a>
                                                 </td>
                                                 <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b"
                                                      data-dismissible="false"
