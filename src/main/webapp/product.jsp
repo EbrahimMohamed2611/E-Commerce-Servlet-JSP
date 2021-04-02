@@ -196,7 +196,11 @@
         <ul class="sidebar-menu">
           <li class="menu-header">Main</li>
           <li class="dropdown">
+<<<<<<<< HEAD:src/main/webapp/product.jsp
             <a href="pages/index.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+========
+            <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+>>>>>>>> Admin:src/main/webapp/pages/product.jsp
           </li>
           <li class="dropdown active">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i

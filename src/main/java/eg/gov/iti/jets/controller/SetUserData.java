@@ -20,7 +20,7 @@ public class SetUserData  extends HttpServlet {
         */
 
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("profile.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("adminprofile.jsp");
         dispatcher.forward(req, resp);
     }
 }

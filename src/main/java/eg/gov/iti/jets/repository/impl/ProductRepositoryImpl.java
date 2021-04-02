@@ -3,6 +3,7 @@ package eg.gov.iti.jets.repository.impl;
 import eg.gov.iti.jets.config.PersistenceManager;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
+import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.ProductRepository;
 import org.hibernate.Criteria;
 
@@ -62,4 +63,27 @@ public class ProductRepositoryImpl implements ProductRepository {
         List<Product> resultList = (ArrayList<Product>) from_product.getResultList();
         return resultList;
     }
+
+    @Override
+    public Product updateProduct(Product product) {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Product productUpdated = entityManager.merge(product);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return productUpdated;
+    }
+
+    @Override
+    public void removeProduct(int productId) {
+            EntityManager createEntityManager = PersistenceManager.INSTANCE.getEntityManager();
+            createEntityManager.getTransaction().begin();
+            createEntityManager.createQuery("delete from Product where productId ="+productId).executeUpdate();
+            createEntityManager.getTransaction().commit();
+            createEntityManager.close();
+
+        }
+
+
 }

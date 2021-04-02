@@ -12,5 +12,7 @@ public interface ProductRepository  {
     Product addNewProduct(Product product);
     List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice);
     List<Product> findAll();
+    Product updateProduct(Product product);
+    void removeProduct(int productId);
 
 }

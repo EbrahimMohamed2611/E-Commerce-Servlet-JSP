@@ -13,6 +13,6 @@ public class LogOutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         req.getSession().setAttribute("userDto",null);
-        res.sendRedirect("index.jsp");
+        res.sendRedirect("dashboard.jsp");
     }
 }
