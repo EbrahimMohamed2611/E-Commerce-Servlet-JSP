@@ -18,6 +18,27 @@
   <link rel="stylesheet" href="pages/assets/css/custom.css">
   <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
   <link rel='stylesheet'  href='css/style.css'/>
+  <style>
+    .product-img {
+
+      text-align: center;
+    }
+    .product-img .file {
+      position: relative;
+      overflow: hidden;
+      margin-top: 2%;
+      width: 50%;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+    .product-img .file input {
+      position: absolute;
+      opacity: 0;
+      right: 0;
+      top: 0;
+    }
+  </style>
 </head>
 
 <body onload="getAllCategory()">
@@ -196,11 +217,7 @@
         <ul class="sidebar-menu">
           <li class="menu-header">Main</li>
           <li class="dropdown">
-<<<<<<<< HEAD:src/main/webapp/product.jsp
             <a href="pages/index.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
-========
-            <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
->>>>>>>> Admin:src/main/webapp/pages/product.jsp
           </li>
           <li class="dropdown active">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i

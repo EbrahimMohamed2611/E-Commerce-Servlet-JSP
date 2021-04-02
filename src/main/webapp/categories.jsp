@@ -8,18 +8,18 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Otika - Admin Dashboard Template</title>
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="assets/css/app.min.css">
-    <link rel="stylesheet" href="assets/bundles/jqvmap/dist/jqvmap.min.css">
-    <link rel="stylesheet" href="assets/bundles/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="pages/assets/css/app.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/flag-icon-css/css/flag-icon.min.css">
     <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="pages/assets/css/style.css">
+    <link rel="stylesheet" href="pages/assets/css/components.css">
     <!-- Custom style CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico'/>
+    <link rel="stylesheet" href="pages/assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
 </head>
 
-<body>
+<body onload="getAllCategory()">
 <div class="loader"></div>
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="dropdown-list-content dropdown-list-message">
                             <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="assets/img/users/user-1.png"
+											text-white"> <img alt="image" src="pages/assets/img/users/user-1.png"
                                                               class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">John
                       Deo</span>
@@ -68,20 +68,20 @@
                     <span class="time">2 Min Ago</span>
                   </span>
                             </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-2.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Request for leave
                       application</span>
                     <span class="time">5 Min Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-5.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
                       Ryan</span> <span class="time messege-text">Your payment invoice is
                       generated.</span> <span class="time">12 Min Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-4.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
                       Smith</span> <span class="time messege-text">hii John, I have upload
                       doc
@@ -89,7 +89,7 @@
                       Min Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-3.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
                       Joshi</span> <span class="time messege-text">Please do as specify.
                       Let me
@@ -97,7 +97,7 @@
                       Days Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-2.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Client Requirements</span>
                     <span class="time">2 Days Ago</span>
@@ -164,7 +164,7 @@
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown"
                                         class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
-                                                                                                         src="assets/img/user.png"
+                                                                                                         src="pages/assets/img/user.png"
                                                                                                          class="user-img-radious-style">
                     <span class="d-sm-none d-lg-inline-block"></span></a>
                     <div class="dropdown-menu dropdown-menu-right pullDown">
@@ -188,14 +188,15 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="dashboard.jsp"> <img alt="image" src="assets/img/logo.png" class="header-logo"/> <span
-                            class="logo-name">Otika</span>
+                    <a href="pages/index.jsp"> <img alt="image" src="pages/assets/img/logo.png" class="header-logo"/>
+                        <span
+                                class="logo-name">Otika</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
                     <li class="dropdown">
-                        <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                        <a href="pages/index.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
                     </li>
                     <li class="dropdown active">
                         <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -220,16 +221,19 @@
                                 <div class="card-header">
                                     <h4>Add Category</h4>
                                 </div>
-                                <%--                    <div class="form-group">--%>
-                                <%--                      <label>File</label>--%>
-                                <%--                      <input type="file" class="form-control">--%>
-                                <%--                    </div>--%>
-                                <div class="form-group" style="    width: 92%;    margin: auto;">
+                                <div class="category-added alert alert-success" id="category-added" hidden
+                                     style=" text-align: center; center;width: 40%;margin: auto; ">Category inserted successfully
+                                </div>
+                                <div class="form-group" style="
+                                                                width: 96%;
+                                                                margin: auto;
+                                                            ">
                                     <label for="categoryName">Category Name</label>
                                     <input type="text" id="categoryName" name="categoryName" class="form-control">
                                 </div>
                                 <div class="card-footer text-right">
-                                    <button class="btn btn-primary mr-1" type="submit">Add</button>
+                                    <button class="btn btn-primary mr-1" onclick="addCategory()" type="button">Add
+                                    </button>
                                     <button class="btn btn-secondary" type="reset">Reset</button>
                                 </div>
                             </div>
@@ -244,18 +248,20 @@
                                     <h4>Category Table</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-md">
+                                    <div class="table-responsive-sm">
+                                        <table class="table table-bordered table-md" >
+                                            <thead>
+                                            <tr>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Category Name</th>
-                                                <th>Action</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Dell</td>
-                                                <td><a href="#" class="btn btn-danger">Remove</a></td>
-                                            </tr>
+                                            </thead>
+                                            <tbody id="category-id">
+
+                                            </tbody>
 
                                         </table>
                                     </div>
@@ -390,20 +396,23 @@
     </div>
 </div>
 <!-- General JS Scripts -->
-<script src="assets/js/app.min.js"></script>
+<script src="pages/assets/js/app.min.js"></script>
 <!-- JS Libraies -->
-<script src="assets/bundles/chartjs/chart.min.js"></script>
-<script src="assets/bundles/jquery.sparkline.min.js"></script>
-<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
-<script src="assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
+
+<script src="pages/assets/bundles/chartjs/chart.min.js"></script>
+<script src="pages/assets/bundles/jquery.sparkline.min.js"></script>
+<script src="pages/assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
 <!-- Page Specific JS File -->
-<script src="assets/js/page/widget-chart.js"></script>
+<script src="pages/assets/js/page/widget-chart.js"></script>
 <!-- Template JS File -->
-<script src="assets/js/scripts.js"></script>
+<script src="pages/assets/js/scripts.js"></script>
 <!-- Custom JS File -->
-<script src="assets/js/custom.js"></script>
+<script src="js/category.js">
+
+</script>
 </body>
 
 
