@@ -1,8 +1,8 @@
 package eg.gov.iti.jets.controller;
 
 import eg.gov.iti.jets.convertors.JsonConvertor;
+import eg.gov.iti.jets.dto.FullyProductDto;
 import eg.gov.iti.jets.dto.MinimalProductDto;
-import eg.gov.iti.jets.dto.ProductDto;
 import eg.gov.iti.jets.exceptions.ProductNotFoundException;
 import eg.gov.iti.jets.service.ProductService;
 import eg.gov.iti.jets.service.impl.ProductServiceImpl;
@@ -24,7 +24,7 @@ public class AsyncProductDetailsController extends HttpServlet {
         String productId = request.getParameter("productId");
         if (productId != null && !productId.isEmpty()) {
             try {
-                ProductDto productDto = PRODUCT_SERVICE.getProductById(Integer.parseInt(productId));
+                FullyProductDto productDto = PRODUCT_SERVICE.getProductDtoById(Integer.parseInt(productId));
                 request.setAttribute("product", productDto);
                 request.getRequestDispatcher("single-product.jsp").forward(request, response);
             } catch (ProductNotFoundException exception) {

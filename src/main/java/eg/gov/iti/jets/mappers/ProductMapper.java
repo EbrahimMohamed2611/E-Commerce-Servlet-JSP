@@ -1,8 +1,7 @@
 package eg.gov.iti.jets.mappers;
 
-import eg.gov.iti.jets.dto.ProductDto;
+import eg.gov.iti.jets.dto.FullyProductDto;
 import eg.gov.iti.jets.model.Product;
-import org.mapstruct.InheritConfiguration;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,9 +17,9 @@ public interface ProductMapper {
     @Mapping(source = "price", target = "price")
     @Mapping(source = "productImage", target = "image")
     @Mapping(source = "reviews", target = "reviews")
-    ProductDto productToProductDto(Product product);
+    FullyProductDto productToProductDto(Product product);
 
     @InheritInverseConfiguration
-    Product productDtoToProduct(ProductDto productDto);
+    Product productDtoToProduct(FullyProductDto productDto);
 
 }

@@ -1,9 +1,9 @@
 package eg.gov.iti.jets.mappers;
 
 import eg.gov.iti.jets.dto.CategoryDto;
+import eg.gov.iti.jets.dto.FullyProductDto;
 import eg.gov.iti.jets.dto.ImageDto;
-import eg.gov.iti.jets.dto.ProductDto;
-import eg.gov.iti.jets.dto.ReviewDto;
+import eg.gov.iti.jets.dto.MinimalReviewDto;
 import eg.gov.iti.jets.model.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -55,7 +55,7 @@ public class ProductMapperTest {
         product.setQuantity(155);
         product.setCategory(category);
         product.setReviews(Set.of(review));
-        ProductDto productDto = mapper.productToProductDto(product);
+        FullyProductDto productDto = mapper.productToProductDto(product);
         assertEquals(product.getProductId(), productDto.getId());
         assertEquals(product.getProductName(), productDto.getName());
         assertEquals(product.getDescription(), productDto.getDescription());
@@ -71,8 +71,8 @@ public class ProductMapperTest {
     public void imageDtoToImageTest() {
         CategoryDto categoryDto = new CategoryDto(21, "TEST Category");
         ImageDto imageDto = new ImageDto("Name", "Path");
-        ReviewDto reviewDto = new ReviewDto("TEST", LocalDateTime.now(), 2, "Ahmed Mohamed");
-        ProductDto productDto = new ProductDto(1, "Product Name", "TEST", imageDto, 15.25f, categoryDto, Set.of(reviewDto));
+        MinimalReviewDto reviewDto = new MinimalReviewDto("TEST", LocalDateTime.now(), 2, "Ahmed Mohamed");
+        FullyProductDto productDto = new FullyProductDto(1, "Product Name", "TEST", imageDto, 15.25f, categoryDto, Set.of(reviewDto));
         Product product = mapper.productDtoToProduct(productDto);
         assertEquals(productDto.getId(), product.getProductId());
         assertEquals(productDto.getName(), product.getProductName());

@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.mappers;
 
-import eg.gov.iti.jets.dto.ReviewDto;
+import eg.gov.iti.jets.dto.MinimalReviewDto;
 import eg.gov.iti.jets.model.Review;
 import eg.gov.iti.jets.model.User;
 import org.mapstruct.InheritInverseConfiguration;
@@ -17,10 +17,10 @@ public interface ReviewMapper {
     @Mapping(source = "reviewMessageTime", target = "time")
     @Mapping(source = "reviewStars", target = "stars")
     @Mapping(target = "userName", expression = "java(review.getUser().getFirstName() + \" \" + review.getUser().getLastName())")
-    ReviewDto reviewToReviewDto(Review review);
+    MinimalReviewDto reviewToReviewDto(Review review);
 
     @InheritInverseConfiguration
-    @Mapping(target = "user.firstName", expression = "java(reviewDto.getUserName().split(\" \")[0])")
-    @Mapping(target = "user.lastName", expression = "java(reviewDto.getUserName().split(\" \")[1])")
-    Review reviewDtoToReview(ReviewDto reviewDto);
+    @Mapping(target = "user.firstName", expression = "java(minimalReviewDto.getUserName().split(\" \")[0])")
+    @Mapping(target = "user.lastName", expression = "java(minimalReviewDto.getUserName().split(\" \")[1])")
+    Review reviewDtoToReview(MinimalReviewDto minimalReviewDto);
 }

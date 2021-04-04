@@ -1,6 +1,5 @@
 package eg.gov.iti.jets.repository;
 
-import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
 
@@ -12,7 +11,7 @@ public interface UserRepository {
 //    User findByEmailAndPassword(String email, String password);
     User saveUser(User user);
     User updateUser(User user);
-    List<UserDto> fetchAllUsers ();
+    List<User> fetchAllUsers ();
 
     List<User> findALlAdminUsers();
     List<User> findALlCustomerUsers();

@@ -79,10 +79,8 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public List<UserDto> fetchAllUsers() {
-        List<UserDto> userList = new ArrayList<>();
-        userList = userRepository.fetchAllUsers();
-        return userList;
+    public List<User> fetchAllUsers() {
+        return userRepository.fetchAllUsers();
     }
 
 }

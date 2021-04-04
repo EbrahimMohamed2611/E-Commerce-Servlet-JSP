@@ -13,13 +13,13 @@ public interface ProductRepository {
 
     List<Product> findByCategory(Category category);
 
+    List<Product> findByCategoryId(int categoryId);
+
     Product addNewProduct(Product product);
 
     List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice);
 
     List<Product> findAll();
-
-    Product findProductById(int productId);
 
     double getAvgRating(int id);
 

@@ -1,20 +1,18 @@
 package eg.gov.iti.jets.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class ReviewDto {
-    private String message;
-    private LocalDateTime time;
-    private int stars;
+public class ReviewDTO {
+    private int productId; //orderedProductDTO Unique identifier
+    private String userEmail; //user unique identifier
     private String userName;
-}
+    private String message;
+    private LocalDateTime reviewTime;
+    private int stars;
 
+}

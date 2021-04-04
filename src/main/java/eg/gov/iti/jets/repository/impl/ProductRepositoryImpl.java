@@ -5,15 +5,10 @@ import eg.gov.iti.jets.exceptions.ProductNotFoundException;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
-import org.hibernate.Criteria;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import java.util.ArrayList;
+import javax.persistence.PersistenceException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProductRepositoryImpl implements ProductRepository {
 
@@ -29,6 +24,13 @@ public class ProductRepositoryImpl implements ProductRepository {
     public List<Product> findByCategory(Category category) {
         return (List<Product>) ENTITY_MANAGER.createNamedQuery("Product.findByCategory").
                 setParameter("category", category).getResultList();
+    }
+
+    @Override
+    public List<Product> findByCategoryId(int categoryId) {
+       return ENTITY_MANAGER.createQuery("from Product where category.categoryId = :categoryId")
+                .setParameter("categoryId", categoryId)
+                .getResultList();
     }
 
     @Override
@@ -73,13 +75,5 @@ public class ProductRepositoryImpl implements ProductRepository {
         } catch (PersistenceException exception) {
             throw new ProductNotFoundException("Product with id=" + id + " not found!");
         }
-    }
-
-    public Product findProductById(int productId) {
-
-        EntityManager entityManager = persistenceManager.getEntityManager();
-        Product product = entityManager.find(Product.class, productId);
-        entityManager.close();
-        return product;
     }
 }

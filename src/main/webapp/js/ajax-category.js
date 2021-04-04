@@ -12,10 +12,12 @@ $(function () {
             url: 'addCategory'
         })
             .done(function (response) {
-                categoriesContainer.clear();
                 console.log(response);
                 response.forEach(e => {
-                    categoriesContainer.next().children(".list").append($("<option></option>").val(e.categoryId).text(e.categoryName));
+                    console.log(e);
+                    // categoriesContainer.append(`<option value="${e.categoryId}">${e.categoryName}</option>`);
+                    // categoriesContainer.next().children(".list").append($("<option></option>").val(e.categoryId).text(e.categoryName));
+                    categoriesContainer.next().children(".list").append(`<li data-value="${e.categoryId}" class="option">${e.categoryName}</li>`);
                 });
             });
     }

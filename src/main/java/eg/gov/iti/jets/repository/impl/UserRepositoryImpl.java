@@ -1,16 +1,15 @@
 package eg.gov.iti.jets.repository.impl;
 
-import eg.gov.iti.jets.config.ConnectToMysqlDatabase;
 import eg.gov.iti.jets.config.PersistenceManager;
-import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class UserRepositoryImpl implements UserRepository {
 
@@ -28,7 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
 //        return user;
 //    }
     @Override
-    public User findByEmail(String email) throws NoResultException{
+    public User findByEmail(String email) throws NoResultException {
         System.out.println("entityManager is opened");
         EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
@@ -38,8 +37,8 @@ public class UserRepositoryImpl implements UserRepository {
         entityManager.getTransaction().commit();
         entityManager.close();
 
-        for(User user :resultList){
-            if(user.getEmail().equals(email))
+        for (User user : resultList) {
+            if (user.getEmail().equals(email))
                 return user;
         }
         return null;
@@ -83,25 +82,12 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> fetchAllUsers() {
-        List<User> userList = new ArrayList<>();
         EntityManager entityManager = persistenceManager.getEntityManager();
-        Query query = entityManager.createQuery("from User");
-
-        System.out.println("query.getResultList()------> " + query.getResultList());
-        userList = query.getResultList();
-        System.out.println("UserList-----> " + userList);
-
-        System.out.println( "query.getResultList()------> "+ query.getResultList());
-        userList = query.getResultList();
-        System.out.println("UserList-----> "+userList);
-
-
-
-        //entityManager.getTransaction().begin();
-
-        return userList;
-
+        List<User> users = entityManager.createQuery("from User").getResultList();
+        entityManager.close();
+        return users;
     }
+
     public List<User> findALlAdminUsers() {
         EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
@@ -115,7 +101,7 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> findALlCustomerUsers() {
         EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
-        List<User> resultList = (List<User>)  entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+        List<User> resultList = (List<User>) entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
         entityManager.getTransaction().commit();
         entityManager.close();
         return resultList;

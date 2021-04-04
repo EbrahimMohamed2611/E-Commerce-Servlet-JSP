@@ -1,5 +1,6 @@
 package eg.gov.iti.jets.controller;
 
+import eg.gov.iti.jets.dto.MinimalProductDto;
 import eg.gov.iti.jets.service.ProductService;
 import eg.gov.iti.jets.service.impl.ProductServiceImpl;
 import jakarta.servlet.ServletException;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ProductDisplay", urlPatterns = "/products")
 public class ProductDisplayController extends HttpServlet {
@@ -17,7 +19,18 @@ public class ProductDisplayController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("products", PRODUCT_SERVICE.getProducts());
-        request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
+        String categoryId = request.getParameter("cat");
+        if (categoryId != null) {
+            List<MinimalProductDto> products = PRODUCT_SERVICE.getProductsByCategoryId(Integer.parseInt(categoryId));
+            if (products != null && products.size() > 0) {
+                request.setAttribute("products", products);
+                request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
+            } else {
+                response.sendError(404);
+            }
+        } else {
+            request.setAttribute("products", PRODUCT_SERVICE.getProducts());
+            request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
+        }
     }
 }

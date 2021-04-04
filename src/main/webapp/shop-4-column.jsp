@@ -3,6 +3,7 @@
 <html class="no-js" lang="zxx">
 
 <!-- shop-4-column31:48-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -44,6 +45,7 @@
     <!-- Modernizr js -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+
 <body>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -103,9 +105,11 @@
                                     <div class="ht-language-trigger"><span>English</span></div>
                                     <div class="language ht-language">
                                         <ul class="ht-setting-list">
-                                            <li class="active"><a href="#"><img src="images/menu/flag-icon/1.jpg"
-                                                                                alt="">English</a></li>
-                                            <li><a href="#"><img src="images/menu/flag-icon/2.jpg" alt="">Français</a>
+                                            <li class="active"><a href="#"><img
+                                                    src="images/menu/flag-icon/1.jpg" alt="">English</a>
+                                            </li>
+                                            <li><a href="#"><img src="images/menu/flag-icon/2.jpg"
+                                                                 alt="">Français</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -126,8 +130,7 @@
                     <!-- Begin Header Logo Area -->
                     <div class="col-lg-3">
                         <div class="logo pb-sm-30 pb-xs-30">
-                            <a href="index.jsp
-">
+                            <a href="index.jsp">
                                 <img src="images/menu/logo/1.jpg" alt="">
                             </a>
                         </div>
@@ -235,15 +238,14 @@
                                     </div>
                                     <span></span>
                                     <div class="minicart">
-                                        <ul class="minicart-product-list">
+                                        <ul id="shoppingCardContainer" class="minicart-product-list">
                                             <li>
-                                                <a href="single-product.jsp
-" class="minicart-product-image">
-                                                    <img src="images/product/small-size/5.jpg" alt="cart products">
+                                                <a href="single-product.jsp" class="minicart-product-image">
+                                                    <img src="images/product/small-size/5.jpg"
+                                                         alt="cart products">
                                                 </a>
                                                 <div class="minicart-product-details">
-                                                    <h6><a href="single-product.jsp
-">Aenean eu tristique</a></h6>
+                                                    <h6><a href="single-product.jsp">Aenean eu tristique</a></h6>
                                                     <span>£40 x 1</span>
                                                 </div>
                                                 <button class="close" title="Remove">
@@ -251,13 +253,13 @@
                                                 </button>
                                             </li>
                                             <li>
-                                                <a href="single-product.jsp
-" class="minicart-product-image">
-                                                    <img src="images/product/small-size/6.jpg" alt="cart products">
+                                                <a href="single-product.jsp" class="minicart-product-image">
+                                                    <img src="images/product/small-size/6.jpg"
+                                                         alt="cart products">
                                                 </a>
                                                 <div class="minicart-product-details">
-                                                    <h6><a href="single-product.jsp
-">Aenean eu tristique</a></h6>
+                                                    <h6><a href="single-product.jsp">Aenean eu tristique</a>
+                                                    </h6>
                                                     <span>£40 x 1</span>
                                                 </div>
                                                 <button class="close" title="Remove">
@@ -265,14 +267,12 @@
                                                 </button>
                                             </li>
                                         </ul>
-                                        <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
                                         <div class="minicart-button">
-                                            <a href="shopping-cart.jsp
-" class="li-button li-button-fullwidth li-button-dark">
+                                            <a href="shopping-cart.jsp"
+                                               class="li-button li-button-fullwidth li-button-dark">
                                                 <span>View Full Cart</span>
                                             </a>
-                                            <a href="checkout.jsp
-" class="li-button li-button-fullwidth">
+                                            <a href="checkout.jsp" class="li-button li-button-fullwidth">
                                                 <span>Checkout</span>
                                             </a>
                                         </div>
@@ -391,10 +391,12 @@
 ">List Right Sidebar</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="sub-dropdown-holder"><a href="blog-details-left-sidebar.jsp">Blog
+                                            <li class="sub-dropdown-holder"><a
+                                                    href="blog-details-left-sidebar.jsp">Blog
                                                 Details</a>
                                                 <ul class="hb-dropdown hb-sub-dropdown">
-                                                    <li><a href="blog-details-left-sidebar.jsp">Left Sidebar</a></li>
+                                                    <li><a href="blog-details-left-sidebar.jsp">Left Sidebar</a>
+                                                    </li>
                                                     <li><a href="blog-details-right-sidebar.jsp
 ">Right Sidebar</a></li>
                                                 </ul>
@@ -402,7 +404,8 @@
                                             <li class="sub-dropdown-holder"><a href="blog-gallery-format.jsp
 ">Blog Format</a>
                                                 <ul class="hb-dropdown hb-sub-dropdown">
-                                                    <li><a href="blog-audio-format.jsp">Blog Audio Format</a></li>
+                                                    <li><a href="blog-audio-format.jsp">Blog Audio Format</a>
+                                                    </li>
                                                     <li><a href="blog-video-format.jsp
 ">Blog Video Format</a></li>
                                                     <li><a href="blog-gallery-format.jsp
@@ -433,10 +436,12 @@
                                             </li>
                                             <li><a href="blog-details-left-sidebar.jsp">Blog Details Pages</a>
                                                 <ul>
-                                                    <li><a href="blog-details-left-sidebar.jsp">Left Sidebar</a></li>
+                                                    <li><a href="blog-details-left-sidebar.jsp">Left Sidebar</a>
+                                                    </li>
                                                     <li><a href="blog-details-right-sidebar.jsp
 ">Right Sidebar</a></li>
-                                                    <li><a href="blog-audio-format.jsp">Blog Audio Format</a></li>
+                                                    <li><a href="blog-audio-format.jsp">Blog Audio Format</a>
+                                                    </li>
                                                     <li><a href="blog-video-format.jsp
 ">Blog Video Format</a></li>
                                                     <li><a href="blog-gallery-format.jsp
@@ -504,8 +509,7 @@
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index.jsp
-">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li class="active">Shop 4 Column</li>
                 </ul>
             </div>
@@ -530,19 +534,32 @@
                             <div class="product-view-mode">
                                 <!-- shop-item-filter-list start -->
                                 <ul class="nav shop-item-filter-list" role="tablist">
-                                    <li class="active" role="presentation"><a aria-selected="true" class="active show"
-                                                                              data-toggle="tab" role="tab"
+                                    <li class="active" role="presentation"><a aria-selected="true"
+                                                                              class="active show" data-toggle="tab"
+                                                                              role="tab"
                                                                               aria-controls="grid-view"
-                                                                              href="#grid-view"><i class="fa fa-th"></i></a>
+                                                                              href="#grid-view"><i
+                                            class="fa fa-th"></i></a>
                                     </li>
-                                    <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="list-view"
-                                                               href="#list-view"><i class="fa fa-th-list"></i></a></li>
+                                    <li role="presentation"><a data-toggle="tab" role="tab"
+                                                               aria-controls="list-view" href="#list-view"><i
+                                            class="fa fa-th-list"></i></a></li>
                                 </ul>
                                 <!-- shop-item-filter-list end -->
                             </div>
                             <div class="toolbar-amount">
                                 <span>Showing 1 to 9 of 15</span>
                             </div>
+                        </div>
+                        <div>
+                            <p>
+                                <label for="amount">Price range:</label>
+                                <input type="text" id="amount" readonly
+                                       style="border:0; color:#f6931f; font-weight:bold;">
+                            </p>
+
+                            <div id="slider-range"></div>
+
                         </div>
                         <!-- product-select-box start -->
                         <div class="product-select-box">
@@ -569,53 +586,66 @@
                                 <div class="product-area shop-product-area">
                                     <div class="row">
                                         <c:forEach items="${requestScope.products}" var="product">
-                                        <div class="col-lg-3 col-md-4 col-sm-6 mt-40">
-                                            <!-- single-product-wrap start -->
-                                            <div class="single-product-wrap">
-                                                <div class="product-image">
-                                                    <a href="single-product.jsp">
-                                                        <img src="${product.image.path}"
-                                                             alt="Product Image">
-                                                    </a>
-<%--                                                    <span class="sticker">New</span>--%>
-                                                </div>
-                                                <div class="product_desc">
-                                                    <div class="product_desc_info">
-                                                        <div class="product-review">
-                                                            <h5 class="manufacturer">
-                                                                <a href="product-details.jsp">Graphic Corner</a>
-                                                            </h5>
-                                                            <div class="rating-box">
-                                                                <ul class="rating">
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
-                                                                    </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
-                                                                    </li>
-                                                                </ul>
+                                            <div class="col-lg-3 col-md-4 col-sm-6 mt-40">
+                                                <!-- single-product-wrap start -->
+                                                <div class="single-product-wrap">
+                                                    <div class="product-image">
+                                                        <a href="single-product.jsp">
+                                                            <img src="${product.image.path}"
+                                                                 alt="Product Image">
+                                                        </a>
+                                                            <%-- <span class="sticker">New</span>--%>
+                                                    </div>
+                                                    <div class="product_desc">
+                                                        <div class="product_desc_info">
+                                                            <div class="product-review">
+                                                                <h5 class="manufacturer">
+                                                                    <a href="product-details.jsp">Graphic
+                                                                        Corner</a>
+                                                                </h5>
+                                                                <div class="rating-box">
+                                                                    <ul class="rating">
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        <li class="no-star"><i
+                                                                                class="fa fa-star-o"></i>
+                                                                        </li>
+                                                                        <li class="no-star"><i
+                                                                                class="fa fa-star-o"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <h4><a class="product_name"
+                                                                   href="productInfo?productId=${product.id}">${product.name}</a>
+                                                            </h4>
+                                                            <div class="price-box">
+                                                                <span class="new-price">$${product.price}</span>
                                                             </div>
                                                         </div>
-                                                        <h4><a class="product_name" href="productInfo?productId=${product.id}">${product.name}</a></h4>
-                                                        <div class="price-box">
-                                                            <span class="new-price">$${product.price}</span>
+                                                        <div class="add-actions">
+                                                            <ul class="add-actions-link">
+                                                                <li class="add-cart active"><a
+                                                                        class="addProductToShoppingCart"
+                                                                        href=""
+                                                                        data-product="${product.id}">Add to
+                                                                    cart</a></li>
+                                                                <li><a href="#" title="quick view"
+                                                                       class="quick-view-btn"
+                                                                       data-toggle="modal"
+                                                                       data-target="#exampleModalCenter"
+                                                                       data-product="${product.id}"><i
+                                                                        class="fa fa-eye"></i></a></li>
+                                                                <li><a class="links-details"
+                                                                       href="wishlist.jsp"><i
+                                                                        class="fa fa-heart-o"></i></a></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="add-actions">
-                                                        <ul class="add-actions-link">
-                                                            <li class="add-cart active"><a class="addProductToShoppingCart" href="#" data-product="${product.id}">Add to cart</a></li>
-                                                            <li><a href="#" title="quick view" class="quick-view-btn"
-                                                                   data-toggle="modal"
-                                                                   data-target="#exampleModalCenter" data-product="${product.id}"><i
-                                                                    class="fa fa-eye"></i></a></li>
-                                                            <li><a class="links-details" href="wishlist.jsp"><i class="fa fa-heart-o"></i></a></li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
+                                                <!-- single-product-wrap end -->
                                             </div>
-                                            <!-- single-product-wrap end -->
-                                        </div>
                                         </c:forEach>
                                     </div>
                                 </div>
@@ -626,8 +656,7 @@
                                         <div class="row product-layout-list">
                                             <div class="col-lg-3 col-md-5 ">
                                                 <div class="product-image">
-                                                    <a href="single-product.jsp
-">
+                                                    <a href="single-product.jsp">
                                                         <img src="images/product/large-size/12.jpg"
                                                              alt="Li's Product Image">
                                                     </a>
@@ -647,9 +676,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -659,9 +690,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -704,9 +738,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -716,9 +752,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -761,9 +800,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -773,9 +814,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -818,9 +862,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -830,9 +876,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -875,9 +924,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -887,9 +938,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -932,9 +986,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -944,9 +1000,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -989,9 +1048,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -1001,9 +1062,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -1046,9 +1110,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -1058,9 +1124,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -1103,9 +1172,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -1115,9 +1186,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -1160,9 +1234,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -1172,9 +1248,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -1217,9 +1296,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -1229,9 +1310,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -1274,9 +1358,11 @@
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    <li class="no-star"><i
+                                                                            class="fa fa-star-o"></i>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -1286,9 +1372,12 @@
                                                         <div class="price-box">
                                                             <span class="new-price">$46.80</span>
                                                         </div>
-                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant
-                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With
-                                                            Exquisite Sound via Ring Radiator Technology. Stream And
+                                                        <p>Beach Camera Exclusive Bundle - Includes Two Samsung
+                                                            Radiant
+                                                            360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire
+                                                            Room With
+                                                            Exquisite Sound via Ring Radiator Technology. Stream
+                                                            And
                                                             Control R3 Speakers Wirelessly With Your Smartphone.
                                                             Sophisticated, Modern Desig</p>
                                                     </div>
@@ -1317,13 +1406,15 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul class="pagination-box">
-                                            <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
+                                            <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i>
+                                                Previous</a>
                                             </li>
                                             <li class="active"><a href="#">1</a></li>
                                             <li><a href="#">2</a></li>
                                             <li><a href="#">3</a></li>
                                             <li>
-                                                <a href="#" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
+                                                <a href="#" class="Next"> Next <i
+                                                        class="fa fa-chevron-right"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -1413,7 +1504,8 @@
                             <div class="footer-logo">
                                 <img src="images/menu/logo/1.jpg" alt="Footer Logo">
                                 <p class="info">
-                                    We are a team of designers and developers that create high quality HTML Template &
+                                    We are a team of designers and developers that create high quality HTML
+                                    Template &
                                     Woocommerce, Shopify Theme.
                                 </p>
                             </div>
@@ -1471,7 +1563,8 @@
                                         </a>
                                     </li>
                                     <li class="rss">
-                                        <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
+                                        <a href="https://rss.com/" data-toggle="tooltip" target="_blank"
+                                           title="RSS">
                                             <i class="fa fa-rss"></i>
                                         </a>
                                     </li>
@@ -1482,8 +1575,8 @@
                                         </a>
                                     </li>
                                     <li class="facebook">
-                                        <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank"
-                                           title="Facebook">
+                                        <a href="https://www.facebook.com/" data-toggle="tooltip"
+                                           target="_blank" title="Facebook">
                                             <i class="fa fa-facebook"></i>
                                         </a>
                                     </li>
@@ -1494,8 +1587,8 @@
                                         </a>
                                     </li>
                                     <li class="instagram">
-                                        <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank"
-                                           title="Instagram">
+                                        <a href="https://www.instagram.com/" data-toggle="tooltip"
+                                           target="_blank" title="Instagram">
                                             <i class="fa fa-instagram"></i>
                                         </a>
                                     </li>
@@ -1563,7 +1656,8 @@
                         <!-- Footer Payment Area End Here -->
                         <!-- Begin Copyright Area -->
                         <div class="copyright text-center pt-25">
-                            <span><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+                                    <span><a target="_blank" href="https://www.templateshub.net">Templates
+                                            Hub</a></span>
                         </div>
                         <!-- Copyright Area End Here -->
                     </div>
@@ -1587,38 +1681,53 @@
                             <div class="product-details-left">
                                 <div class="product-details-images slider-navigation-1">
                                     <div class="lg-image">
-                                        <img id="productImage" src="images/product/large-size/1.jpg" alt="product image">
+                                        <img id="productImage" src="images/product/large-size/1.jpg"
+                                             alt="product image">
                                     </div>
-<%--                                    <div class="lg-image">--%>
-<%--                                        <img src="images/product/large-size/2.jpg" alt="product image">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="lg-image">--%>
-<%--                                        <img src="images/product/large-size/3.jpg" alt="product image">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="lg-image">--%>
-<%--                                        <img src="images/product/large-size/4.jpg" alt="product image">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="lg-image">--%>
-<%--                                        <img src="images/product/large-size/5.jpg" alt="product image">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="lg-image">--%>
-<%--                                        <img src="images/product/large-size/6.jpg" alt="product image">--%>
-<%--                                    </div>--%>
+                                    <%-- <div class="lg-image">--%>
+                                    <%-- <img src="images/product/large-size/2.jpg" alt="product image">--%>
+                                    <%-- </div>--%>
+                                    <%-- <div class="lg-image">--%>
+                                    <%-- <img src="images/product/large-size/3.jpg"
+                                        alt="product image">--%>
+                                    <%-- </div>--%>
+                                    <%-- <div class="lg-image">--%>
+                                    <%-- <img src="images/product/large-size/4.jpg"
+                                        alt="product image">--%>
+                                    <%-- </div>--%>
+                                    <%-- <div class="lg-image">--%>
+                                    <%-- <img
+                                        src="images/product/large-size/5.jpg"
+                                        alt="product image">--%>
+                                    <%-- </div>--%>
+                                    <%-- <div class="lg-image">
+                                        --%>
+                                    <%-- <img
+                                        src="images/product/large-size/6.jpg"
+                                        alt="product image">
+                                        --%>
+                                    <%-- </div>--%>
                                 </div>
-<%--                                <div class="product-details-thumbs slider-thumbs-1">--%>
-<%--                                    <div class="sm-image"><img src="images/product/small-size/1.jpg"--%>
-<%--                                                               alt="product image thumb"></div>--%>
-<%--                                    <div class="sm-image"><img src="images/product/small-size/2.jpg"--%>
-<%--                                                               alt="product image thumb"></div>--%>
-<%--                                    <div class="sm-image"><img src="images/product/small-size/3.jpg"--%>
-<%--                                                               alt="product image thumb"></div>--%>
-<%--                                    <div class="sm-image"><img src="images/product/small-size/4.jpg"--%>
-<%--                                                               alt="product image thumb"></div>--%>
-<%--                                    <div class="sm-image"><img src="images/product/small-size/5.jpg"--%>
-<%--                                                               alt="product image thumb"></div>--%>
-<%--                                    <div class="sm-image"><img src="images/product/small-size/6.jpg"--%>
-<%--                                                               alt="product image thumb"></div>--%>
-<%--                                </div>--%>
+                                <%-- <div class="product-details-thumbs slider-thumbs-1">--%>
+                                <%-- <div class="sm-image"><img src="images/product/small-size/1.jpg" --%>
+                                <%-- alt="product image thumb">
+                    </div>--%>
+                                <%-- <div class="sm-image"><img src="images/product/small-size/2.jpg" --%>
+                                <%-- alt="product image thumb">
+                        </div>--%>
+                                <%-- <div class="sm-image"><img src="images/product/small-size/3.jpg" --%>
+                                <%-- alt="product image thumb">
+                        </div>--%>
+                                <%-- <div class="sm-image"><img src="images/product/small-size/4.jpg" --%>
+                                <%-- alt="product image thumb">
+                        </div>--%>
+                                <%-- <div class="sm-image"><img src="images/product/small-size/5.jpg" --%>
+                                <%-- alt="product image thumb">
+                        </div>--%>
+                                <%-- <div class="sm-image"><img src="images/product/small-size/6.jpg" --%>
+                                <%-- alt="product image thumb">
+                        </div>--%>
+                                <%-- </div>--%>
                             </div>
                             <!--// Product Details Left -->
                         </div>
@@ -1641,7 +1750,7 @@
                                     </div>
                                     <div class="product-desc">
                                         <p>
-                                                    <span id="productDescription"></span>
+                                            <span id="productDescription"></span>
                                         </p>
                                     </div>
                                     <div class="single-add-to-cart">
@@ -1658,7 +1767,8 @@
                                         </form>
                                     </div>
                                     <div class="product-additional-info pt-25">
-                                        <a class="wishlist-btn" href="wishlist.jsp"><i class="fa fa-heart-o"></i>Add to wishlist</a>
+                                        <a class="wishlist-btn" href="wishlist.jsp"><i class="fa fa-heart-o"></i>Add to
+                                            wishlist</a>
                                         <div class="product-social-sharing pt-25">
                                             <ul>
                                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a>
@@ -1727,7 +1837,24 @@
 <script src="js/main.js"></script>
 <!-- Ajax Request for modal js -->
 <script src="js/ajax-product.js"></script>
+<script src="js/ajax-shoppingCart.js"></script>
+<script>
+    $(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [75, 300],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            " - $" + $("#slider-range").slider("values", 1));
+    });
+</script>
 </body>
 
 <!-- shop-4-column31:48-->
+
 </html>

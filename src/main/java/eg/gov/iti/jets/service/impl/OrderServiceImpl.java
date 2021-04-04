@@ -2,7 +2,10 @@ package eg.gov.iti.jets.service.impl;
 
 import eg.gov.iti.jets.adapter.OrderAdapter;
 import eg.gov.iti.jets.adapter.UserAdapter;
-import eg.gov.iti.jets.dto.*;
+import eg.gov.iti.jets.dto.OrderDTO;
+import eg.gov.iti.jets.dto.OrderedProductDTO;
+import eg.gov.iti.jets.dto.PurchaseDTO;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.OrderRepositoryFactory;
 import eg.gov.iti.jets.factory.ProductRepositoryFactory;
 import eg.gov.iti.jets.factory.PurchaseRepositoryFactory;
@@ -42,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderId(orderDTO.getId());
 
         orderDTO.getItemsOrdered().forEach(e -> {
-            Product product = productRepository.findProductById(e.getOrderedProductDTO().getProductId());
+            Product product = productRepository.findById(e.getOrderedProductDTO().getProductId());
             Purchase purchase = new Purchase();
             purchase.setProduct(product);
             purchase.setQuantity(e.getQuantity());
@@ -105,9 +108,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO updateOrder(OrderDTO orderToUpdateDTO, UserDTO userDTO) {
-        Order orderToUpdate =  prepareTheOrderForDatabase(orderToUpdateDTO, OrderStatus.NOT_COMPLETED, userDTO);
+        Order orderToUpdate = prepareTheOrderForDatabase(orderToUpdateDTO, OrderStatus.NOT_COMPLETED, userDTO);
         Order updatedOrder = orderRepository.updateOrder(orderToUpdate);
-        if(updatedOrder != null){
+        if (updatedOrder != null) {
             updatedOrder.getPurchase().forEach(purchaseRepository::savePurchase);
             return OrderAdapter.convertOrderModelToOrderDTO(updatedOrder);
         }
@@ -116,16 +119,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO addNewOrder(OrderDTO orderToSaveDTO, UserDTO userDTO) {
-        Order orderToSave =  prepareTheOrderForDatabase(orderToSaveDTO, OrderStatus.NOT_COMPLETED, userDTO);
+        Order orderToSave = prepareTheOrderForDatabase(orderToSaveDTO, OrderStatus.NOT_COMPLETED, userDTO);
         Order savedOrder = orderRepository.saveOrder(orderToSave);
-        if(savedOrder != null){
+        if (savedOrder != null) {
             savedOrder.getPurchase().forEach(purchaseRepository::savePurchase);
             return OrderAdapter.convertOrderModelToOrderDTO(savedOrder);
         }
         return null; // else
     }
 
-    private Order prepareTheOrderForDatabase(OrderDTO orderDTO, OrderStatus orderStatus, UserDTO userDTO){
+    private Order prepareTheOrderForDatabase(OrderDTO orderDTO, OrderStatus orderStatus, UserDTO userDTO) {
         Order order = OrderAdapter.convertOrderDTOToOrderModel(orderDTO);
         User currentUser = UserAdapter.convertFromUserRegistrationDtoToUserModel(userDTO);
         order.setUser(currentUser);

@@ -1,14 +1,9 @@
 package eg.gov.iti.jets.mappers;
 
 import eg.gov.iti.jets.dto.CategoryDto;
-import eg.gov.iti.jets.dto.ReviewDto;
 import eg.gov.iti.jets.model.Category;
-import eg.gov.iti.jets.model.Review;
-import eg.gov.iti.jets.model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 

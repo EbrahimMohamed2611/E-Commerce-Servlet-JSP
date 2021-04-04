@@ -1,23 +1,16 @@
 package eg.gov.iti.jets.listener;
 
-import eg.gov.iti.jets.config.HibernateMySqlConfiguration;
+import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
 import eg.gov.iti.jets.config.PersistenceManager;
-
-
-import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.service.UserService;
-
 import eg.gov.iti.jets.utils.AllCountries;
-import eg.gov.iti.jets.utils.MailService;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
-import org.hibernate.SessionFactory;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.sql.Driver;
@@ -28,10 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 @WebListener
-public class ApplicationStartingListener implements ServletContextListener{
-    EntityManagerFactory factory ;
+public class ApplicationStartingListener implements ServletContextListener {
 
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
 
     @Override
@@ -45,11 +37,11 @@ public class ApplicationStartingListener implements ServletContextListener{
             e.printStackTrace();
         }
         System.out.println("Database is Opened");
-        sce.getServletContext().setAttribute("countries",stringStringMap);
+        sce.getServletContext().setAttribute("countries", stringStringMap);
 
         List<User> userList = userService.fetchAllUsers();
-        System.out.println("Inside initialize of conttext->userlist "+userList);
-        sce.getServletContext().setAttribute("userList",userList);
+        System.out.println("Inside initialize of conttext->userlist " + userList);
+        sce.getServletContext().setAttribute("userList", userList);
         System.out.println("put it into the ocntext scope ");
 
 
@@ -67,14 +59,10 @@ public class ApplicationStartingListener implements ServletContextListener{
 
         try {
             ServletContextListener.super.contextDestroyed(sce);
-        }
-        finally {
+        } finally {
             deregisterJdbcDrivers(sce.getServletContext());
         }
     }
-
-
-
 
 
     protected void deregisterJdbcDrivers(ServletContext servletContext) {
@@ -83,8 +71,7 @@ public class ApplicationStartingListener implements ServletContextListener{
                 try {
                     DriverManager.deregisterDriver(driver);
                     System.out.println("Mysql Connection Clean Up");
-                }
-                catch (SQLException ex) {
+                } catch (SQLException ex) {
                     System.out.println("Unable to CleanUp");
                     // Continue
                 }
