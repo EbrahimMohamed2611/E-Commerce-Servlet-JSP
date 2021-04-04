@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "AddPurchaseController", urlPatterns = "/addToCart")
+@WebServlet(name = "AddPurchaseController", urlPatterns = "/addToCart2")
 public class AddPurchaseController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

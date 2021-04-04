@@ -33,11 +33,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO findByEmail(String email) {
         User user = userRepository.findByEmail(email);
-        if(user == null)
+        if (user == null)
             return null;
-        else{
-        UserDTO userDto = UserAdapter.convertFromUserModelToUserRegistrationDto(user);
-        return userDto;
+        else {
+            UserDTO userDto = UserAdapter.convertFromUserModelToUserRegistrationDto(user);
+            return userDto;
         }
     }
 
@@ -79,8 +79,19 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public List<User> fetchAllUsers() {
-        return userRepository.fetchAllUsers();
+
+    public List<UserDTO> fetchAllUsers() {
+        List<UserDTO> userList = new ArrayList<>();
+        userList = userRepository.fetchAllUsers();
+        return userList;
+    }
+
+
+    @Override
+    public boolean isUserBalanceEnough(double totalPrice, String userEmail) {
+        User user = userRepository.findByEmail(userEmail);
+        double userBalance = user.getBalance();
+        return totalPrice <= userBalance;
     }
 
 }

@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Set;
 
 public interface OrderRepository {
-    Order createOrder(User user, Set<Purchase> purchaseSet, Double orderTotal);
+
+
+    Set<Order> getAllOrders(int userID);
 
     Order saveOrder(Order order);
 
@@ -21,6 +23,7 @@ public interface OrderRepository {
     Order getOrder(int id);
 
     List<Order> getUserOrdersByStatus(int userId, OrderStatus orderStatus);
+
 }
 
 

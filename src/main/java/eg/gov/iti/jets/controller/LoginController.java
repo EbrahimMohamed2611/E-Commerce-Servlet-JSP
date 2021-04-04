@@ -4,22 +4,24 @@ import eg.gov.iti.jets.dto.OrderDTO;
 import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.OrderServiceFactory;
 import eg.gov.iti.jets.factory.UserServiceFactory;
+
+import eg.gov.iti.jets.model.Role;
+
 import eg.gov.iti.jets.model.OrderStatus;
 import eg.gov.iti.jets.service.OrderService;
-import eg.gov.iti.jets.model.Role;
+
 import eg.gov.iti.jets.service.UserService;
-import eg.gov.iti.jets.utils.HashPassword;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import javax.persistence.NoResultException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
@@ -45,7 +47,8 @@ public class LoginController extends HttpServlet {
         if (userDto == null) {
             response.sendRedirect("login.jsp?notFound");
         } else {
-            if (userDto.getEmail().equals(email) && userDto.getPassword().equals(password)) {
+            if (userDto.getEmail().equals(email) && userDto.getPassword().equals(password) && userDto.getRole() == Role.USER_ROLE) {
+
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
                 HttpSession session = request.getSession();
 
@@ -53,10 +56,21 @@ public class LoginController extends HttpServlet {
 
                 //------------------- Put User Orders on Session----------------------//
                 List<OrderDTO> userNotCompletedOrders = orderService.getUserOrders(userDto.getUserId(), OrderStatus.NOT_COMPLETED);
+                if(userNotCompletedOrders == null){
+                    System.out.println("userNotCompletedOrders == null ");
+                    userNotCompletedOrders = new ArrayList<>();
+                }
                 session.setAttribute("userNotCompletedOrders", userNotCompletedOrders);
 
                 requestDispatcher.forward(request, response);
+
+            } else if (userDto.getEmail().equals(email) && userDto.getPassword().equals(password) && userDto.getRole() == Role.ADMIN_ROLE) {
+//                RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/index.jsp");
+                request.getSession().setAttribute("userDto", userDto);
+                response.sendRedirect("product.jsp");
+//                requestDispatcher.forward(request, response);
             } else {
+
                 response.sendRedirect("login.jsp?invalid");
             }
         }

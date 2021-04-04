@@ -35,8 +35,8 @@ public class MainApp {
 
         //-------------------- The business of the adding to shopping cart from main page---------------------------//
 
-        int productTobeAddedId = 2;
-        OrderedProductDTO inStockProductDTO = productService.getInStockProduct(2);
+        int productTobeAddedId = 1;
+        OrderedProductDTO inStockProductDTO = productService.getInStockProduct(productTobeAddedId);
         if (inStockProductDTO == null) {
             System.out.println("Sorry Product out of Stock");
         } else {
@@ -59,6 +59,26 @@ public class MainApp {
                 userNotCompletedOrders.add(orderDTO);
             }
         }
+        //====================== the business of deleting =====================//
+
+        // delete an item :
+        System.out.println("Number of purchase before deleting : " +  userNotCompletedOrders.get(0).getItemsOrdered().size() );
+
+        OrderDTO orderDTOAfterDelete = orderService.deletePurchase(userNotCompletedOrders.get(0), 1);
+        if(orderDTOAfterDelete != null){
+            System.out.println("Update User not Completed orders after delete an item");
+//            System.out.println("Number of purchase before deleting : " + orderDTOAfterDelete.getItemsOrdered().size() );
+//            userNotCompletedOrders.set(0, orderDTOAfterDelete);
+            System.out.println("Number of purchase after deleting : " +  userNotCompletedOrders.get(0).getItemsOrdered().size() );
+
+        }
+
+        if(userNotCompletedOrders.get(0).getItemsOrdered().isEmpty()){
+            if(orderService.deleteOrder(userNotCompletedOrders.get(0).getId())){
+                userNotCompletedOrders.remove(0);
+                System.out.println("User not completed Order is now empty");
+            }
+        }
 
 
         //====================== the business of saving in the database =====================//
@@ -71,7 +91,9 @@ public class MainApp {
             if (orderId > 0) { //Already in database
                 // use update method
                 System.out.println("Order already in database, use update method ");
-                OrderDTO updatedOrderDTO = orderService.updateOrder(orderDTOToSave, testUser);
+                System.out.println("orderDTOToSave size :  "+ orderDTOToSave.getItemsOrdered().size());
+                OrderDTO updatedOrderDTO = orderService.updateOrder(orderDTOToSave, testUser, OrderStatus.NOT_COMPLETED);
+                System.out.println("UpdatedDTO size :  "+ updatedOrderDTO.getItemsOrdered().size());
                 if (updatedOrderDTO != null) {
                     System.out.println("Order Updated Successfully!");
                 } else {
@@ -89,4 +111,6 @@ public class MainApp {
             }
         }
     }
+
+
 }

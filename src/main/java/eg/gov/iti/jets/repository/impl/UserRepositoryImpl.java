@@ -1,6 +1,8 @@
 package eg.gov.iti.jets.repository.impl;
 
 import eg.gov.iti.jets.config.PersistenceManager;
+import eg.gov.iti.jets.dto.UserDTO;
+
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.UserRepository;
@@ -81,11 +83,26 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> fetchAllUsers() {
-        EntityManager entityManager = persistenceManager.getEntityManager();
-        List<User> users = entityManager.createQuery("from User").getResultList();
-        entityManager.close();
-        return users;
+
+    public List<UserDTO> fetchAllUsers() {
+        List<UserDTO> userList = new ArrayList<>();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+
+        Query query = entityManager.createQuery("from User");
+
+        System.out.println("query.getResultList()------> " + query.getResultList());
+        userList = query.getResultList();
+        System.out.println("UserList-----> " + userList);
+
+        System.out.println("query.getResultList()------> " + query.getResultList());
+        userList = query.getResultList();
+        System.out.println("UserList-----> " + userList);
+
+
+        //entityManager.getTransaction().begin();
+
+        return userList;
+
     }
 
     public List<User> findALlAdminUsers() {
@@ -102,6 +119,7 @@ public class UserRepositoryImpl implements UserRepository {
         EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
         List<User> resultList = (List<User>) entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+
         entityManager.getTransaction().commit();
         entityManager.close();
         return resultList;

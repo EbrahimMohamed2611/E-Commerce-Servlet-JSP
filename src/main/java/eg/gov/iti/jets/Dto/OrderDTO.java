@@ -16,29 +16,4 @@ public class OrderDTO {
 
 
 
-
-//   OrderItemDTO orderedItem;
-//   int quantity = 1;
-//
-//
-//
-//    public OrderItemDTO getOrderedItem() {
-//        return orderedItem;
-//    }
-//
-//    public void setOrderedItem(OrderItemDTO orderedItem) {
-//        this.orderedItem = orderedItem;
-//    }
-//
-//    public int getQuantity() {
-//        return quantity;
-//    }
-//
-//    public void setQuantity(int quantity) {
-//        this.quantity = quantity;
-//    }
-//
-//    public void incrementNumItems() {
-//        quantity++;
-//    }
 }

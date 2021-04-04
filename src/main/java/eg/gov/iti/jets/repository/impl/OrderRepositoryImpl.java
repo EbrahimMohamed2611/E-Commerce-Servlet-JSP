@@ -13,18 +13,16 @@ import java.util.List;
 import java.util.Set;
 
 public class OrderRepositoryImpl implements OrderRepository {
+
     private final PersistenceManager persistenceManager = PersistenceManager.INSTANCE;
 
-    @Override
-    public Order createOrder(User user, Set<Purchase> purchaseSet, Double orderTotal) {
-        return null;
-    }
+
 
 
     @Override
     @Transactional
     public Order saveOrder(Order order) {
-        EntityManager entityManager = persistenceManager.getEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(order);
         entityManager.getTransaction().commit();
@@ -35,7 +33,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order updateOrder(Order order) {
-        EntityManager entityManager = persistenceManager.getEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         Order orderUpdated = entityManager.merge(order);
         entityManager.getTransaction().commit();
@@ -47,11 +45,12 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public Boolean deleteOrder(int orderId) {
 
-        EntityManager entityManager = persistenceManager.getEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
-        int isSuccessful = entityManager.createQuery("delete from order o where o.order_id=:id")
+        int isSuccessful = entityManager.createQuery("delete from Order o where o.orderId=:id")
                 .setParameter("id", orderId)
                 .executeUpdate();
+        entityManager.close();
 
         return isSuccessful != 0;
     }
@@ -59,7 +58,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public Order getOrder(int orderId) {
         System.out.println("entityManager is opened");
-        EntityManager entityManager = persistenceManager.getEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
         Order order = entityManager.find(Order.class, orderId);
         entityManager.getTransaction().commit();
@@ -72,7 +71,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> getUserOrdersByStatus(int userId, OrderStatus orderStatus) {
         System.out.println("entityManager is opened");
-        EntityManager entityManager = persistenceManager.getEntityManager();
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
         entityManager.getTransaction().begin();
 
         TypedQuery<Order> query =
@@ -86,5 +85,25 @@ public class OrderRepositoryImpl implements OrderRepository {
         return listOfOrders;
 
     }
+
+
+    @Override
+    public Set<Order> getAllOrders(int userId) {
+        System.out.println("entityManager is opened");
+        EntityManager entityManager = PersistenceManager.INSTANCE.getEntityManager();
+        entityManager.getTransaction().begin();
+
+        TypedQuery<Order> query =
+                entityManager.createQuery("select o from Order o where o.user.userId = :userId", Order.class);
+
+        query.setParameter("userId", userId);
+        Set<Order> listOfOrders = (Set<Order>) query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return listOfOrders;
+
+    }
+
 
 }

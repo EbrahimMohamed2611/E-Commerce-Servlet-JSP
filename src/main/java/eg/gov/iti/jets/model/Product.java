@@ -80,6 +80,7 @@ public class Product implements Serializable {
         Product that = (Product) o;
         return Objects.equals(productId, that.getProductId());
     }
+
     @Override
     public int hashCode() {
         return Objects.hashCode(productId);

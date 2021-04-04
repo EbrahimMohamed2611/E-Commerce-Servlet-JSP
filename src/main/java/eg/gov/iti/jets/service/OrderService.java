@@ -4,9 +4,15 @@ import eg.gov.iti.jets.dto.*;
 import eg.gov.iti.jets.model.Order;
 import eg.gov.iti.jets.model.OrderStatus;
 
+import java.util.Set;
 import java.util.List;
 
 public interface OrderService {
+
+
+
+    Set<Order> getAllOrders(int userID);
+
     List<OrderDTO> getUserOrders(int userId, OrderStatus orderStatus);
 
     void saveOrders(UserDTO userDTO, OrderDTO orderDTO, OrderStatus orderStatus);
@@ -21,7 +27,13 @@ public interface OrderService {
 
     PurchaseDTO createNewPurchase(OrderedProductDTO inStockProductDTO);
 
-    OrderDTO updateOrder(OrderDTO orderToUpdate, UserDTO userDTO);
+    OrderDTO updateOrder(OrderDTO orderToUpdate, UserDTO userDTO, OrderStatus orderStatus);
 
     OrderDTO addNewOrder(OrderDTO orderToSave, UserDTO userDTO);
+
+    OrderDTO deletePurchase(OrderDTO notCompletedOrder, int productId);
+
+    boolean deleteOrder(int orderId);
+
+    double totalPrice(OrderDTO orderDTO);
 }

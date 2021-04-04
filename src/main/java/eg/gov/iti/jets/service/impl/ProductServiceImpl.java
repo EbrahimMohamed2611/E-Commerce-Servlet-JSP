@@ -7,6 +7,7 @@ import eg.gov.iti.jets.dto.OrderedProductDTO;
 import eg.gov.iti.jets.enums.FilterTypes;
 import eg.gov.iti.jets.mappers.MinimalProductMapper;
 import eg.gov.iti.jets.mappers.ProductMapper;
+import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
 import eg.gov.iti.jets.repository.impl.ProductRepositoryImpl;
@@ -68,6 +69,12 @@ public class ProductServiceImpl implements ProductService {
         }
         return null;
     }
+
+    @Override
+    public void updateProduct(Product product) {
+        PRODUCT_REPOSITORY.updateProduct(product);
+    }
+
 
     @Override
     public List<MinimalProductDto> getProductsByPrice(int min, int max, FilterTypes type, String... inputs) {

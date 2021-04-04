@@ -19,7 +19,13 @@ public interface UserService {
 
     User login(String email);
 
-    List<User> fetchAllUsers();
+
+    List<UserDTO> fetchAllUsers();
+
+    boolean isUserBalanceEnough(double totalPrice, String userEmail);
+
+
+
 
 
 }

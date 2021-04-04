@@ -1,14 +1,10 @@
 package eg.gov.iti.jets.dto;
 
 import eg.gov.iti.jets.model.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;

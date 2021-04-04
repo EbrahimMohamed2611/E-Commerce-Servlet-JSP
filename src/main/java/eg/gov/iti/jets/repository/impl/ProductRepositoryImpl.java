@@ -7,12 +7,14 @@ import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class ProductRepositoryImpl implements ProductRepository {
 
     private static final EntityManager ENTITY_MANAGER = PersistenceManager.INSTANCE.getEntityManager();
+    private final PersistenceManager persistenceManager = PersistenceManager.INSTANCE;
 
     @Override
     public List<Product> findByNameLike(String productName) {
@@ -106,5 +108,15 @@ public class ProductRepositoryImpl implements ProductRepository {
         } catch (PersistenceException exception) {
             throw new ProductNotFoundException("Product with id=" + id + " not found!");
         }
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        EntityManager entityManager = persistenceManager.getEntityManager();
+        EntityTransaction transaction = ENTITY_MANAGER.getTransaction();
+        transaction.begin();
+        entityManager.merge(product);
+        transaction.commit();
+        entityManager.close();
     }
 }

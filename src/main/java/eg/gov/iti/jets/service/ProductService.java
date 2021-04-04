@@ -5,6 +5,7 @@ import eg.gov.iti.jets.dto.MinimalProductDto;
 import eg.gov.iti.jets.dto.OrderedProductDTO;
 import eg.gov.iti.jets.enums.FilterTypes;
 import eg.gov.iti.jets.exceptions.ProductNotFoundException;
+
 import eg.gov.iti.jets.model.Product;
 
 import java.util.List;
@@ -71,5 +72,7 @@ public interface ProductService {
     OrderedProductDTO getInStockProduct(int productId);
 
     List<MinimalProductDto> getProductsByPrice(int min, int max, FilterTypes type, String ... inputs);
+
+    void updateProduct(Product product);
 
 }

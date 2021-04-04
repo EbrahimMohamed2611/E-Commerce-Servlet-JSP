@@ -29,4 +29,5 @@ public interface ProductRepository {
 
     double getAvgRating(int id);
 
+    void updateProduct(Product product);
 }
