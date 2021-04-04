@@ -9,7 +9,7 @@ public class UserRepositoryFactory {
 
     public static UserRepository getUserRepositoryInstance(){
         if (userRepository == null) {
-            return new UserRepositoryImpl();
+            userRepository =  new UserRepositoryImpl();
         }
         return userRepository;
     }

@@ -21,9 +21,10 @@ import java.util.Set;
         @NamedQuery(name = "User.getAllAdminUsers",
                 query = "SELECT u from User u where u.role = eg.gov.iti.jets.model.Role.ADMIN_ROLE"),
 })
-@Getter
-@Setter
-@NoArgsConstructor
+//@Getter
+//@Setter
+//@NoArgsConstructor
+@Data
 public class User implements Serializable {
 
     @Id
@@ -77,22 +78,6 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private Set<Order> orders = new HashSet<>();
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", gender=" + gender +
-                ", role=" + role +
-                ", emailVerification=" + emailVerification +
-                ", balance=" + balance +
-                ", birthDate=" + birthDate +
-                ", userImage=" + userImage +
-                ", address=" + address +
-                '}';
-    }
+
+
 }

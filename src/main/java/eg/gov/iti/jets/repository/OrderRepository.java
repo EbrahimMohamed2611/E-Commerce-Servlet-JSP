@@ -7,8 +7,7 @@ import eg.gov.iti.jets.model.User;
 import java.util.Set;
 
 public interface OrderRepository {
-    Order createOrder(User user, Set<Purchase> purchaseSet, Double orderTotal);
-
+    Order addOrder(Order order);
     Set<Order> getAllOrders(int userID);
 }
 
