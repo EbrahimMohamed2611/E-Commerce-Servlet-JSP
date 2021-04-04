@@ -21,7 +21,13 @@ public interface OrderService {
 
     PurchaseDTO createNewPurchase(OrderedProductDTO inStockProductDTO);
 
-    OrderDTO updateOrder(OrderDTO orderToUpdate, UserDTO userDTO);
+    OrderDTO updateOrder(OrderDTO orderToUpdate, UserDTO userDTO,  OrderStatus orderStatus);
 
     OrderDTO addNewOrder(OrderDTO orderToSave, UserDTO userDTO);
+
+    OrderDTO deletePurchase(OrderDTO notCompletedOrder, int productId);
+
+    boolean deleteOrder(int orderId);
+
+    double totalPrice(OrderDTO orderDTO);
 }

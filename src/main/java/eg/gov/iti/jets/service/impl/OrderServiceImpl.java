@@ -2,7 +2,10 @@ package eg.gov.iti.jets.service.impl;
 
 import eg.gov.iti.jets.adapter.OrderAdapter;
 import eg.gov.iti.jets.adapter.UserAdapter;
-import eg.gov.iti.jets.dto.*;
+import eg.gov.iti.jets.dto.OrderDTO;
+import eg.gov.iti.jets.dto.OrderedProductDTO;
+import eg.gov.iti.jets.dto.PurchaseDTO;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.OrderRepositoryFactory;
 import eg.gov.iti.jets.factory.ProductRepositoryFactory;
 import eg.gov.iti.jets.factory.PurchaseRepositoryFactory;
@@ -68,7 +71,6 @@ public class OrderServiceImpl implements OrderService {
                 break;
             }
         }
-
     }
 
 
@@ -104,8 +106,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO updateOrder(OrderDTO orderToUpdateDTO, UserDTO userDTO) {
-        Order orderToUpdate =  prepareTheOrderForDatabase(orderToUpdateDTO, OrderStatus.NOT_COMPLETED, userDTO);
+    public OrderDTO updateOrder(OrderDTO orderToUpdateDTO, UserDTO userDTO, OrderStatus orderStatus) {
+        Order orderToUpdate =  prepareTheOrderForDatabase(orderToUpdateDTO, orderStatus, userDTO);
         Order updatedOrder = orderRepository.updateOrder(orderToUpdate);
         if(updatedOrder != null){
             updatedOrder.getPurchase().forEach(purchaseRepository::savePurchase);
@@ -125,11 +127,43 @@ public class OrderServiceImpl implements OrderService {
         return null; // else
     }
 
+    //TODO : refactoring (enhance for loop)
+    @Override
+    public OrderDTO deletePurchase(OrderDTO notCompletedOrder, int productId) {
+        Set<PurchaseDTO> purchaseDTOSet = notCompletedOrder.getItemsOrdered();
+        if(purchaseDTOSet == null){return null;}
+            for(PurchaseDTO purchaseDTO : purchaseDTOSet){
+                if(purchaseDTO.getOrderedProductDTO().getProductId() == productId){
+                    System.out.println("size of purchase before delete : "+ notCompletedOrder.getItemsOrdered().size());
+                    boolean b = notCompletedOrder.getItemsOrdered().removeIf(p -> p.getOrderedProductDTO().getProductId() == productId);
+//                    boolean remove = notCompletedOrder.getItemsOrdered().remove(purchaseDTO);
+                    System.out.println("Is Removed ? "+ b);
+                    System.out.println("size of purchase after delete : "+ notCompletedOrder.getItemsOrdered().size());
+                    purchaseRepository.deletePurchaseById(purchaseDTO.getPurchaseId());
+                    break;
+                }
+            }
+        return notCompletedOrder;
+    }
+
+    @Override
+    public boolean deleteOrder(int orderId) {
+        return orderRepository.deleteOrder(orderId);
+    }
+
     private Order prepareTheOrderForDatabase(OrderDTO orderDTO, OrderStatus orderStatus, UserDTO userDTO){
         Order order = OrderAdapter.convertOrderDTOToOrderModel(orderDTO);
         User currentUser = UserAdapter.convertFromUserRegistrationDtoToUserModel(userDTO);
         order.setUser(currentUser);
         order.setOrderStatus(orderStatus);
         return order;
+    }
+
+
+    @Override
+    public double totalPrice(OrderDTO orderDTO) {
+        double totalPrice = orderDTO.getItemsOrdered().stream().mapToDouble(purchaseDTO -> purchaseDTO.getQuantity() * purchaseDTO.getOrderedProductDTO().getPrice()).sum();
+        System.out.println("total Price : "+ totalPrice);
+        return totalPrice;
     }
 }

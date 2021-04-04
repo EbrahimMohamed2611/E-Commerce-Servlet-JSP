@@ -1,6 +1,7 @@
 package eg.gov.iti.jets.service;
 
 import eg.gov.iti.jets.dto.OrderedProductDTO;
+import eg.gov.iti.jets.dto.ProductDTO;
 import eg.gov.iti.jets.model.Product;
 
 public interface ProductService {
@@ -16,6 +17,5 @@ public interface ProductService {
      */
     OrderedProductDTO getInStockProduct(int productId);
 
-
-
+    void updateProduct(Product product);
 }

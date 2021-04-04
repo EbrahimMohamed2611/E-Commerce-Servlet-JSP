@@ -6,6 +6,7 @@ import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +55,15 @@ public class ProductRepositoryImpl implements ProductRepository {
         Product product = entityManager.find(Product.class, productId);
         entityManager.close();
         return product;
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        EntityManager entityManager = persistenceManager.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.merge(product);
+        transaction.commit();
+        entityManager.close();
     }
 }

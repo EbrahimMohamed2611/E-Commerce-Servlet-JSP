@@ -85,4 +85,12 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
+    @Override
+    public boolean isUserBalanceEnough(double totalPrice, String userEmail) {
+        User user = userRepository.findByEmail(userEmail);
+        double userBalance = user.getBalance();
+
+        return totalPrice <= userBalance;
+    }
+
 }

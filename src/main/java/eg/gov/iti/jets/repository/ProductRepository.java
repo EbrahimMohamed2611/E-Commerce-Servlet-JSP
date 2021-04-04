@@ -14,4 +14,5 @@ public interface ProductRepository  {
 
     Product findProductById(int productId);
 
+    void updateProduct(Product product);
 }

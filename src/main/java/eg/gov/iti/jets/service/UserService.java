@@ -15,6 +15,7 @@ public interface UserService {
     UserDTO updateUserVerification(UserDTO userDto);
     User login(String email);
      List<User> fetchAllUsers();
+    boolean isUserBalanceEnough(double totalPrice, String userEmail);
 
 
 }

@@ -49,9 +49,10 @@ public class OrderRepositoryImpl implements OrderRepository {
 
         EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
-        int isSuccessful = entityManager.createQuery("delete from order o where o.order_id=:id")
+        int isSuccessful = entityManager.createQuery("delete from Order o where o.orderId=:id")
                 .setParameter("id", orderId)
                 .executeUpdate();
+        entityManager.close();
 
         return isSuccessful != 0;
     }

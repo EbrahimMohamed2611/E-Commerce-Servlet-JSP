@@ -129,7 +129,7 @@ LOCK TABLES `order` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `product`
+-- Table structure for table `orderedProductDTO`
 --
 
 DROP TABLE IF EXISTS `product`;
@@ -152,12 +152,12 @@ CREATE TABLE `product` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `orderedProductDTO`
 --
 
 LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+/*!40000 ALTER TABLE `orderedProductDTO` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderedProductDTO` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
