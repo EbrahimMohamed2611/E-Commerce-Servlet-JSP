@@ -30,9 +30,9 @@
                 <form action="#">
                     <div class="table-content table-responsive">
 
-                                   <label class="badge bg-warning text-dark">${o.getOrderTimestamp()}</label>
+                        <label class="badge bg-warning text-dark">${o.getOrderTimestamp()}</label>
 
-                            <table class="table">
+                        <table class="table">
 
                             <thead>
                             <tr>
@@ -43,30 +43,32 @@
                                 <th class="li-product-subtotal">Total</th>
                             </tr>
                             </thead>
-                                <tbody>
+                            <tbody>
 
-                                    <c:forEach items="${o.getPurchase()}" var="p">
+                            <c:forEach items="${o.getPurchase()}" var="p">
 
-                            <tr>
-<%--                                <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>--%>
-<%--                                <td class="li-product-thumbnail"><a href="#"><img src="" alt="Li's Product Image"></a></td>--%>
-                                    <td><img src="images/menu/logo/laptop.png"></td>
-<%--                                <td class="li-product-name"><a href="#">${p.getProduct().getProductName()}</a></td>--%>
-    <td class="li-product-name"><label><b>${p.getProduct().getProductName()}</b></label></td>
-                                <td class="li-product-price"><span class="amount">${p.getProduct().getPrice()}</span></td>
-    <td class="li-product-price"><span class="amount">${p.getQuantity()}</span></td>
-<%--                                <td >--%>
-<%--                                    <label class="quantity">${p.getQuantity()}</label>--%>
-<%--                                </td>--%>
-                                <td class="product-subtotal"><span class="amount">${p.getProduct().getPrice()*p.getQuantity()}</span></td>
-                            </tr>
-                                    </c:forEach>
+                                <tr>
+                                          <td class="li-product-thumbnail"><a href="#"><img src="" alt="Li's Product Image"></a></td>--%>
+                                    <td><img
+                                            src="${p.getProduct().getProductImage().getImagePath()}${'\\'}${p.getProduct().getProductImage().getImageName()}">
+                                    </td>
 
-                                </tbody>
-                            </table>
+                                    <td class="li-product-name"><label><b>${p.getProduct().getProductName()}</b></label>
+                                    </td>
+                                    <td class="li-product-price"><span
+                                            class="amount">${p.getProduct().getPrice()}</span></td>
+                                    <td class="li-product-price"><span class="amount">${p.getQuantity()}</span></td>
+
+                                    <td class="product-subtotal"><span
+                                            class="amount">${p.getProduct().getPrice()*p.getQuantity()}</span></td>
+                                </tr>
+                            </c:forEach>
+
+                            </tbody>
+                        </table>
                     </div>
 
-                </c:forEach>
+                    </c:forEach>
 
                 </form>
             </div>

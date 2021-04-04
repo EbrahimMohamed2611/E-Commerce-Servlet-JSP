@@ -188,24 +188,25 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="pages/index.jsp"> <img alt="image" src="pages/assets/img/logo.png" class="header-logo"/>
+                    <a href="dashboard.jsp"> <img alt="image" src="pages/assets/img/logo.png" class="header-logo"/>
                         <span
                                 class="logo-name">Otika</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
-                    <li class="dropdown">
-                        <a href="pages/index.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                    <li class="dropdown active">
+                        <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
                     </li>
                     <li class="dropdown active">
-                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                data-feather="briefcase"></i><span>Widgets</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="categories.jsp">Categories</a></li>
-                            <li><a class="nav-link" href="product.jsp">Products</a></li>
-                        </ul>
+                        <a href="categories.jsp" class="nav-link"><i data-feather="monitor"></i><span>Categories</span></a>
                     </li>
+                    <li class="dropdown active">
+                        <a href="adminhome" class="nav-link"><i data-feather="monitor"></i><span>Products</span></a>
+                    </li>
+<%--                    <li class="dropdown">--%>
+<%--                        <a href="adminhome" class="nav-link"><i data-feather="monitor"></i><span>View Products</span></a>--%>
+<%--                    </li>--%>
 
                 </ul>
             </aside>

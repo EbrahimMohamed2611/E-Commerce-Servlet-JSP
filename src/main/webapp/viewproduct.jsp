@@ -15,6 +15,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link rel="stylesheet" href="pages/assets/css/app.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/flag-icon-css/css/flag-icon.min.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="pages/assets/css/style.css">
+    <link rel="stylesheet" href="pages/assets/css/components.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="pages/assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
+    <link rel='stylesheet'  href='css/style.css'/>
+    <style>
+        .product-img {
+
+            text-align: center;
+        }
+        .product-img .file {
+            position: relative;
+            overflow: hidden;
+            margin-top: 2%;
+            width: 50%;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        .product-img .file input {
+            position: absolute;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+    </style>
+    <style>
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 350px;
+        }
+        table td {
+            word-wrap: break-word;
+        }
+    </style>
     <title>Title</title>
     <link rel="stylesheet" href="assets/css/app.min.css">
     <link rel="stylesheet" href="assets/bundles/datatables/datatables.min.css">
@@ -23,6 +64,16 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="pages/assets/css/app.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/flag-icon-css/css/flag-icon.min.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="pages/assets/css/style.css">
+    <link rel="stylesheet" href="pages/assets/css/components.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="pages/assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
+    <link rel='stylesheet'  href='css/style.css'/>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -73,14 +124,32 @@
             window.location.href = "remove?data=" + productId;
 
         }
-
-        function edit(id ,name , desc , price , quantity , cat)
+function nav()
+{
+    window.location.href="dashboard.jsp";
+}
+        function navcat()
         {
-           // <a href="/servlets/messageServlet?param1=value&amp;param2=value2">Send Messages</a>
-            window.location.href = "editproduct?name="+name+"&desc="+desc+"&price="+price+"&quantity="+quantity+"&cat="+cat+"&id="+id;
-          console.log(name+" "+desc + " " + price +" " +quantity +" "+ cat)
+            window.location.href="categories.jsp";
+        }
+        function navpro()
+        {
+            window.location.href="product.jsp";
+        }
+        function edit(id ,name , desc , price , quantity , cat , imgPath , imgName)
+        {
+            console.log(name+" "+desc + " " + price +" " +quantity +" "+ cat , " "+imgPath+" "+imgName)
+
+            // <a href="/servlets/messageServlet?param1=value&amp;param2=value2">Send Messages</a>
+           window.location.href = "editproduct?name="+name+"&desc="+desc+"&price="+price+"&quantity="+quantity+"&id="+id+"&cat="+cat+"&imgPath="+imgPath+"&imgName="+imgName;
+       //   console.log(name+" "+desc + " " + price +" " +quantity +" "+ cat , " "+imgPath+" "+imgName)
 
         }
+        function navpro()
+        {
+            window.location.href=" addNewProduct";
+        }
+
 
         function editDb(id, name, des, price, quan, cat)
         {
@@ -238,21 +307,18 @@
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
                     <li class="dropdown active">
-                        <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+<%--                        <button type="button" class="nav-link" onclick="nav()">Dashboard</button>--%>
+                        <a href="" onclick="nav()" class="nav-link">Dashboard</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                data-feather="briefcase"></i><span>Products</span></a>
+                                data-feather="briefcase"></i><span>Add</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="categories.jsp">Categories</a></li>
-                            <li><a class="nav-link" href="product.jsp">Products</a></li>
+                            <li><a class="nav-link" href=""onclick="navcat()">Categories</a></li>
+                            <li><a class="nav-link" href="" onclick="navpro()">Products</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="/E_Commerce_Servlet_JSP_war_exploded/admin-show-users.jsp" class="nav-link"><i
-                                data-feather="briefcase"></i><span>Users</span></a>
 
-                    </li>
                     <li class="dropdown">
                         <a href="/E_Commerce_Servlet_JSP_war_exploded/adminhome" class="nav-link"><i
                                 data-feather="briefcase"></i><span>View Products</span></a>
@@ -334,6 +400,9 @@
 <%--                        </div>--%>
 <%--                    </div>--%>
 
+    <div class="col-12 col-md-12 col-lg-12 text-right text-right" style=" margin-bottom: 11px;">
+        <button class="btn btn-primary mr-1" type="submit" data-toggle="modal" data-target="#exampleModal">Add New Product</button>
+    </div>
 
 <%--                </div>--%>
                 <div class="row">
@@ -363,12 +432,12 @@
                                         <c:forEach items="${requestScope.products}" var="p">
                                             <tr>
                                                 <td>
-                                                    <img src="" style="width:100%;white-space:pre">
+                                                    <img src=" C:\Users\A\ProductImage\cae85477-0787-42ca-a763-d404346b20d1.png" style="width:100%;white-space:pre">
                                                 </td>
                                                 <td class="align-middle">
                                                         ${p.getProductName()}
                                                 </td>
-                                                <td>
+                                                <td style="word-wrap: break-word">
                                                         ${p.getDescription()}
                                                 </td>
                                                 <td>${p.getPrice()}</td>
@@ -412,26 +481,25 @@
                                                     <%--                                                                <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop"--%>
                                                     <%--
            class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Delete</a>--%>
-                                                <td><a href="" type="button" class="btn btn-primary" style="color: white;" onclick="edit('${p.getProductId()}','${p.getProductName()}' ,'${p.getDescription()} ' ,'${p.getPrice()}' , '${p.getQuantity()}','${p.category.getCategoryName()}')">Edit</a> </td>
-                                                <td><a href="#popupDialog" data-rel="popup" data-position-to="window"
-                                                       data-transition="pop"
-                                                       class="btn btn-primary" style="color: white;">Delete</a>
+                                                <td><a href="" type="button" class="btn btn-primary" style="color: white;" onclick="edit('${p.getProductId()}','${p.getProductName()}' ,'${p.getDescription()} ' ,'${p.getPrice()}' , '${p.getQuantity()}','${p.category.getCategoryName()}','${p.productImage.getImagePath()}' ,'${p.productImage.getImageName()}')">Edit</a> </td>
+                                                <td><a href=""
+                                                       class="btn btn-primary" style="color: white;" onclick="deleteProd('${p.getProductId()}')">Delete</a>
                                                 </td>
-                                                <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b"
-                                                     data-dismissible="false"
-                                                     style="max-width:400px;">
-                                                    <div data-role="header" data-theme="a">
-                                                        <h1>Delete Contact</h1>
-                                                    </div>
-                                                    <div role="main" class="ui-content">
-                                                        <h3 class="ui-title">Are you sure you want to delete this product?</h3>
-                                                        <p>This action cannot be undone.</p>
-                                                        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
-                                                           data-rel="back">Cancel</a>
-                                                        <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"
-                                                           data-transition="flow" onclick="deleteProd(${p.getProductId()} , )">Delete</a>
-                                                    </div>
-                                                </div>
+<%--                                                <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b"--%>
+<%--                                                     data-dismissible="false"--%>
+<%--                                                     style="max-width:400px;">--%>
+<%--                                                    <div data-role="header" data-theme="a">--%>
+<%--                                                        <h1>Delete Contact</h1>--%>
+<%--                                                    </div>--%>
+<%--                                                    <div role="main" class="ui-content">--%>
+<%--                                                        <h3 class="ui-title">Are you sure you want to delete this product?</h3>--%>
+<%--                                                        <p>This action cannot be undone.</p>--%>
+<%--                                                        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"--%>
+<%--                                                           data-rel="back">Cancel</a>--%>
+<%--                                                        <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"--%>
+<%--                                                           data-transition="flow" onclick="deleteProd(${requestScope.id})">Delete</a>--%>
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
 
 
                                             </tr>
@@ -447,7 +515,67 @@
 
 
             </section>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New Product</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post"  action="addNewProduct" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="category-id">Select Product Category </label>
+                                    <select class="form-control" name="categoryName" id="category-id">
+                                        <option value="categoryId">Category Name</option>
 
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="product-img">
+                                        <img src="images/product/small-size/2.jpg" style="width: 50%;border-radius: 6px; object-fit: contain;" class="col-lg-12"
+                                             alt="" id="product-pic" />
+                                        <div class="file btn btn-lg btn-primary">
+                                            Product Picture
+                                            <input type="file" name="picturePicture" id="product-img" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Product Name</label>
+                                    <input type="text" class="form-control" name="productName" id="recipient-name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Description</label>
+                                    <textarea class="form-control" name="productDescription" id="message-text"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="price" class="col-form-label">Price </label>
+                                    <input type="number" class="form-control" name="price" id="price">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantity" class="col-form-label">Quantity </label>
+                                    <input type="number" class="form-control" name="quantity" id="quantity">
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <footer class="main-footer">
             <div class="footer-left">
@@ -477,7 +605,7 @@
 <!-- Page Specific JS File -->
 <script src="assets/js/datatables.js"></script>
 
-<!-- Page Specific JS File -->
+<%--<!-- Page Specific JS File -->--%>
 <script src="assets/js/index.js"></script>
 <!-- Template JS File -->
 <script src="assets/js/scripts.js"></script>
@@ -529,5 +657,35 @@
 <script src="assets/js/scripts.js"></script>
 <!-- Custom JS File -->
 <script src="assets/js/custom.js"></script>
+<script src="pages/assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="pages/assets/bundles/chartjs/chart.min.js"></script>
+<script src="pages/assets/bundles/jquery.sparkline.min.js"></script>
+<script src="pages/assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
+<!-- Page Specific JS File -->
+<script src="pages/assets/js/page/widget-chart.js"></script>
+<!-- Template JS File -->
+<script src="pages/assets/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="pages/assets/js/custom.js"></script>
+<script src="js/product.js"></script>
+<script src="pages/assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="pages/assets/bundles/chartjs/chart.min.js"></script>
+<script src="pages/assets/bundles/jquery.sparkline.min.js"></script>
+<script src="pages/assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
+<!-- Page Specific JS File -->
+<script src="pages/assets/js/page/widget-chart.js"></script>
+<!-- Template JS File -->
+<script src="pages/assets/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="pages/assets/js/custom.js"></script>
+<script src="js/product.js"></script>
 </body>
 </html>

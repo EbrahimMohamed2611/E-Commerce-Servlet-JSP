@@ -3,9 +3,7 @@ package eg.gov.iti.jets.repository.impl;
 import eg.gov.iti.jets.config.PersistenceManager;
 import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
-import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.repository.ProductRepository;
-import org.hibernate.Criteria;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,7 +11,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProductRepositoryImpl implements ProductRepository {
 
@@ -65,14 +62,20 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public Product updateProduct(Product product) {
+    public void updateProduct(Product product) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
-        Product productUpdated = entityManager.merge(product);
+        entityManager.createQuery("update from Product set productName=:name,description=:desc,quantity=:quantity,price=:price where productId=:id")
+                .setParameter("name" ,product.getProductName()).setParameter("desc" ,product.getDescription())
+                .setParameter("quantity" , product.getQuantity()).setParameter("price" , product.getPrice()).setParameter("id" , product.getProductId()).executeUpdate();
+
+       // Product productUpdated = entityManager.merge(product);
+
         entityManager.getTransaction().commit();
+        System.out.println("after the update fn ");
         entityManager.close();
-        return productUpdated;
+        //return productUpdated;
     }
 
     @Override

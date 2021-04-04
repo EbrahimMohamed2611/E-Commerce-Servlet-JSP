@@ -41,12 +41,6 @@ public class GetOrders extends HttpServlet {
        /// Set<Order>orders = orderRepository.getUserOrders(Integer.parseInt(userId));
         //JSONObject obj = new JSONObject(data);
         resp.setContentType("text/html");
-        //  System.out.println("name "+obj.getString("firstName"));
-        //   JSONArray orders = obj.getJSONArray("orders");
-        // System.out.println("orders--------> "+orders);
-        //System.out.println("orders "+obj.getString("orders"));
-        //List<Order> orders = userService.fetchAllOrders(userid);
-        //  System.out.println("inside the doget orders = ----------> "+orders);
         System.out.println("-----------------------------");
         // System.out.println("username in the servlet -> "+userid);
         System.out.println("-----------------------------");

@@ -62,3 +62,6 @@ const fullName = document.getElementById('fullName').textContent;
     document.getElementById('profileImage').innerHTML = fullName.split(' ').map(name => name[0]).join('').toUpperCase();
     console.log(fullName);
 }
+
+
+

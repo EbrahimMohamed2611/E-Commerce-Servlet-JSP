@@ -36,3 +36,8 @@ document.getElementById("product-img").onchange = function () {
         reader.readAsDataURL(this.files[0]);
     }
 }
+
+
+
+
+

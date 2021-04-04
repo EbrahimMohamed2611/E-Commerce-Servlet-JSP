@@ -24,36 +24,39 @@ public class ViewProducts extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //todo get all products from db
-       // List<Product>products = productRepsitory.findAll();
+        List<Product>products = productRepsitory.findAll();
+        System.out.println("img path-----> " +products.get(0).getProductImage().getImagePath());
+        System.out.println("img name-----> " +products.get(0).getProductImage().getImageName());
+        System.out.println("fullpath "+products.get(0).getProductImage().getImagePath()+"\\"+products.get(0).getProductImage().getImageName());
 
-        Product product = new Product();
-        product.setProductId(1);
-        product.setProductName("Laptop");
-        product.setPrice(5.5);
-        Category category = new Category();
-        category.setCategoryName("electronics");
-        product.setCategory(category);
-        product.setDescription("corei7 , 64 giga");
-        product.setQuantity(5);
-
-        Product product2 = new Product();
-        product2.setProductName("Tv");
-        product2.setProductId(2);
-        product2.setPrice(100.0);
-        Category category1 = new Category();
-        category1.setCategoryName("electronics");
-        product2.setCategory(category1);
-        product2.setDescription("corei7 , 64 giga");
-        product2.setQuantity(6);
-
-        List<Product> products =new ArrayList<>();
-        products.add(product);
-        products.add(product2);
+//        Product product = new Product();
+//        product.setProductId(1);
+//        product.setProductName("Laptop");
+//        product.setPrice(5.5);
+//        Category category = new Category();
+//        category.setCategoryName("electronics");
+//        product.setCategory(category);
+//        product.setDescription("corei7 , 64 giga");
+//        product.setQuantity(5);
+//
+//        Product product2 = new Product();
+//        product2.setProductName("Tv");
+//        product2.setProductId(2);
+//        product2.setPrice(100.0);
+//        Category category1 = new Category();
+//        category1.setCategoryName("electronics");
+//        product2.setCategory(category1);
+//        product2.setDescription("corei7 , 64 giga");
+//        product2.setQuantity(6);
+//
+//        List<Product> products =new ArrayList<>();
+//        products.add(product);
+//        products.add(product2);
 
 
         req.setAttribute("products", products);
         System.out.println("-------------after setting attt----------------");
-        RequestDispatcher rd = req.getRequestDispatcher("viewproduct.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("product.jsp");
         System.out.println("-------------afterdisp--------------");
         rd.forward(req, resp);
     }

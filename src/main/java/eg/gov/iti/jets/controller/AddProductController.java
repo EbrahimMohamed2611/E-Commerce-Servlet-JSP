@@ -31,6 +31,8 @@ public class AddProductController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Part filePart = req.getPart("picturePicture");
         String submittedFileName = filePart.getSubmittedFileName();
+        System.out.println("paaaaaart" +filePart);
+        System.out.println("submiteee "+submittedFileName);
         String imageExtension = getExtensionFormImage(submittedFileName);
         String newImageName = UUID.randomUUID().toString() + imageExtension;
         String imageDirectory = System.getProperty("user.home");
@@ -73,7 +75,7 @@ public class AddProductController extends HttpServlet {
         product.setCategory(productCategory);
         Product product1 = productRepository.addNewProduct(product);
         System.out.println(product1);
-        resp.sendRedirect("product.jsp?added");
+        resp.sendRedirect("/E_Commerce_Servlet_JSP_war_exploded/adminhome");
     }
 
 

@@ -2,59 +2,62 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<link rel='stylesheet'  href='css/style.css'/>
+<script src="js/product.js"></script>
 <script>
 
+    function edit()
+    {
 
+        name = document.getElementById("productName").value;
+        price =  document.getElementById("price").value;
+        quan =  document.getElementById("quantity").value;
+        desc = document.getElementById("productDesc").value;
+        if(document.getElementById("nameLabel").hidden==false || document.getElementById("descLabel").hidden==false || document.getElementById("priceLabel").hidden==false ||document.getElementById("quantityLabel").hidden==false)
+        {
+            return;
+        }
 
- function edit()
- {
-     name = document.getElementById("productName").value;
-     price =  document.getElementById("price").value;
-     quan =  document.getElementById("quantity").value;
-     desc = document.getElementById("productDesc").value;
-     cate = document.getElementById("category").value;
+        window.location.href = "editprodb?name="+name+"&desc="+desc+"&price="+price+"&cat="+'${requestScope.data.getCategory().getCategoryName()}'+"&quantity="+quan+"&id="+${requestScope.data.getProductId()};
 
-     window.location.href = "editprodb?name="+name+"&desc="+desc+"&price="+price+"&quantity="+quan+"&cat="+cate+"&id="+${requestScope.data.getProductId()};
-
- }
-
-    function checkfirstname() {
-        var firstname = document.getElementById("firstName").value;
-        if (firstname == "") {
-            document.getElementById("firstnamelabel").hidden = false;
+    }
+    function checkname() {
+        var p = document.getElementById("productName").value;
+        if (p == "") {
+            document.getElementById("nameLabel").hidden = false;
         } else {
-            document.getElementById("firstnamelabel").hidden = true;
+            document.getElementById("nameLabel").hidden = true;
         }
     }
 
-    function checklastname() {
-        var lastName = document.getElementById("lastName").value;
-        if (lastName == "") {
-            document.getElementById("lastnamelabel").hidden = false;
+    function checkDesc() {
+        var desc = document.getElementById("productDesc").value;
+        if (desc == "") {
+            document.getElementById("descLabel").hidden = false;
         } else {
-            document.getElementById("lastnamelabel").hidden = true;
+            document.getElementById("descLabel").hidden = true;
         }
     }
 
-    function checkpass() {
-        var password = document.getElementById("password").value;
-        if (password == "") {
-            document.getElementById("passlabel").hidden = false;
+    function checkPrice() {
+        var price = document.getElementById("price").value;
+        if (price == "") {
+            document.getElementById("priceLabel").hidden = false;
         } else {
-            document.getElementById("passlabel").hidden = true;
+            document.getElementById("priceLabel").hidden = true;
         }
 
     }
 
-    function checkpass2() {
+    function checkQuantity() {
 
-        var password2 = document.getElementById("confirmPassword").value;
-        if (password2 == "") {
-            document.getElementById("pass22label").hidden = false;
-          //  document.getElementById("pass2label").hidden = true;
+        var quantity = document.getElementById("quantity").value;
+        if (quantity == "") {
+            document.getElementById("quantityLabel").hidden = false;
+            //  document.getElementById("pass2label").hidden = true;
 
         } else {
-            document.getElementById("pass22label").hidden = true;
+            document.getElementById("quantityLabel").hidden = true;
         }
 
     }
@@ -134,143 +137,50 @@
             document.getElementById("codelabel2").hidden = true;
         }
     }
+
+
 </script>
 <style>
-    body {
-        background:white;
-    }
-
     .emp-profile {
         padding: 3%;
         margin-top: 3%;
         margin-bottom: 3%;
         border-radius: 0.5rem;
-        background: darkcyan;
-    }
-
-    .profile-img {
-        text-align: center;
-    }
-
-    .profile-img img {
-        /*width: 100%;*/
-        /*height: 100%;*/
-        /*float: left;*/
-        /*margin-right: 20px;*/
-        /* If you want to crop the image to a certain size, use something like this */
-        object-fit: contain;
-        width: 200px;
-        height: 200px;
-    }
-
-    .profile-img .file {
-        position: relative;
-        overflow: hidden;
-        margin-top: -20%;
-        width: 70%;
-        border: none;
-        border-radius: 0;
-        font-size: 15px;
-        background: #212529b8;
-    }
-
-    .profile-img .file input {
-        position: absolute;
-        opacity: 0;
-        right: 0;
-        top: 0;
-    }
-
-    .profile-head h5 {
-        color: #333;
-    }
-
-    .profile-head h6 {
-        color: #C29200;
-    }
-
-    .profile-edit-btn {
-        border: none;
-        border-radius: 1.5rem;
-        width: 70%;
-        padding: 2%;
-        font-weight: 600;
-        color: #C29200;
-        cursor: pointer;
-    }
-
-    .proile-rating {
-        font-size: 12px;
-        color: #818182;
-        margin-top: 5%;
-    }
-
-    .proile-rating span {
-        color: #495057;
-        font-size: 15px;
-        font-weight: 600;
-    }
-
-    .profile-head .nav-tabs {
-        margin-bottom: 5%;
-    }
-
-    .profile-head .nav-tabs .nav-link {
-        font-weight: 600;
-        border: none;
-    }
-
-    .profile-head .nav-tabs .nav-link.active {
-        border: none;
-        border-bottom: 2px solid #C29200;
-    }
-
-    .profile-work {
-        padding: 14%;
-        margin-top: -15%;
-    }
-
-    .profile-work p {
-        font-size: 12px;
-        color: #818182;
-        font-weight: 600;
-        margin-top: 10%;
-    }
-
-    .profile-work a {
-        text-decoration: none;
-        color: #495057;
-        font-weight: 600;
-        font-size: 14px;
-    }
-
-    .profile-work ul {
-        list-style: none;
-    }
-
-    .profile-tab label {
-        font-weight: 600;
-    }
-
-    .profile-tab p {
-        font-weight: 600;
-        color: #C29200;
+        background:#8bacf9 ;
     }
 </style>
+
+
 <body>
 <div class="container emp-profile">
     <form>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    <img src="images/menu/logo/laptop.png"
-                         alt="" id="profile-pic"/>
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file" id="my-file"/>
-                    </div>
-                </div>
-            </div>
+
+
+<%--        <div class="row">--%>
+<%--            <div class="col-md-4">--%>
+
+<%--            <div class="form-group">--%>
+<%--                <div class="product-img">--%>
+<%--                    <img src="images/product/small-size/2.jpg" style="width: 50%;border-radius: 6px; object-fit: contain;" class="col-lg-12"--%>
+<%--                         alt="" id="product-pic" />--%>
+<%--                    <div class="file btn btn-lg btn-primary">--%>
+<%--                        Product Picture--%>
+<%--                        <input type="file" name="picturePicture" id="product-img" />--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-4">--%>
+<%--                <div class="profile-img">--%>
+
+<%--                    <img src="images/menu/logo/laptop.png"--%>
+<%--                         alt="" id="profile-pic"/>--%>
+<%--                    <div class="file btn btn-lg btn-primary">--%>
+<%--                        Change Photo--%>
+<%--                        <input type="file" name="file" id="my-file"/>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 <%--            <div class="col-md-6">--%>
 <%--                <div class="profile-head">--%>
 <%--                    <h5 id="myname">--%>
@@ -278,11 +188,11 @@
 
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-8">
 
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
@@ -290,30 +200,29 @@
                                 <label>Product Name</label>
 
                                 <input  type="text" class="form-control"
-                                       name="firstName" id="productName" value="${requestScope.data.getProductName()}"
-                                       onblur="checkfirstname()">
-                                <label id="firstnamelabel" style="color:red" hidden>Please product name</label>
+                                       name="productName" id="productName" value="${requestScope.data.getProductName()}"
+                                       onblur="checkname()" style="background-color: gainsboro">
+                                <label id="nameLabel" style="color:red" hidden>Please product name</label>
                             </div>
 
 
                             <div class="col-md-6">
                                 <label for="productDesc" class="form-label">Description</label>
-                                <input  type="text" class="form-control"
-                                       name="lastName" id="productDesc"
-                                       value="${requestScope.data.getDescription()}" onblur="checklastname()">
-                                <label id="lastnamelabel" style="color:red" hidden>Please enter Description</label>
+                                <textarea class="form-control"
+                                       name="desc" id="productDesc"
+                                         onblur="checkDesc()"style="background-color: gainsboro">${requestScope.data.getDescription()}</textarea>
+                                <label id="descLabel" style="color:red" hidden>Please enter Description</label>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="price" class="form-label">Price</label>
-                                <input  type="number" name="password"
+                                <input  type="number" name="price"
                                        class="form-control"
                                        id="price" value="${requestScope.data.getPrice()}"
-                                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$" title="Weak Password"
-                                       onblur="checkpass()">
-                                <label id="passlabel" style="color:red" hidden>Please enter the price</label>
+                                       onblur="checkPrice()"style="background-color: gainsboro">
+                                <label id="priceLabel" style="color:red" hidden>Please enter the price</label>
 
                             </div>
 
@@ -321,35 +230,33 @@
                             <div class="col-md-6">
                                 <label for="quantity" class="form-label">Quantity</label>
                                 <input  type="number"
-                                       onkeyup="checkmatchpass2()"
-                                       name="confirmPassword" value="${requestScope.data.getQuantity()}"
-                                       class="form-control"
-                                       id="quantity" onblur="checkpass2()">
+                                       name="quantity" value="${requestScope.data.getQuantity()}"
+                                       class="form-control" style="background-color: gainsboro"
+                                       id="quantity" onblur="checkQuantity()">
 
-                                <label id="pass22label" style="color:red" hidden>Please enter a Quantity</label>
+                                <label id="quantityLabel" style="color:red" hidden>Please enter a Quantity</label>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <br>
-                                <label for="category">Category</label>
-                                <select id="category" class="nice-select wide">
-                                    <option selected>${requestScope.data.category.getCategoryName()}</option>
-                                    <option>Clothes</option>
-                                    <option>Food</option>
-
-
-                                </select>
-
-                                <label id="countrylabel" style="color:red" hidden>Please enter a country</label>
-                            </div>
+<%--                        <div class="row">--%>
+<%--                            <div class="col-md-6">--%>
+<%--                                <br>--%>
+<%--                                <label for="category-id">Category</label>--%>
+<%--                                <select id="category-id" class="nice-select wide" name="categoryName">--%>
+<%--                                    <option selected>${requestScope.data.category.getCategoryName()}</option>--%>
 
 
 
-                        </div>
+<%--                                </select>--%>
+
+<%--                                <label id="countrylabel" style="color:red" hidden>Please enter a country</label>--%>
+<%--                            </div>--%>
+
+
+
+<%--                        </div>--%>
                         <br><br>
-                        <button type="button" class="btn btn-primary" onclick="edit()"> Update</button>
+                        <button type="button" class="btn btn-primary" onclick="edit()" >Update</button>
                         <button type="button" class="btn btn-primary" onclick="back()"> Back</button>
 
 
@@ -360,24 +267,15 @@
         </div>
     </form>
 
-</div>
+<%--</div>--%>
 <script>
     function back()
     {
         window.location.href="adminhome";
     }
-    document.getElementById("my-file").onchange = function () {
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-// e.target.result is a base64-encoded url that contains the image data
-                document.getElementById('profile-pic').setAttribute('src', e.target.result);
-                //todo set image on the session
-            };
-            reader.readAsDataURL(this.files[0]);
-        }
-    }
+
 </script>
+
 </body>
 
 

@@ -77,15 +77,11 @@
                     var cell2 = rowHeader.insertCell(1);
                     var cell3 = rowHeader.insertCell(2);
                     var cell4 = rowHeader.insertCell(3);
-                   // var cell5 = rowHeader.insertCell(4);
-                    //var cell6 = rowHeader.insertCell(5);
                     var cell7 = rowHeader.insertCell(4);
                     var cell8 = rowHeader.insertCell(5);
                     var cell9 = rowHeader.insertCell(6);
                     var cell10 = rowHeader.insertCell(7);
                     var cell11 = rowHeader.insertCell(8);
-                    // var cell12 = rowHeader.insertCell(9);
-                    // var cell13 = rowHeader.insertCell(10);
                     var cell14 = rowHeader.insertCell(9);
 
 
@@ -94,24 +90,12 @@
                     cell2.innerHTML = "<b>LastName</b>";
                     cell3.innerHTML = "<b>Phone</b>";
                     cell4.innerHTML = "<b>Email</b>";
-                    //cell5.innerHTML = "Role";
-                    //cell6.innerText = "Gender";
                     cell7.innerHTML = "<b>Balance</b>";
                     cell8.innerHTML = "<b>Country</b>";
                     cell9.innerHTML = "<b>City</b>";
                     cell10.innerHTML = "<b>Street</b>";
                     cell11.innerHTML = "<b>State</b>";
-                    // cell12.innerText = "ZipCode";
-                    //cell13.innerHTML = "Id";
                     cell14.innerHTML = "<b>Orders</b>";
-
-
-
-
-
-
-
-
 
                     $.each(users, function (key, value) {
                         console.log("key = " + key);
@@ -127,35 +111,22 @@
                         var cell2 = row.insertCell(1);
                         var cell3 = row.insertCell(2);
                         var cell4 = row.insertCell(3);
-                       // var cell5 = row.insertCell(4);
-                       // var cell6 = row.insertCell(5);
                         var cell7 = row.insertCell(4);
-                        // var cell8 = row.insertCell(7);
                         var cell9 = row.insertCell(5);
                         var cell10 = row.insertCell(6);
                         var cell11 = row.insertCell(7);
                         var cell12 = row.insertCell(8);
-                        //var cell13 = row.insertCell(11);
-                        // var cell14 = row.insertCell(12);
                         var cell15 = row.insertCell(9);
-
 
                         cell1.innerHTML = value.firstName;
                         cell2.innerHTML = value.lastName;
                         cell3.innerHTML = value.phone
                         cell4.innerHTML = value.email;
-                        //cell5.innerHTML = value.role;
-                       // cell6.innerHTML = value.gender;
                         cell7.innerHTML = value.balance;
-                        //   cell8.innerHTML = value.birthDate;
                         cell9.innerHTML = value.address.country;
                         cell10.innerHTML = value.address.city;
                         cell11.innerHTML = value.address.street;
                         cell12.innerHTML = value.address.state;
-                        // cell13.innerHTML = value.address.zipCode;
-                        // cell14.innerHTML = value.userId;
-
-
                         var btn = document.createElement('input');
                         btn.type = "button";
                         btn.className = "btn btn-primary";
@@ -179,42 +150,6 @@
                             console.log(data);
                             window.location.href="getorders?data="+value.userId;
                         }
-                        //   console.log(this.parentNode.parentNode.rowIndex);
-                        //   var index = this.parentNode.parentNode.rowIndex;
-                        //   //todo must be the id column
-                        //   //var userid = table.rows[index].cells[12].innerText;
-                        // ///  console.log("idddddddddddd " + userid)
-                        //   if (window.XMLHttpRequest)
-                        //       req = new XMLHttpRequest();
-                        //   else if (window.ActiveXObject)
-                        //       req = new ActiveXObject(Microsoft.XMLHTTP);
-                        //   req.onreadystatechange = handleStateChange;
-                        //   req.open("POST", "getorders", true);
-                        //
-                        //
-                        //   req.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                        //   var data = JSON.stringify({
-                        //       "userId": value.userId,
-                        //       "firstName": value.firstName,
-                        //       "lastName": value.lastName,
-                        //       "phone": value.phone,
-                        //       "email": value.email,
-                        //       "role": value.role,
-                        //       "balance": value.balance,
-                        //       "orders": value.orders,
-                        //
-                        //   });
-                        //   console.log(data);
-                        //   req.send("data=" + data);
-                        //   console.log(data);
-                        //   // url = "getorders" + "?userid=" +data;
-                        //   // req.open("GET", url, true);
-                        //   // req.send(null);
-
-
-                        // row = "<tr id='tr'><td>" + value.firstName + "</td>" + "<td>"+value.lastName +"</td>"+"<td>"+btn+"</td>"+"</tr>";
-                        //  document.getElementById("tr").appendChild(btn);
-                        // $("#userTable").append(row);
                     })
                 }, false)
             } else {
@@ -223,7 +158,6 @@
         }
 
         function handleStateChange() {
-            //  document.getElementById("thepass").value ="inside the handle";
             console.log(req.status+req.responseText)
             if (req.readyState == 4 && req.status == 200) {
                 // window.location.href="orders.jsp?orders=";
@@ -419,39 +353,12 @@
                     <li class="dropdown active">
                         <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                data-feather="briefcase"></i><span>Products</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="categories.jsp">Categories</a></li>
-                            <li><a class="nav-link" href="product.jsp">Products</a></li>
-                        </ul>
+                    <li class="dropdown active">
+                        <a href="categories.jsp" class="nav-link"><i data-feather="monitor"></i><span>Categories</span></a>
                     </li>
-                    <li class="dropdown">
-                        <a href="/E_Commerce_Servlet_JSP_war_exploded/admin-show-users.jsp" class="nav-link"><i
-                                data-feather="briefcase"></i><span>Users</span></a>
-
+                    <li class="dropdown active">
+                        <a href="adminhome" class="nav-link"><i data-feather="monitor"></i><span>Products</span></a>
                     </li>
-                    <li class="dropdown">
-                        <a href="/E_Commerce_Servlet_JSP_war_exploded/adminhome" class="nav-link"><i
-                                data-feather="briefcase"></i><span>View Products</span></a>
-
-                    </li>
-
-
-
-<%--                    <li class="dropdown">--%>
-<%--                        <a href="#" class="menu-toggle nav-link has-dropdown"><i--%>
-<%--                                data-feather="alert-triangle"></i><span>Errors</span></a>--%>
-<%--                        <ul class="dropdown-menu">--%>
-<%--                            <li><a class="nav-link" href="errors-503.html">503</a></li>--%>
-<%--                            <li><a class="nav-link" href="errors-403.html">403</a></li>--%>
-<%--                            <li><a class="nav-link" href="errors-404.html">404</a></li>--%>
-<%--                            <li><a class="nav-link" href="errors-500.html">500</a></li>--%>
-<%--                        </ul>--%>
-<%--                    </li>--%>
-
-
                 </ul>
             </aside>
         </div>
@@ -534,270 +441,6 @@
                             <div class="card-body">
                                 <div class="table-responsive-sm">
                                     <table class="table " id="userTable">
-<%--                                        <thead>--%>
-<%--                                        <tr>--%>
-<%--                                            <th class="text-center">--%>
-
-<%--                                            </th>--%>
-<%--                                            <th>Task Name</th>--%>
-<%--                                            <th>Progress</th>--%>
-<%--                                            <th>Members</th>--%>
-<%--                                            <th>Due Date</th>--%>
-<%--                                            <th>Status</th>--%>
-<%--                                            <th>Action</th>--%>
-<%--                                        </tr>--%>
-<%--                                        </thead>--%>
-<%--                                        <tbody>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                1--%>
-<%--                                            </td>--%>
-<%--                                            <td>Create a mobile app</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-success width-per-40">--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-5.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-20</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-success badge-shadow">Completed</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                2--%>
-<%--                                            </td>--%>
-<%--                                            <td>Redesign homepage</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar width-per-60"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-3.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-4.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-04-10</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-info badge-shadow">Todo</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                3--%>
-<%--                                            </td>--%>
-<%--                                            <td>Backup database</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-warning width-per-70"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-2.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-29</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-warning badge-shadow">In Progress</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                4--%>
-<%--                                            </td>--%>
-<%--                                            <td>Input data</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-success width-per-90"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-2.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-5.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-4.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-16</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-success badge-shadow">Completed</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                5--%>
-<%--                                            </td>--%>
-<%--                                            <td>Create a mobile app</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-success width-per-40">--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-5.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-20</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-success badge-shadow">Completed</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                6--%>
-<%--                                            </td>--%>
-<%--                                            <td>Redesign homepage</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar width-per-60"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-3.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-4.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-04-10</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-info badge-shadow">Todo</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                7--%>
-<%--                                            </td>--%>
-<%--                                            <td>Backup database</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-warning width-per-70"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-2.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-29</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-warning badge-shadow">In Progress</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                8--%>
-<%--                                            </td>--%>
-<%--                                            <td>Input data</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-success width-per-90"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-2.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-5.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-4.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-16</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-success badge-shadow">Completed</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                9--%>
-<%--                                            </td>--%>
-<%--                                            <td>Create a mobile app</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-success width-per-40">--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-5.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-20</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-success badge-shadow">Completed</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                10--%>
-<%--                                            </td>--%>
-<%--                                            <td>Redesign homepage</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar width-per-60"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-3.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-4.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-04-10</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-info badge-shadow">Todo</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                11--%>
-<%--                                            </td>--%>
-<%--                                            <td>Backup database</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-warning width-per-70"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-2.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-29</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-warning badge-shadow">In Progress</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                12--%>
-<%--                                            </td>--%>
-<%--                                            <td>Input data</td>--%>
-<%--                                            <td class="align-middle">--%>
-<%--                                                <div class="progress progress-xs">--%>
-<%--                                                    <div class="progress-bar bg-success width-per-90"></div>--%>
-<%--                                                </div>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <img alt="image" src="assets/img/users/user-2.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-5.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-4.png" width="35">--%>
-<%--                                                <img alt="image" src="assets/img/users/user-1.png" width="35">--%>
-<%--                                            </td>--%>
-<%--                                            <td>2018-01-16</td>--%>
-<%--                                            <td>--%>
-<%--                                                <div class="badge badge-success badge-shadow">Completed</div>--%>
-<%--                                            </td>--%>
-<%--                                            <td><a href="#" class="btn btn-primary">Detail</a></td>--%>
-<%--                                        </tr>--%>
-<%--                                        </tbody>--%>
                                     </table>
                                 </div>
                             </div>

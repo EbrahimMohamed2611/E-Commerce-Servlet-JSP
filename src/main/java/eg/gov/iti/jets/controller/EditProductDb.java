@@ -18,6 +18,7 @@ import java.util.List;
 @WebServlet(name = "editprodb", value = "/editprodb")
 public class EditProductDb extends HttpServlet {
     public static final ProductRepository productRepsitory = ProductRepositoryFactory.getProductRepositoryInstance();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -25,6 +26,7 @@ public class EditProductDb extends HttpServlet {
         String price = req.getParameter("price");
         String quan = req.getParameter("quantity");
         String cat = req.getParameter("cat");
+        System.out.println("categoryyyyyyyy--> " + cat);
         String id = req.getParameter("id");
 
         Product product = new Product();
@@ -37,20 +39,25 @@ public class EditProductDb extends HttpServlet {
         category.setCategoryName(cat);
         product.setCategory(category);
         //todo call method the update this object in the db
-//        Product ubdateProduct = productRepsitory.updateProduct(product);
-//        List<Product> products = productRepsitory.findAll();
+        System.out.println("pppppppp-> " + product);
+        productRepsitory.updateProduct(product);
+        List<Product> products = productRepsitory.findAll();
         //todo fetch all product again from db and get list of products and pass it in the fn
 
 
-        List<Product> products =new ArrayList<>();
-        products.add(product);
+//        List<Product> products =new ArrayList<>();
+//        products.add(product);
 
 
-        System.out.println("inside Editproduct servlet  name ="+name +" desc"+desc);
+        System.out.println("inside Editproduct servlet  name =" + name + " desc" + desc);
         req.setAttribute("products", products);
         System.out.println("-------------after setting attt----------------");
-        RequestDispatcher rd = req.getRequestDispatcher("viewproduct.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("product.jsp");
         System.out.println("-------------afterdisp--------------");
         rd.forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }
