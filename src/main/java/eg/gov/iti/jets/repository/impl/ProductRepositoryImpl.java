@@ -28,7 +28,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findByCategoryId(int categoryId) {
-       return ENTITY_MANAGER.createQuery("from Product where category.categoryId = :categoryId")
+        return ENTITY_MANAGER.createQuery("from Product where isDeleted = false and quantity > 0 and category.categoryId = :categoryId")
                 .setParameter("categoryId", categoryId)
                 .getResultList();
     }
@@ -64,8 +64,39 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
+    public List<Product> findBetweenTwoPricesUsingName(Double firstPrice, Double secondPrice, String productName) {
+        return ENTITY_MANAGER
+                .createNamedQuery("Product.findBetweenTwoPricesUsingName")
+                .setParameter("price1", firstPrice)
+                .setParameter("price2", secondPrice)
+                .setParameter("productName", "%" + productName + "%")
+                .getResultList();
+    }
+
+    @Override
+    public List<Product> findBetweenTwoPricesUsingCategory(Double firstPrice, Double secondPrice, int categoryId) {
+        return ENTITY_MANAGER
+                .createNamedQuery("Product.findBetweenTwoPricesUsingCategory")
+                .setParameter("price1", firstPrice)
+                .setParameter("price2", secondPrice)
+                .setParameter("categoryId", categoryId)
+                .getResultList();
+    }
+
+    @Override
+    public List<Product> findBetweenTwoPricesUsingNameAndCategory(Double firstPrice, Double secondPrice, String productName, int categoryId) {
+        return ENTITY_MANAGER
+                .createNamedQuery("Product.findBetweenTwoPricesUsingNameAndCategory")
+                .setParameter("price1", firstPrice)
+                .setParameter("price2", secondPrice)
+                .setParameter("productName", "%" + productName + "%")
+                .setParameter("categoryId", categoryId)
+                .getResultList();
+    }
+
+    @Override
     public List<Product> findAll() {
-        return ENTITY_MANAGER.createQuery("FROM Product").getResultList();
+        return ENTITY_MANAGER.createQuery("FROM Product where isDeleted = false and quantity > 0").getResultList();
     }
 
     @Override

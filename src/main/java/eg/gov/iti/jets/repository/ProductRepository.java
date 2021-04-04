@@ -19,6 +19,12 @@ public interface ProductRepository {
 
     List<Product> findBetweenTwoPrices(Double firstPrice, Double secondPrice);
 
+    List<Product> findBetweenTwoPricesUsingName(Double firstPrice, Double secondPrice, String productName);
+
+    List<Product> findBetweenTwoPricesUsingCategory(Double firstPrice, Double secondPrice, int categoryId);
+
+    List<Product> findBetweenTwoPricesUsingNameAndCategory(Double firstPrice, Double secondPrice, String productName, int categoryId);
+
     List<Product> findAll();
 
     double getAvgRating(int id);

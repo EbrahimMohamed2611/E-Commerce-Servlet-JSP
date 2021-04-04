@@ -233,7 +233,7 @@
                                     <div class="hm-minicart-trigger">
                                         <span class="item-icon"></span>
                                         <span class="item-text">£80.00
-                                                    <span class="cart-item-count">2</span>
+                                                    <span id="shopCartCounter" class="cart-item-count">0</span>
                                                 </span>
                                     </div>
                                     <span></span>
@@ -552,14 +552,11 @@
                             </div>
                         </div>
                         <div>
-                            <p>
-                                <label for="amount">Price range:</label>
-                                <input type="text" id="amount" readonly
-                                       style="border:0; color:#f6931f; font-weight:bold;">
-                            </p>
-
                             <div id="slider-range"></div>
-
+                            <div style="min-width: 20vw; text-align: center; padding: .5vw;">
+                                Price range: <span id="amount" style="font-weight:bold;margin-right: 1vw;"></span>
+                                <span class="reply-btn pt-15 pt-xs-5"><a id="filterPrice" class="filter" href="#">filter</a></span>
+                            </div>
                         </div>
                         <!-- product-select-box start -->
                         <div class="product-select-box">
@@ -584,69 +581,8 @@
                         <div class="tab-content">
                             <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                                 <div class="product-area shop-product-area">
-                                    <div class="row">
-                                        <c:forEach items="${requestScope.products}" var="product">
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mt-40">
-                                                <!-- single-product-wrap start -->
-                                                <div class="single-product-wrap">
-                                                    <div class="product-image">
-                                                        <a href="single-product.jsp">
-                                                            <img src="${product.image.path}"
-                                                                 alt="Product Image">
-                                                        </a>
-                                                            <%-- <span class="sticker">New</span>--%>
-                                                    </div>
-                                                    <div class="product_desc">
-                                                        <div class="product_desc_info">
-                                                            <div class="product-review">
-                                                                <h5 class="manufacturer">
-                                                                    <a href="product-details.jsp">Graphic
-                                                                        Corner</a>
-                                                                </h5>
-                                                                <div class="rating-box">
-                                                                    <ul class="rating">
-                                                                        <li><i class="fa fa-star-o"></i></li>
-                                                                        <li><i class="fa fa-star-o"></i></li>
-                                                                        <li><i class="fa fa-star-o"></i></li>
-                                                                        <li class="no-star"><i
-                                                                                class="fa fa-star-o"></i>
-                                                                        </li>
-                                                                        <li class="no-star"><i
-                                                                                class="fa fa-star-o"></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <h4><a class="product_name"
-                                                                   href="productInfo?productId=${product.id}">${product.name}</a>
-                                                            </h4>
-                                                            <div class="price-box">
-                                                                <span class="new-price">$${product.price}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="add-actions">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a
-                                                                        class="addProductToShoppingCart"
-                                                                        href=""
-                                                                        data-product="${product.id}">Add to
-                                                                    cart</a></li>
-                                                                <li><a href="#" title="quick view"
-                                                                       class="quick-view-btn"
-                                                                       data-toggle="modal"
-                                                                       data-target="#exampleModalCenter"
-                                                                       data-product="${product.id}"><i
-                                                                        class="fa fa-eye"></i></a></li>
-                                                                <li><a class="links-details"
-                                                                       href="wishlist.jsp"><i
-                                                                        class="fa fa-heart-o"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- single-product-wrap end -->
-                                            </div>
-                                        </c:forEach>
+                                    <div id="productContainer" class="row">
+                                        <jsp:include page="productList.jsp"/>
                                     </div>
                                 </div>
                             </div>
@@ -1844,15 +1780,16 @@
             range: true,
             min: 0,
             max: 500,
-            values: [75, 300],
+            values: [0, 500],
             slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                $("#amount").text("$" + ui.values[0] + " - $" + ui.values[1]);
             }
         });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        $("#amount").text("$" + $("#slider-range").slider("values", 0) +
             " - $" + $("#slider-range").slider("values", 1));
     });
 </script>
+<script src="js/ajax-filter.js"></script>
 </body>
 
 <!-- shop-4-column31:48-->

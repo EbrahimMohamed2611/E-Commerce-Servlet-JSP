@@ -3,9 +3,6 @@ $(function () {
     // Get the Modal
     let links = $('.addProductToShoppingCart');
 
-    // Get the messages div.
-    let modalButtons = $('.quick-view-btn');
-
     // Set up an event listener for the contact form.
     links.on("click", function (e) {
         // Stop the browser from submitting the form.
@@ -17,24 +14,51 @@ $(function () {
         $.ajax({
             type: 'POST',
             url: 'addToCart',
-            data: {"productId": link.data("product")}
+            data: {"orderedProductId": link.data("product")}
         })
             .done(function (response) {
-                link.text("Remove from cart");
                 $("#shoppingCardContainer").append(`<li>
                                                         <a href="single-product.jsp" class="minicart-product-image">
-                                                            <img src="${response.image.path}"
+                                                            <img src="${response.productImage.path}"
                                                                 alt="cart products">
                                                         </a>
                                                         <div class="minicart-product-details">
-                                                            <h6><a href="single-product.jsp">${response.name}</a></h6>
+                                                            <h6><a href="single-product.jsp">${response.productName}</a></h6>
                                                             <span>$${response.price}</span>
                                                         </div>
-                                                        <button class="close" title="Remove">
+                                                        <button class="close removeFromCart" title="Remove" data-product="${response.productId}" onclick="removeElement(this)">
                                                             <i class="fa fa-close"></i>
                                                         </button>
                                                     </li>`);
             });
+        $("#shopCartCounter").text($("#shopCartCounter").text() + 1);
     });
 
 });
+
+function removeElement(element) {
+    $.ajax({
+        type: 'POST',
+        url: 'removePurchase',
+        data: {"orderedProductId": $(element).data("product")}
+    }).done(function (response) {
+        $("#shoppingCardContainer").clear();
+        response.itemsOrdered.forEach(e => {
+            let productData = e.orderedProductDTO;
+            $("#shoppingCardContainer").append(`<li>
+                                                        <a href="single-product.jsp" class="minicart-product-image">
+                                                            <img src="${productData.productImage.path}"
+                                                                alt="cart products">
+                                                        </a>
+                                                        <div class="minicart-product-details">
+                                                            <h6><a href="single-product.jsp">${productData.productName}</a></h6>
+                                                            <span>$${productData.price}</span>
+                                                        </div>
+                                                        <button class="close removeFromCart" title="Remove" data-product="${productData.productId}" onclick="removeElement(this)">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </li>`);
+        });
+    });
+
+}

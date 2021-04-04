@@ -4,9 +4,9 @@ import eg.gov.iti.jets.adapter.OrderedProductAdapter;
 import eg.gov.iti.jets.dto.FullyProductDto;
 import eg.gov.iti.jets.dto.MinimalProductDto;
 import eg.gov.iti.jets.dto.OrderedProductDTO;
+import eg.gov.iti.jets.enums.FilterTypes;
 import eg.gov.iti.jets.mappers.MinimalProductMapper;
 import eg.gov.iti.jets.mappers.ProductMapper;
-import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
 import eg.gov.iti.jets.repository.impl.ProductRepositoryImpl;
@@ -67,6 +67,27 @@ public class ProductServiceImpl implements ProductService {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<MinimalProductDto> getProductsByPrice(int min, int max, FilterTypes type, String... inputs) {
+        List<Product> products = null;
+        switch (type) {
+            case NORMAL:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPrices((double) min, (double) max);
+                break;
+            case SEARCH:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPricesUsingName((double) min, (double) max, inputs[0]);
+                break;
+            case CATEGORY:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPricesUsingCategory((double) min, (double) max, Integer.parseInt(inputs[0]));
+                break;
+            case SEARCH_CATEGORY:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPricesUsingNameAndCategory((double) min, (double) max, inputs[0], Integer.parseInt(inputs[1]));
+        }
+        return products.stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
     }
 
     @Override

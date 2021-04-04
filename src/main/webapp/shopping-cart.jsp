@@ -503,22 +503,22 @@
                                 <c:if test="${not empty sessionScope.userNotCompletedOrders}">
                                     <c:forEach items="${sessionScope.userNotCompletedOrders[0].itemsOrdered}" var="item">
                                         <tr>
-                                            <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a>
+                                            <td class="li-product-remove"><a class="removeFromCart" href="#" data-product="${item.orderedProductDTO.productId}"><i class="fa fa-times"></i></a>
                                             </td>
                                             <td class="li-product-thumbnail"><a href="#"><img
                                                     src="images/product/small-size/5.jpg" alt="Li's Product Image"></a>
                                             </td>
-                                            <td class="li-product-name"><a href="#">${item.product.productName}</a></td>
-                                            <td class="li-product-price"><span class="amount">$${item.product.price}</span></td>
+                                            <td class="li-product-name"><a href="#">${item.orderedProductDTO.productName}</a></td>
+                                            <td class="li-product-price"><span class="amount">$${item.orderedProductDTO.price}</span></td>
                                             <td class="quantity">
                                                 <label>Quantity</label>
-                                                <div class="cart-plus-minus">
+                                                <div class="cart-plus-minus" data-product="${item.orderedProductDTO.productId}">
                                                     <input class="cart-plus-minus-box" value="${item.quantity}" type="text">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </td>
-                                            <td class="product-subtotal"><span class="amount">$70.00</span></td>
+                                            <td class="product-subtotal"><span class="total">$${item.orderedProductDTO.price * item.quantity}</span></td>
                                         </tr>
                                     </c:forEach>
                                 </c:if>
@@ -800,6 +800,7 @@
 
 <%@include file="common/footer.jsp" %>
 <script src="js/user.js"></script>
+<script src="js/ajax-fullCart.js"></script>
 </body>
 
 <!-- shopping-cart31:32-->

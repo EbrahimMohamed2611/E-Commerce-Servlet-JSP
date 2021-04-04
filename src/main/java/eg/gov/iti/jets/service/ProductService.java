@@ -3,6 +3,7 @@ package eg.gov.iti.jets.service;
 import eg.gov.iti.jets.dto.FullyProductDto;
 import eg.gov.iti.jets.dto.MinimalProductDto;
 import eg.gov.iti.jets.dto.OrderedProductDTO;
+import eg.gov.iti.jets.enums.FilterTypes;
 import eg.gov.iti.jets.exceptions.ProductNotFoundException;
 import eg.gov.iti.jets.model.Product;
 
@@ -68,5 +69,7 @@ public interface ProductService {
      * @return ProductDTO
      */
     OrderedProductDTO getInStockProduct(int productId);
+
+    List<MinimalProductDto> getProductsByPrice(int min, int max, FilterTypes type, String ... inputs);
 
 }
