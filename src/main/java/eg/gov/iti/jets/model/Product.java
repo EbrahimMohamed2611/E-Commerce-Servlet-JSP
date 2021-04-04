@@ -4,12 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name="PRODUCT_DETAILS")
+@Table(name = "PRODUCT_DETAILS")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -44,7 +44,7 @@ public class Product implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
-    private Category category ;
+    private Category category;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "IMAGE_ID")
@@ -59,5 +59,19 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product that = (Product) o;
+        return Objects.equals(productId, that.getProductId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(productId);
+    }
 
 }

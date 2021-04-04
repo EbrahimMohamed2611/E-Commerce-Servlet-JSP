@@ -7,7 +7,6 @@ import eg.gov.iti.jets.model.Address;
 import eg.gov.iti.jets.model.Gender;
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.service.UserService;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,7 +21,7 @@ import java.time.LocalDate;
 
 @WebServlet(name = "profile", value = "/profile")
 public class Profile extends HttpServlet {
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -75,7 +75,7 @@ public class User implements Serializable {
     @Embedded
     private Address address = new Address();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Order> orders = new HashSet<>();
 
 

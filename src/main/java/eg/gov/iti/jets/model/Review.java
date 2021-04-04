@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+
 @NamedQueries(
         @NamedQuery(name = "Review.findByProduct", query = "select r from Review r where r.product = :product")
 )

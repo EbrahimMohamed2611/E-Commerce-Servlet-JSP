@@ -1,11 +1,10 @@
 package eg.gov.iti.jets.factory;
 
-import eg.gov.iti.jets.repository.OrderRepository;
-import eg.gov.iti.jets.repository.impl.OrderRepositoryImpl;
 import eg.gov.iti.jets.service.OrderService;
 import eg.gov.iti.jets.service.impl.OrderServiceImpl;
 
 public class OrderServiceFactory {
+
     private static OrderService orderService;
 
     public static OrderService getOrderServiceInstance(){
@@ -15,3 +14,5 @@ public class OrderServiceFactory {
         return orderService;
     }
 }
+
+

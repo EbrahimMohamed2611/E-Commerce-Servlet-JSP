@@ -21,18 +21,18 @@ public class PurchaseId implements Serializable {
     @Column(name = "PRODUCT_ID")
     private int productId;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PurchaseId that = (PurchaseId) o;
-        return orderId == that.orderId && productId == that.productId;
+        return Objects.equals(orderId, that.getOrderId()) &&
+                Objects.equals(productId, that.getProductId());
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, productId);
+        return Objects.hash(getOrderId(), getProductId());
     }
-
 
 }

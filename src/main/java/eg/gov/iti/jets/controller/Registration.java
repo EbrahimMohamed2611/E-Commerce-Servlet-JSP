@@ -1,6 +1,6 @@
 package eg.gov.iti.jets.controller;
 
-import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.model.Address;
 import eg.gov.iti.jets.model.EmailVerification;
 import eg.gov.iti.jets.model.Gender;
@@ -9,7 +9,6 @@ import eg.gov.iti.jets.model.User;
 
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserServiceFactory;
-import eg.gov.iti.jets.utils.HashPassword;
 import eg.gov.iti.jets.utils.MailService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -25,18 +24,15 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import java.util.UUID;
-
-import java.util.List;
 
 
 @WebServlet(name = "Registration", urlPatterns = "/registration")
 public class Registration extends HttpServlet {
 
-    private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserService userService = UserServiceFactory.getUserServiceInstance();
 
 //    @Override
 //    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -77,7 +73,7 @@ public class Registration extends HttpServlet {
         Address address = new Address(country, state, city, street, zipCode);
         System.out.println(address);
 
-        UserDto userRegistrationDto = new UserDto();
+        UserDTO userRegistrationDto = new UserDTO();
         userRegistrationDto.setFirstName(firstName);
         userRegistrationDto.setLastName(lastName);
         userRegistrationDto.setEmail(email);
@@ -94,7 +90,7 @@ public class Registration extends HttpServlet {
         userRegistrationDto.setBalance(Double.parseDouble(balance));
         userRegistrationDto.setAddress(address);
         System.out.println("User Registration Dto " + userRegistrationDto);
-        UserDto userDto = userService.registerUser(userRegistrationDto);
+        UserDTO userDto = userService.registerUser(userRegistrationDto);
         req.getSession().setAttribute("userDto",userDto);
         ServletContext servletContext = getServletContext();
         List<UserDto> userList = (List<UserDto>)servletContext.getAttribute("userList");
