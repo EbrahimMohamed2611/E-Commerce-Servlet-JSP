@@ -11,8 +11,8 @@ import java.util.Set;
 
 public interface OrderRepository {
 
-    Set<Order> getAllOrders(int userID);
 
+    Set<Order> getAllOrders(int userID);
 
     Order saveOrder(Order order);
 

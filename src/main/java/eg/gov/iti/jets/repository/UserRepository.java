@@ -1,6 +1,8 @@
 package eg.gov.iti.jets.repository;
 
+
 import eg.gov.iti.jets.dto.UserDTO;
+
 import eg.gov.iti.jets.model.Role;
 import eg.gov.iti.jets.model.User;
 
@@ -15,7 +17,9 @@ public interface UserRepository {
 
     User updateUser(User user);
 
+
     List<UserDTO> fetchAllUsers();
+
 
     List<User> findALlAdminUsers();
 

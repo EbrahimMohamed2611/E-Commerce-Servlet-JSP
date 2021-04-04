@@ -14,6 +14,10 @@ import java.util.Set;
 
 public class OrderRepositoryImpl implements OrderRepository {
 
+    private final PersistenceManager persistenceManager = PersistenceManager.INSTANCE;
+
+
+
 
     @Override
     @Transactional

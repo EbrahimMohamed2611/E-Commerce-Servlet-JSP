@@ -1,14 +1,12 @@
 package eg.gov.iti.jets.controller;
 
 import eg.gov.iti.jets.dto.UserDTO;
+import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.Address;
 import eg.gov.iti.jets.model.EmailVerification;
 import eg.gov.iti.jets.model.Gender;
 import eg.gov.iti.jets.model.Role;
-import eg.gov.iti.jets.model.User;
-
 import eg.gov.iti.jets.service.UserService;
-import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.utils.MailService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -18,14 +16,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 import java.io.IOException;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import java.util.List;
-
 import java.util.UUID;
 
 
@@ -61,7 +55,7 @@ public class Registration extends HttpServlet {
         String birthDate = req.getParameter("birthDate");
         String balance = req.getParameter("balance");
         String gender = req.getParameter("gender");
-        System.out.println("+++++++"+birthDate);
+        System.out.println("+++++++" + birthDate);
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateOfBirth = LocalDate.parse(birthDate, dateTimeFormatter);
 
@@ -82,29 +76,29 @@ public class Registration extends HttpServlet {
         userRegistrationDto.setPhone(phone);
         userRegistrationDto.setBirthDate(dateOfBirth);
         userRegistrationDto.setRole(Role.USER_ROLE);
-        if(gender.equals("female"))
-        userRegistrationDto.setGender(Gender.FEMALE);
+        if (gender.equals("female"))
+            userRegistrationDto.setGender(Gender.FEMALE);
         else
-        userRegistrationDto.setGender(Gender.MALE);
+            userRegistrationDto.setGender(Gender.MALE);
         userRegistrationDto.setEmailVerification(EmailVerification.NOT_VERIFY);
         userRegistrationDto.setBalance(Double.parseDouble(balance));
         userRegistrationDto.setAddress(address);
         System.out.println("User Registration Dto " + userRegistrationDto);
         UserDTO userDto = userService.registerUser(userRegistrationDto);
-        req.getSession().setAttribute("userDto",userDto);
+        req.getSession().setAttribute("userDto", userDto);
         ServletContext servletContext = getServletContext();
-        List<UserDto> userList = (List<UserDto>)servletContext.getAttribute("userList");
+        List<UserDTO> userList = (List<UserDTO>) servletContext.getAttribute("userList");
         userList.add(userDto);
         servletContext.setAttribute("userList", userList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("email-verification.jsp");
 
         String verificationCode = UUID.randomUUID().toString();
-        req.getSession().setAttribute("verificationCode",verificationCode);
+        req.getSession().setAttribute("verificationCode", verificationCode);
         //ana hena msh 3rfa ezai a7wel mn dto le user model 3shan ykon feh el orders w kda
-        System.out.println("userlist befor regiteration the new user---> "+userList);
+        System.out.println("userlist befor regiteration the new user---> " + userList);
         //todo add new user model into the lsit and then put it intto the cotext
         try {
-            MailService.sendEmail(email,"From E-Commerce", verificationCode);
+            MailService.sendEmail(email, "From E-Commerce", verificationCode);
             requestDispatcher.forward(req, resp);
         } catch (ServletException | IOException e) {
             System.out.println("Cannot forward to home page");

@@ -79,17 +79,18 @@ public class UserServiceImpl implements UserService {
     }
 
 
+
     public List<UserDTO> fetchAllUsers() {
         List<UserDTO> userList = new ArrayList<>();
         userList = userRepository.fetchAllUsers();
         return userList;
     }
 
+
     @Override
     public boolean isUserBalanceEnough(double totalPrice, String userEmail) {
         User user = userRepository.findByEmail(userEmail);
         double userBalance = user.getBalance();
-
         return totalPrice <= userBalance;
     }
 

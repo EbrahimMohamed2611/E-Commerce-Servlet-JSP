@@ -11,6 +11,7 @@ import eg.gov.iti.jets.model.OrderStatus;
 import eg.gov.iti.jets.service.OrderService;
 
 import eg.gov.iti.jets.service.UserService;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,6 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
@@ -54,6 +56,10 @@ public class LoginController extends HttpServlet {
 
                 //------------------- Put User Orders on Session----------------------//
                 List<OrderDTO> userNotCompletedOrders = orderService.getUserOrders(userDto.getUserId(), OrderStatus.NOT_COMPLETED);
+                if(userNotCompletedOrders == null){
+                    System.out.println("userNotCompletedOrders == null ");
+                    userNotCompletedOrders = new ArrayList<>();
+                }
                 session.setAttribute("userNotCompletedOrders", userNotCompletedOrders);
 
                 requestDispatcher.forward(request, response);

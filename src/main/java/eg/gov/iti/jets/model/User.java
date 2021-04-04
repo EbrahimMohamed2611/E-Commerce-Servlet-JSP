@@ -21,10 +21,10 @@ import java.util.Set;
         @NamedQuery(name = "User.getAllAdminUsers",
                 query = "SELECT u from User u where u.role = eg.gov.iti.jets.model.Role.ADMIN_ROLE"),
 })
-//@Getter
-//@Setter
-//@NoArgsConstructor
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+
 public class User implements Serializable {
 
     @Id

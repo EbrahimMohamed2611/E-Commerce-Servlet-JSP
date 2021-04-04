@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    Order addOrder(Order order);
+
 
     Set<Order> getAllOrders(int userID);
 

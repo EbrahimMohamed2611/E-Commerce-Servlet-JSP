@@ -14,6 +14,7 @@ import eg.gov.iti.jets.dto.OrderDTO;
 import eg.gov.iti.jets.dto.OrderedProductDTO;
 import eg.gov.iti.jets.dto.PurchaseDTO;
 import eg.gov.iti.jets.dto.UserDTO;
+
 import eg.gov.iti.jets.factory.ProductRepositoryFactory;
 import eg.gov.iti.jets.factory.PurchaseRepositoryFactory;
 import eg.gov.iti.jets.model.*;
@@ -29,13 +30,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository = OrderRepositoryFactory.getOrderRepositoryInstance();
     private final ProductRepository productRepository = ProductRepositoryFactory.getProductRepositoryInstance();
     private final PurchaseRepository purchaseRepository = PurchaseRepositoryFactory.getPurchaseRepositoryInstance();
-    private OrderDTO orderDTO;
 
-    @Override
-    public Order addOrder(Order order) {
-        Order order1 = orderRepository.addOrder(order);
-        return order1;
-    }
 
     @Override
     public Set<Order> getAllOrders(int userID) {
@@ -62,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderId(orderDTO.getId());
 
         orderDTO.getItemsOrdered().forEach(e -> {
-            Product product = productRepository.findProductById(e.getOrderedProductDTO().getProductId());
+            Product product = productRepository.findById(e.getOrderedProductDTO().getProductId());
             Purchase purchase = new Purchase();
             purchase.setProduct(product);
             purchase.setQuantity(e.getQuantity());
@@ -125,6 +120,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO updateOrder(OrderDTO orderToUpdateDTO, UserDTO userDTO, OrderStatus orderStatus) {
         Order orderToUpdate = prepareTheOrderForDatabase(orderToUpdateDTO, orderStatus, userDTO);
+
         Order updatedOrder = orderRepository.updateOrder(orderToUpdate);
         if (updatedOrder != null) {
             updatedOrder.getPurchase().forEach(purchaseRepository::savePurchase);
@@ -143,6 +139,7 @@ public class OrderServiceImpl implements OrderService {
         }
         return null; // else
     }
+
 
     //TODO : refactoring (enhance for loop)
     @Override

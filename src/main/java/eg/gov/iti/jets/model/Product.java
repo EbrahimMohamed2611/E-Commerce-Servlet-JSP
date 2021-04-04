@@ -1,9 +1,13 @@
 package eg.gov.iti.jets.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,7 +21,9 @@ import java.util.Set;
         @NamedQuery(name = "Product.findByNameLike",
                 query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false"),
         @NamedQuery(name = "Product.findBetweenTwoPrices",
-                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false")
+                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false"),
+        @NamedQuery(name = "Product.getAvgRating",
+                query = "SELECT AVG(r.reviewStars) from Product  p, Review r where p.productId = :productId")
 })
 @ToString
 public class Product implements Serializable {

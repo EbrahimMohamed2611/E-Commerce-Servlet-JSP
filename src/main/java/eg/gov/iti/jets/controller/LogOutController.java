@@ -32,46 +32,42 @@ public class LogOutController extends HttpServlet {
         List<OrderDTO> userNotCompletedOrders = (List<OrderDTO>) session.getAttribute("userNotCompletedOrders");
         UserDTO currentUserDto = (UserDTO) session.getAttribute("userDto");
 
-        if(userNotCompletedOrders.get(0).getItemsOrdered().isEmpty()){
-            if(orderService.deleteOrder(userNotCompletedOrders.get(0).getId())){
-                userNotCompletedOrders.remove(0);
-                System.out.println("User not completed Order is now empty");
-                session.invalidate();
-                res.sendRedirect("index.jsp");
-            }
-
-        //----------------------Save Orders----------------------//
-        }else if (!userNotCompletedOrders.isEmpty()) {
-            OrderDTO orderDTOToSave = userNotCompletedOrders.get(0);
-            int orderId = orderDTOToSave.getId(); // return 0 in case this order is not in the database yet
-            //Convert from OrderDTO to Order ...
-            if (orderId > 0) { //Already in database
-                // use update method
-                System.out.println("Order already in database, use update method ");
-                System.out.println("orderDTOToSave size :  "+ orderDTOToSave.getItemsOrdered().size());
-                OrderDTO updatedOrderDTO = orderService.updateOrder(orderDTOToSave, currentUserDto, OrderStatus.NOT_COMPLETED);
-                System.out.println("UpdatedDTO size :  "+ updatedOrderDTO.getItemsOrdered().size());
-                if (updatedOrderDTO != null) {
-                    System.out.println("Order Updated Successfully!");
-                } else {
-                    System.out.println("Order Fail To Update!");
+        if (!userNotCompletedOrders.isEmpty()) {
+            if (userNotCompletedOrders.get(0).getItemsOrdered().isEmpty()) {
+                if (orderService.deleteOrder(userNotCompletedOrders.get(0).getId())) {
+                    userNotCompletedOrders.remove(0);
+                    System.out.println("User not completed Order is now empty");
                 }
             } else {
-                // use save method
-                System.out.println("Order is not in database, use save method ");
-                OrderDTO updatedOrderDTO = orderService.addNewOrder(orderDTOToSave, currentUserDto);
-                if (updatedOrderDTO != null) {
-                    System.out.println("Order Saved for the first time Successfully!");
+                OrderDTO orderDTOToSave = userNotCompletedOrders.get(0);
+                int orderId = orderDTOToSave.getId(); // return 0 in case this order is not in the database yet
+                //Convert from OrderDTO to Order ...
+                if (orderId > 0) { //Already in database
+                    // use update method
+                    System.out.println("Order already in database, use update method ");
+                    System.out.println("orderDTOToSave size :  " + orderDTOToSave.getItemsOrdered().size());
+                    OrderDTO updatedOrderDTO = orderService.updateOrder(orderDTOToSave, currentUserDto, OrderStatus.NOT_COMPLETED);
+                    System.out.println("UpdatedDTO size :  " + updatedOrderDTO.getItemsOrdered().size());
+                    if (updatedOrderDTO != null) {
+                        System.out.println("Order Updated Successfully!");
+                    } else {
+                        System.out.println("Order Fail To Update!");
+                    }
                 } else {
-                    System.out.println("Order Fail To Update!");
+                    // use save method
+                    System.out.println("Order is not in database, use save method ");
+                    OrderDTO updatedOrderDTO = orderService.addNewOrder(orderDTOToSave, currentUserDto);
+                    if (updatedOrderDTO != null) {
+                        System.out.println("Order Saved for the first time Successfully!");
+                    } else {
+                        System.out.println("Order Fail To Update!");
+                    }
                 }
             }
+
         }
-
-//        req.getSession().getAttribute("userDto",null);
-        session.invalidate();
-        res.sendRedirect("index.jsp");
-
-
+        req.getSession().setAttribute("userDto",null);
+//            session.invalidate();
+            res.sendRedirect("index.jsp");
     }
 }
