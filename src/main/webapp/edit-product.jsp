@@ -9,6 +9,7 @@
     function edit()
     {
 
+
         name = document.getElementById("productName").value;
         price =  document.getElementById("price").value;
         quan =  document.getElementById("quantity").value;
