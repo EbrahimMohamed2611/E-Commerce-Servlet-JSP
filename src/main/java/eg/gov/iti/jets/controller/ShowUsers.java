@@ -1,6 +1,7 @@
 package eg.gov.iti.jets.controller;
 
 import com.google.gson.Gson;
+import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.model.User;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -19,7 +20,7 @@ public class ShowUsers extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext servletContext = getServletContext();
-        List<User> userList = (List<User>)servletContext.getAttribute("userList");
+        List<UserDto> userList = (List<UserDto>)servletContext.getAttribute("userList");
         System.out.println("inside the doget the list of users is----> "+userList);
         response.setContentType("text/event-stream");
         response.setCharacterEncoding("UTF-8");
@@ -40,7 +41,7 @@ public class ShowUsers extends HttpServlet {
             out.close();
         }
     }
-    private String buildGsonFromListObject(List<User> users){
+    private String buildGsonFromListObject(List<UserDto> users){
         Gson gsonMsg = new Gson();
         return gsonMsg.toJson(users);
     }
