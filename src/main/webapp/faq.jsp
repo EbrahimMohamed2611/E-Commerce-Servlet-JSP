@@ -912,6 +912,7 @@
         <script src="js/scrollUp.min.js"></script>
         <!-- Main/Activator js -->
         <script src="js/main.js"></script>
+    <script src="js/user.js"></script>
     </body>
 
 <!-- faq32:14-->

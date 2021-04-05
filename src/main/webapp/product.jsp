@@ -153,7 +153,7 @@
             </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i
                     class="fas
 												fa-bell"></i>
-                  </span> <span class="dropdown-item-desc"> Welcome to Otika
+                  </span> <span class="dropdown-item-desc"> Welcome to LIMUPA
                     template! <span class="time">Yesterday</span>
                   </span>
             </a>
@@ -190,7 +190,7 @@
       <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
           <a href="index.html"> <img alt="image" src="pages/assets/img/logo.png" class="header-logo"/> <span
-                  class="logo-name">Otika</span>
+                  class="logo-name"></span>
           </a>
         </div>
         <ul class="sidebar-menu">
