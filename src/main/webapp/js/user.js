@@ -36,19 +36,19 @@ function handleEmailUserValidation() {
 //Match password
 
 function passwordIsStrong() {
-let password = document.getElementById("password").value;
+    let password = document.getElementById("password").value;
     document.getElementById("passwordIsStrong").hidden = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/.exec(password);
 }
 
-function passwordConfirmation(){
+function passwordConfirmation() {
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
     console.log("password " + password + " confirmPassword" + confirmPassword)
-    if(password === confirmPassword){
+    if (password === confirmPassword) {
         document.getElementById("passwordIsNotConfirmed").hidden = false;
         document.getElementById("passwordIsConfirmed").hidden = true;
         console.log("matched")
-    }else{
+    } else {
         document.getElementById("passwordIsNotConfirmed").hidden = true;
         document.getElementById("passwordIsConfirmed").hidden = false;
         console.log("Not matched")
@@ -56,9 +56,13 @@ function passwordConfirmation(){
     }
 }
 
-window.onload = function (){
+window.onload = function () {
 
-const fullName = document.getElementById('fullName').textContent;
-    document.getElementById('profileImage').innerHTML = fullName.split(' ').map(name => name[0]).join('').toUpperCase();
-    console.log(fullName);
+    const fullName = document.getElementById('fullName').textContent;
+    if (fullName != null) {
+        document.getElementById('profileImage').innerHTML = fullName.split(' ').map(name => name[0]).join('').toUpperCase();
+        console.log(fullName);
+
+    }
+
 }
