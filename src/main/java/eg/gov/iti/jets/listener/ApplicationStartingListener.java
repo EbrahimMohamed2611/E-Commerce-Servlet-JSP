@@ -1,9 +1,11 @@
 package eg.gov.iti.jets.listener;
 
+import eg.gov.iti.jets.adapter.UserAdapter;
 import eg.gov.iti.jets.config.HibernateMySqlConfiguration;
 import eg.gov.iti.jets.config.PersistenceManager;
 
 
+import eg.gov.iti.jets.dto.UserDataDto;
 import eg.gov.iti.jets.dto.UserDto;
 import eg.gov.iti.jets.factory.UserRepositoryFactory;
 import eg.gov.iti.jets.factory.UserServiceFactory;
@@ -24,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebListener
 public class ApplicationStartingListener implements ServletContextListener{
@@ -47,9 +50,10 @@ public class ApplicationStartingListener implements ServletContextListener{
         System.out.println("Database is Opened");
         sce.getServletContext().setAttribute("countries",stringStringMap);
 
-        List<UserDto> userList = userRepository.findALlCustomerUsers();
+        List<User> userList = userRepository.findALlCustomerUsers();
+        List<UserDataDto> userDataDtoList = userList.stream().map(UserAdapter::convertFromUsertoUserDataDto).collect(Collectors.toList());
         System.out.println("Inside initialize of conttext->userlist "+userList);
-        sce.getServletContext().setAttribute("userList",userList);
+        sce.getServletContext().setAttribute("userList",userDataDtoList);
         System.out.println("put it into the ocntext scope ");
 
 

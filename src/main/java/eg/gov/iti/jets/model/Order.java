@@ -34,7 +34,8 @@ public class Order implements Serializable {
     @JoinColumn(name = "USERS_ID")
     private User user;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade={CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private Set<Purchase> purchase = new HashSet<>();
+
 
 }

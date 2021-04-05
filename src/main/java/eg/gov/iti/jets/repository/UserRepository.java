@@ -15,7 +15,7 @@ public interface UserRepository {
     List<UserDto> fetchAllUsers ();
 
     List<User> findALlAdminUsers();
-    List<UserDto> findALlCustomerUsers();
+    List<User> findALlCustomerUsers();
     User updateUserRole(String email, Role role);
 
 

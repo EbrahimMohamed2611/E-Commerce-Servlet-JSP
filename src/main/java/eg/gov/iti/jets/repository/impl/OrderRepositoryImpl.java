@@ -11,10 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class OrderRepositoryImpl  implements OrderRepository {
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
@@ -34,7 +31,7 @@ public class OrderRepositoryImpl  implements OrderRepository {
 //        return orders;
 //    }
 @Override
-    public Set<Order> getUserOrders(int userId) {
+    public List<Order> getUserOrders(int userId) {
     System.out.println("entityManager is opened");
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
     EntityManager entityManager = factory.createEntityManager();
@@ -44,7 +41,7 @@ public class OrderRepositoryImpl  implements OrderRepository {
             entityManager.createQuery("select o from Order o where o.user.userId = :userId", Order.class);
 
            query.setParameter("userId", userId);
-    Set<Order> listOfOrders = (Set<Order>)query.getResultList();
+    List<Order> listOfOrders = (List<Order>)query.getResultList();
     entityManager.getTransaction().commit();
     entityManager.close();
 
