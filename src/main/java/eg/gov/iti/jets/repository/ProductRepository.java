@@ -30,4 +30,14 @@ public interface ProductRepository {
     double getAvgRating(int id);
 
     void updateProduct(Product product);
+
+    double getMaxPriceForAll();
+
+    double getMaxPriceForCategory(int categoryId);
+
+    double getMaxPriceForName(String productName);
+
+    List<Product> findByNameAndCategory(String productName, int categoryId);
+
+    double getMaxPriceForNameAndCategory(String productName, int categoryId);
 }

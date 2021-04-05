@@ -555,7 +555,8 @@
                             <div id="slider-range"></div>
                             <div style="min-width: 20vw; text-align: center; padding: .5vw;">
                                 Price range: <span id="amount" style="font-weight:bold;margin-right: 1vw;"></span>
-                                <span class="reply-btn pt-15 pt-xs-5"><a id="filterPrice" class="filter" href="#">filter</a></span>
+                                <span class="reply-btn pt-15 pt-xs-5"><a id="filterPrice" class="filter"
+                                                                         href="#">filter</a></span>
                             </div>
                         </div>
                         <!-- product-select-box start -->
@@ -1773,11 +1774,15 @@
 <script src="js/ajax-shoppingCart.js"></script>
 <script>
     $(function () {
+        let maxPrice = 500;
+        <c:if test="${not empty requestScope.maxPrice}">
+        maxPrice = ${requestScope.maxPrice};
+        </c:if>
         $("#slider-range").slider({
             range: true,
             min: 0,
-            max: 500,
-            values: [0, 500],
+            max: maxPrice,
+            values: [0, maxPrice],
             slide: function (event, ui) {
                 $("#amount").text("$" + ui.values[0] + " - $" + ui.values[1]);
             }

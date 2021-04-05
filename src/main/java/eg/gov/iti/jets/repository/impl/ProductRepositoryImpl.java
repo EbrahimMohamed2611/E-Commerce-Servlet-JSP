@@ -23,9 +23,42 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
+    public double getMaxPriceForName(String productName) {
+        return (double) ENTITY_MANAGER.createNamedQuery("Product.getMaxPriceForName").
+                setParameter("productName", "%" + productName + "%")
+                .getResultList()
+                .get(0);
+    }
+
+    @Override
+    public List<Product> findByNameAndCategory(String productName, int categoryId) {
+        return ENTITY_MANAGER.createNamedQuery("Product.findByNameAndCategory").
+                setParameter("productName", "%" + productName + "%")
+                .setParameter("categoryId", categoryId)
+                .getResultList();
+    }
+
+    @Override
+    public double getMaxPriceForNameAndCategory(String productName, int categoryId) {
+        return (double) ENTITY_MANAGER.createNamedQuery("Product.getMaxPriceForNameAndCategory").
+                setParameter("productName", "%" + productName + "%")
+                .setParameter("categoryId", categoryId)
+                .getResultList()
+                .get(0);
+    }
+
+    @Override
     public List<Product> findByCategory(Category category) {
         return (List<Product>) ENTITY_MANAGER.createNamedQuery("Product.findByCategory").
                 setParameter("category", category).getResultList();
+    }
+
+    @Override
+    public double getMaxPriceForCategory(int categoryId) {
+        return (double) ENTITY_MANAGER.createQuery("select MAX(price) from Product where isDeleted = false and quantity > 0 and category.categoryId = :categoryId")
+                .setParameter("categoryId", categoryId)
+                .getResultList()
+                .get(0);
     }
 
     @Override
@@ -99,6 +132,11 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public List<Product> findAll() {
         return ENTITY_MANAGER.createQuery("FROM Product where isDeleted = false and quantity > 0").getResultList();
+    }
+
+    @Override
+    public double getMaxPriceForAll() {
+        return (double) ENTITY_MANAGER.createQuery("SELECT MAX(price) FROM Product where isDeleted = false and quantity > 0").getResultList().get(0);
     }
 
     @Override

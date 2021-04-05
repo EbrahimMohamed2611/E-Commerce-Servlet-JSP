@@ -43,16 +43,40 @@ public class ProductDisplayController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String categoryId = request.getParameter("cat");
-        if (categoryId != null) {
+        String search = request.getParameter("search");
+        if (categoryId != null && categoryId.equals("0")) {
+            categoryId = null;
+        }
+        if (categoryId != null && search != null && !categoryId.isEmpty() && !search.isEmpty()) {
+            List<MinimalProductDto> products = PRODUCT_SERVICE.getProductsByNameAndCategory(search, Integer.parseInt(categoryId));
+            if (products != null && products.size() > 0) {
+                request.setAttribute("products", products);
+                request.setAttribute("maxPrice", PRODUCT_SERVICE.getMaxPriceForNameAndCategory(search, Integer.parseInt(categoryId)));
+                request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
+            } else {
+                response.sendError(404);
+            }
+        } else if (categoryId != null) {
             List<MinimalProductDto> products = PRODUCT_SERVICE.getProductsByCategoryId(Integer.parseInt(categoryId));
             if (products != null && products.size() > 0) {
                 request.setAttribute("products", products);
+                request.setAttribute("maxPrice", PRODUCT_SERVICE.getMaxPriceForCategory(Integer.parseInt(categoryId)));
+                request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
+            } else {
+                response.sendError(404);
+            }
+        } else if (search != null) {
+            List<MinimalProductDto> products = PRODUCT_SERVICE.getProductsByName(search);
+            if (products != null && products.size() > 0) {
+                request.setAttribute("products", products);
+                request.setAttribute("maxPrice", PRODUCT_SERVICE.getMaxPriceForName(search));
                 request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
             } else {
                 response.sendError(404);
             }
         } else {
             request.setAttribute("products", PRODUCT_SERVICE.getProducts());
+            request.setAttribute("maxPrice", PRODUCT_SERVICE.getMaxPriceForAll());
             request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
         }
     }

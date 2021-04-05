@@ -92,6 +92,21 @@ public class ProductServiceImpl implements ProductService {
         PRODUCT_REPOSITORY.updateProduct(product);
     }
 
+    @Override
+    public double getMaxPriceForAll() {
+        return PRODUCT_REPOSITORY.getMaxPriceForAll();
+    }
+
+    @Override
+    public double getMaxPriceForCategory(int categoryId) {
+        return PRODUCT_REPOSITORY.getMaxPriceForCategory(categoryId);
+    }
+
+    @Override
+    public double getMaxPriceForName(String productName) {
+        return PRODUCT_REPOSITORY.getMaxPriceForName(productName);
+    }
+
 
     @Override
     public List<MinimalProductDto> getProductsByPrice(int min, int max, FilterTypes type, String... inputs) {
@@ -117,5 +132,26 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(int productId) {
         return PRODUCT_REPOSITORY.findById(productId);
+    }
+
+    @Override
+    public List<MinimalProductDto> getProductsByName(String productName) {
+        return PRODUCT_REPOSITORY.findByNameLike(productName)
+                .stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MinimalProductDto> getProductsByNameAndCategory(String productName, int categoryId) {
+        return PRODUCT_REPOSITORY.findByNameAndCategory(productName, categoryId)
+                .stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public double getMaxPriceForNameAndCategory(String productName, int productId) {
+        return PRODUCT_REPOSITORY.getMaxPriceForNameAndCategory(productName, productId);
     }
 }

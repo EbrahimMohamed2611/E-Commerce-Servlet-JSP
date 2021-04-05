@@ -20,6 +20,12 @@ import java.util.Set;
 @NamedQueries({
         @NamedQuery(name = "Product.findByNameLike",
                 query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false"),
+        @NamedQuery(name = "Product.getMaxPriceForName",
+                query = "SELECT MAX(p.price) from Product p where p.productName like :productName and p.isDeleted = false"),
+        @NamedQuery(name = "Product.findByNameAndCategory",
+                query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false and p.category.categoryId = :categoryId"),
+        @NamedQuery(name = "Product.getMaxPriceForNameAndCategory",
+                query = "SELECT MAX(p.price) from Product p where p.productName like :productName and p.isDeleted = false and p.category.categoryId = :categoryId"),
         @NamedQuery(name = "Product.findBetweenTwoPrices",
                 query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false"),
         @NamedQuery(name = "Product.findBetweenTwoPricesUsingCategory",

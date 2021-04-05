@@ -127,11 +127,11 @@
                     <!-- Begin Header Middle Right Area -->
                     <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                         <!-- Begin Header Middle Searchbox Area -->
-                        <form action="#" class="hm-searchbox">
-                            <select id="categoriesContainer" class="nice-select select-search-category">
+                        <form action="products" class="hm-searchbox">
+                            <select name="cat" id="categoriesContainer" class="nice-select select-search-category">
                                 <option value="0">All</option>
                             </select>
-                            <input type="text" placeholder="Enter your search key ...">
+                            <input name="search" type="text" placeholder="Enter your search key ...">
                             <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                         </form>
                         <!-- Header Middle Searchbox Area End Here -->

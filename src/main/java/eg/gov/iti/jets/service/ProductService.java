@@ -76,4 +76,16 @@ public interface ProductService {
 
     void updateProduct(Product product);
 
+    double getMaxPriceForAll();
+
+    double getMaxPriceForCategory(int categoryId);
+
+    double getMaxPriceForName(String productName);
+
+    double getMaxPriceForNameAndCategory(String productName, int productId);
+
+    List<MinimalProductDto> getProductsByNameAndCategory(String productName, int categoryId);
+
+    List<MinimalProductDto> getProductsByName(String productName);
+
 }
