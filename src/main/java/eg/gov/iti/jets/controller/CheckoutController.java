@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,8 @@ public class CheckoutController extends HttpServlet {
         //Check Balance
         HttpSession session = req.getSession();
         List<OrderDTO> userNotCompletedOrder = (List<OrderDTO>) session.getAttribute("userNotCompletedOrders");
+
+        System.out.println("userNotCompletedOrder #### " + userNotCompletedOrder);
         OrderDTO orderToCheckout = userNotCompletedOrder.get(0);
         UserDTO currentUserDto = (UserDTO) session.getAttribute("userDto");
         String checkout = req.getParameter("checkout");
@@ -55,15 +58,19 @@ public class CheckoutController extends HttpServlet {
                 if (isContainOutOfStockProduct){
                     String jsonCheckout = JsonConvertor.toJson(checkoutInStock);
                     System.out.println("Checkout Json : " + jsonCheckout);
-                    writer.write(jsonCheckout);
+                    writer.write("{\"map\": "+jsonCheckout + "}" );
                     writer.close();
                 }else{
                     // if ok ---> Update database
                     UserDTO updatedUserDTO = checkoutService.updateDatabase(currentUserDto, orderToCheckout, totalPrice);
                     if (updatedUserDTO != null){
                         session.setAttribute("userDto", currentUserDto);
+                        OrderDTO orderDTO = userNotCompletedOrder.get(0);
+                        session.setAttribute("userCompleted", orderDTO);
                         userNotCompletedOrder.clear();
                         session.setAttribute("userNotCompletedOrders", userNotCompletedOrder);
+                        writer.write("{\"success\": \"Low Balance\"}");
+                        writer.close();
                     }
                 }
             }else{

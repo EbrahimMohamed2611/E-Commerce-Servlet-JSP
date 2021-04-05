@@ -8,16 +8,17 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Otika - Admin Dashboard Template</title>
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="assets/css/app.min.css">
-    <link rel="stylesheet" href="assets/bundles/datatables/datatables.min.css">
-    <link rel="stylesheet" href="assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="pages/assets/css/app.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/datatables/datatables.min.css">
+    <link rel="stylesheet" href="pages/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
     <!-- Template CSS -->
     <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="pages/assets/css/style.css">
+    <link rel="stylesheet" href="pages/assets/css/components.css">
     <!-- Custom style CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico'/>
+    <link rel="stylesheet" href="pages/assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
+
 </head>
 
 <body>
@@ -61,7 +62,7 @@
                         </div>
                         <div class="dropdown-list-content dropdown-list-message">
                             <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="assets/img/users/user-1.png"
+											text-white"> <img alt="image" src="pages/assets/img/users/user-1.png"
                                                               class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">John
                       Deo</span>
@@ -69,20 +70,20 @@
                     <span class="time">2 Min Ago</span>
                   </span>
                             </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-2.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Request for leave
                       application</span>
                     <span class="time">5 Min Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-5.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
                       Ryan</span> <span class="time messege-text">Your payment invoice is
                       generated.</span> <span class="time">12 Min Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-4.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
                       Smith</span> <span class="time messege-text">hii John, I have upload
                       doc
@@ -90,7 +91,7 @@
                       Min Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-3.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
                       Joshi</span> <span class="time messege-text">Please do as specify.
                       Let me
@@ -98,7 +99,7 @@
                       Days Ago</span>
                   </span>
                         </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="pages/assets/img/users/user-2.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Client Requirements</span>
                     <span class="time">2 Days Ago</span>
@@ -165,7 +166,7 @@
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown"
                                         class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
-                                                                                                         src="assets/img/user.png"
+                                                                                                         src="pages/assets/img/user.png"
                                                                                                          class="user-img-radious-style">
                     <span class="d-sm-none d-lg-inline-block"></span></a>
                     <div class="dropdown-menu dropdown-menu-right pullDown">
@@ -189,21 +190,21 @@
         <div class="main-sidebar sidebar-style-2">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                    <a href="index.jsp"> <img alt="image" src="assets/img/logo.png" class="header-logo"/> <span
+                    <a href="dashboard.jsp"> <img alt="image" src="pages/assets/img/logo.png" class="header-logo"/> <span
                             class="logo-name">Otika</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
                     <li class="dropdown active">
-                        <a href="index.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                        <a href="dashboard.jsp" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="menu-toggle nav-link has-dropdown"><i
                                 data-feather="briefcase"></i><span>Products</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="../categories.jsp">Categories</a></li>
-                            <li><a class="nav-link" href="../product.jsp">Products</a></li>
+                            <li><a class="nav-link" href="categories.jsp">Categories</a></li>
+                            <li><a class="nav-link" href="product.jsp">Products</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -241,7 +242,7 @@
                                 <div class="text-white">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-5">
-                                            <h4 class="mb-0 font-26">12000</h4>
+                                            <h4 id="allUsers" class="mb-0 font-26"></h4>
                                             <p class="mb-2">Number of Users</p>
                                             <p class="mb-0">
                                                 <span class="font-20">+11.25% </span>Increase
@@ -262,11 +263,13 @@
                                 <div class="text-white">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-5">
-                                            <h4 class="mb-0 font-26">758</h4>
-                                            <p class="mb-2">Number Of Orders</p>
-                                            <p class="mb-0">
-                                                <span class="font-20">+25.11%</span> Increase
+                                            <span id="allOrders" class="mb-0 font-26"></span>
+                                            <p class="mb-2">Number Of Orders : </p><h4 id="completedOrders"></h4>
+                                            <p class="mb-2">Completed Orders :
+                                            </p> <h4 id="notCompletedOrders" ></h4>
+                                            <p class="mb-2">Not Completed Orders
                                             </p>
+
                                         </div>
                                         <div class="col-md-6 col-lg-7">
                                             <div class="sparkline-line-chart2 p-t-50"></div>
@@ -282,8 +285,8 @@
                                 <div class="text-white">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-5">
-                                            <h4 class="mb-0 font-26">758</h4>
-                                            <p class="mb-2">Number Of Requests</p>
+                                            <h4 id="numberOfProducts" class="mb-0 font-26"></h4>
+                                            <p class="mb-2">Number Of Products</p>
                                             <p class="mb-0">
                                                 <span class="font-20">+25.11%</span> Increase
                                             </p>
@@ -334,7 +337,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-5.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-5.png" width="35">
                                             </td>
                                             <td>2018-01-20</td>
                                             <td>
@@ -353,9 +356,9 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-3.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-4.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-3.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-4.png" width="35">
                                             </td>
                                             <td>2018-04-10</td>
                                             <td>
@@ -374,8 +377,8 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-2.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-2.png" width="35">
                                             </td>
                                             <td>2018-01-29</td>
                                             <td>
@@ -394,10 +397,10 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-2.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-5.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-4.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-2.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-5.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-4.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
                                             </td>
                                             <td>2018-01-16</td>
                                             <td>
@@ -417,7 +420,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-5.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-5.png" width="35">
                                             </td>
                                             <td>2018-01-20</td>
                                             <td>
@@ -436,9 +439,9 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-3.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-4.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-3.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-4.png" width="35">
                                             </td>
                                             <td>2018-04-10</td>
                                             <td>
@@ -457,8 +460,8 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-2.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-2.png" width="35">
                                             </td>
                                             <td>2018-01-29</td>
                                             <td>
@@ -477,10 +480,10 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-2.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-5.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-4.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-2.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-5.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-4.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
                                             </td>
                                             <td>2018-01-16</td>
                                             <td>
@@ -500,7 +503,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-5.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-5.png" width="35">
                                             </td>
                                             <td>2018-01-20</td>
                                             <td>
@@ -519,9 +522,9 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-3.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-4.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-3.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-4.png" width="35">
                                             </td>
                                             <td>2018-04-10</td>
                                             <td>
@@ -540,8 +543,8 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-2.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-2.png" width="35">
                                             </td>
                                             <td>2018-01-29</td>
                                             <td>
@@ -560,10 +563,10 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img alt="image" src="assets/img/users/user-2.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-5.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-4.png" width="35">
-                                                <img alt="image" src="assets/img/users/user-1.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-2.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-5.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-4.png" width="35">
+                                                <img alt="image" src="pages/assets/img/users/user-1.png" width="35">
                                             </td>
                                             <td>2018-01-16</td>
                                             <td>
@@ -687,31 +690,32 @@
     </div>
 </div>
 <!-- General JS Scripts -->
-<script src="assets/js/app.min.js"></script>
+<script src="pages/assets/js/app.min.js"></script>
 <!-- JS Libraies -->
-<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="pages/assets/bundles/apexcharts/apexcharts.min.js"></script>
 <!-- JS Libraies -->
-<script src="assets/bundles/chartjs/chart.min.js"></script>
-<script src="assets/bundles/jquery.sparkline.min.js"></script>
-<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
-<script src="assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
+<script src="pages/assets/bundles/chartjs/chart.min.js"></script>
+<script src="pages/assets/bundles/jquery.sparkline.min.js"></script>
+<script src="pages/assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="pages/assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
 <!-- Page Specific JS File -->
-<script src="assets/js/page/widget-chart.js"></script>
+<script src="pages/assets/js/page/widget-chart.js"></script>
 
-<script src="assets/bundles/datatables/datatables.min.js"></script>
-<script src="assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script src="assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+<script src="pages/assets/bundles/datatables/datatables.min.js"></script>
+<script src="pages/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="pages/assets/bundles/jquery-ui/jquery-ui.min.js"></script>
 <!-- Page Specific JS File -->
-<script src="assets/js/page/datatables.js"></script>
+<script src="pages/assets/js/page/datatables.js"></script>
 
 <!-- Page Specific JS File -->
-<script src="assets/js/page/index.js"></script>
+<script src="pages/assets/js/page/index.js"></script>
 <!-- Template JS File -->
-<script src="assets/js/scripts.js"></script>
+<script src="pages/assets/js/scripts.js"></script>
 <!-- Custom JS File -->
-<script src="assets/js/custom.js"></script>
+<script src="pages/assets/js/custom.js"></script>
+<script src="js/ajax-statistics.js"></script>
 </body>
 
 

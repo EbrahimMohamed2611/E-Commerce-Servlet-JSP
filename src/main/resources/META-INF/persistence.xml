@@ -24,7 +24,7 @@
 <!--            -->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/e-commerce-servlet-jsp" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="1234" />
+            <property name="javax.persistence.jdbc.password" value="Ebra7imFCI" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
             <property name="hibernate.dialect.storage_engine" value="innodb" />
