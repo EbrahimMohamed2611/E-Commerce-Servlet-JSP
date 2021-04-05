@@ -14,6 +14,12 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@NamedQueries({
+        @NamedQuery(name = "Order.completedOrder",
+                query = "SELECT COUNT(o.orderId) from Order  o where o.orderStatus = eg.gov.iti.jets.model.OrderStatus.COMPLETED"),
+        @NamedQuery(name = "Order.notCompletedOrder",
+                query = "SELECT COUNT(o.orderId) from Order  o where o.orderStatus = eg.gov.iti.jets.model.OrderStatus.NOT_COMPLETED")
+})
 public class Order implements Serializable {
 
     @Id

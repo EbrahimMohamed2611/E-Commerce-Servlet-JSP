@@ -35,7 +35,9 @@ import java.util.Set;
         @NamedQuery(name = "Product.findBetweenTwoPricesUsingNameAndCategory",
                 query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false and p.category.categoryId = :categoryId and p.productName like :productName"),
         @NamedQuery(name = "Product.getAvgRating",
-                query = "SELECT AVG(r.reviewStars) from Product  p, Review r where p.productId = :productId")
+                query = "SELECT AVG(r.reviewStars) from Product  p, Review r where p.productId = :productId") ,
+        @NamedQuery(name = "Product.getCountProducts",
+                query = "SELECT  COUNT(p) from Product p ")
 })
 @ToString
 public class Product implements Serializable {

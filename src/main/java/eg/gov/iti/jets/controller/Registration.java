@@ -98,7 +98,9 @@ public class Registration extends HttpServlet {
         System.out.println("userlist befor regiteration the new user---> " + userList);
         //todo add new user model into the lsit and then put it intto the cotext
         try {
-            MailService.sendEmail(email, "From E-Commerce", verificationCode);
+//            MailService.sendEmail(email, "From E-Commerce", verificationCode);
+            new Thread(()-> MailService.sendEmail(userDto.getEmail(), "From E-Commerce", verificationCode)).start();
+
             requestDispatcher.forward(req, resp);
         } catch (ServletException | IOException e) {
             System.out.println("Cannot forward to home page");

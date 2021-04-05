@@ -1,5 +1,5 @@
 $(function () {
-
+    $("balanceAlert").attr("hidden", true);
     // Get the Modal
     let links = $('.qtybutton');
     let removes = $('.removeFromCart');
@@ -12,6 +12,26 @@ $(function () {
         })
             .done(function (response) {
                 console.log(response);
+                console.log(response.error);
+                if (response.error) {
+                    $("#balanceAlert").attr("hidden", false);
+
+                } else if (response.map) {
+                    console.log(" map : ", response.map)
+                    console.log(" map length : ", response.map.length)
+                    console.log(" map length : ", Object.keys(response.map).length)
+                    jQuery.each(response.map, function(key, val) {
+                        console.log(val)
+                        if(val === false){
+                            console.log("from false")
+                            $("#" + key).attr("hidden", false);
+                        }
+                    });
+
+                } else if(response.success){
+                    //If Success
+                    $(location).attr('href', 'completeOrderController');
+                }
             });
     });
 
