@@ -53,10 +53,10 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product")
     private Set<Review> reviews = new HashSet<>();
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     private Set<Purchase> purchase = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 

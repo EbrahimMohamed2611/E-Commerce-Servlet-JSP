@@ -23,11 +23,11 @@ public class Purchase implements Serializable {
     private int quantity;
 
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "ORDER_ID",insertable = false,updatable = false)
     private Order order ;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PRODUCT_ID",insertable = false,updatable = false)
     private Product product;
 

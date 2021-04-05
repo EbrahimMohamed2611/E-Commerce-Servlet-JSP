@@ -66,6 +66,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
+        updatePurchase(product);
         entityManager.createQuery("update from Product set productName=:name,description=:desc,quantity=:quantity,price=:price where productId=:id")
                 .setParameter("name" ,product.getProductName()).setParameter("desc" ,product.getDescription())
                 .setParameter("quantity" , product.getQuantity()).setParameter("price" , product.getPrice()).setParameter("id" , product.getProductId()).executeUpdate();
@@ -82,11 +83,25 @@ public class ProductRepositoryImpl implements ProductRepository {
     public void removeProduct(int productId) {
             EntityManager createEntityManager = PersistenceManager.INSTANCE.getEntityManager();
             createEntityManager.getTransaction().begin();
+            removePurchase(productId);
             createEntityManager.createQuery("delete from Product where productId ="+productId).executeUpdate();
             createEntityManager.getTransaction().commit();
             createEntityManager.close();
 
         }
 
+    @Override
+    public void updatePurchase(Product product) {
 
+    }
+
+    @Override
+    public void removePurchase(int productId) {
+        EntityManager createEntityManager = PersistenceManager.INSTANCE.getEntityManager();
+        createEntityManager.getTransaction().begin();
+        //select o from Order o where o.user.userId = :userId"
+        createEntityManager.createQuery("delete from Purchase p where p.product.productId ="+productId).executeUpdate();
+        createEntityManager.getTransaction().commit();
+        createEntityManager.close();
+    }
 }
