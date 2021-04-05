@@ -3,6 +3,17 @@ $(function () {
     // Get the Modal
     let links = $('.qtybutton');
     let removes = $('.removeFromCart');
+    $("#checkoutButton").on('click', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'checkout',
+            data: {'checkout': true}
+        })
+            .done(function (response) {
+                console.log(response);
+            });
+    });
 
     // Set up an event listener for the contact form.
     links.on("click", function (e) {
@@ -16,20 +27,22 @@ $(function () {
         // Submit the form using AJAX.
         $.ajax({
             type: 'POST',
-            url: 'adjuctPurchaseQuantity',
+            url: 'adjustPurchaseQuantity',
             data: {"orderedProductId": link.parent().data("product"), "productQuantity": amount}
         })
             .done(function (response) {
                 let quantity = tr.find("input.cart-plus-minus-box");
                 if (response == "Done Adjustment") {
                     let price = tr.find("span.amount").text().substr(1);
-                    tr.find("span.total").text(price * quantity.val());
+                    tr.find("span.total").text("$" + price * quantity.val());
                 } else {
                     quantity.val(quantity.val() - 1);
                 }
             }).fail(function (data) {
             let quantity = tr.find("input.cart-plus-minus-box");
-            quantity.val(quantity.val() - 1);
+            if (quantity.val() > 0) {
+                quantity.val(quantity.val() - 1);
+            }
         });
     });
 

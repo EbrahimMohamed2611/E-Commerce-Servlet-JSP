@@ -486,6 +486,10 @@
             <div class="row">
                 <div class="col-12">
                     <form action="#">
+                            <div id="balanceAlert" class="alert alert-danger" role="alert">
+                                <span>There's no enough money to proceed. </span>
+                                <a href="profile.jsp">Please updated your balance</a>
+                            </div>
                         <div class="table-content table-responsive">
                             <table class="table">
                                 <thead>
@@ -501,24 +505,34 @@
                                 <tbody>
                                 <%--                                        ${sessionScope.userDto.userId}"--%>
                                 <c:if test="${not empty sessionScope.userNotCompletedOrders}">
-                                    <c:forEach items="${sessionScope.userNotCompletedOrders[0].itemsOrdered}" var="item">
+                                    <c:forEach items="${sessionScope.userNotCompletedOrders[0].itemsOrdered}"
+                                               var="item">
                                         <tr>
-                                            <td class="li-product-remove"><a class="removeFromCart" href="#" data-product="${item.orderedProductDTO.productId}"><i class="fa fa-times"></i></a>
+                                            <td class="li-product-remove"><a class="removeFromCart" href="#"
+                                                                             data-product="${item.orderedProductDTO.productId}"><i
+                                                    class="fa fa-times"></i></a>
                                             </td>
-                                            <td class="li-product-thumbnail"><a href="#"><img
-                                                    src="images/product/small-size/5.jpg" alt="Li's Product Image"></a>
+                                            <td class="li-product-thumbnail">
+                                                <img src="${item.orderedProductDTO.productImage.imagePath}"
+                                                     alt="Product Image">
                                             </td>
-                                            <td class="li-product-name"><a href="#">${item.orderedProductDTO.productName}</a></td>
-                                            <td class="li-product-price"><span class="amount">$${item.orderedProductDTO.price}</span></td>
+                                            <td class="li-product-name"><a
+                                                    href="#">${item.orderedProductDTO.productName}</a></td>
+                                            <td class="li-product-price"><span
+                                                    class="amount">$${item.orderedProductDTO.price}</span></td>
                                             <td class="quantity">
                                                 <label>Quantity</label>
-                                                <div class="cart-plus-minus" data-product="${item.orderedProductDTO.productId}">
-                                                    <input class="cart-plus-minus-box" value="${item.quantity}" type="text">
+                                                <div class="cart-plus-minus"
+                                                     data-product="${item.orderedProductDTO.productId}">
+                                                    <input class="cart-plus-minus-box" value="${item.quantity}"
+                                                           type="text">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </td>
-                                            <td class="product-subtotal"><span class="total">$${item.orderedProductDTO.price * item.quantity}</span></td>
+                                            <td class="product-subtotal"><span
+                                                    class="total">$${item.orderedProductDTO.price * item.quantity}</span>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                 </c:if>
@@ -549,7 +563,7 @@
                                         <li>Subtotal <span>$130.00</span></li>
                                         <li>Total <span>$130.00</span></li>
                                     </ul>
-                                    <a href="#">Proceed to checkout</a>
+                                    <a id="checkoutButton" href="#">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>

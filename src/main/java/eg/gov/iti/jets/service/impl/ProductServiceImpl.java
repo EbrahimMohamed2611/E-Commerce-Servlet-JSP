@@ -5,9 +5,9 @@ import eg.gov.iti.jets.dto.FullyProductDto;
 import eg.gov.iti.jets.dto.MinimalProductDto;
 import eg.gov.iti.jets.dto.OrderedProductDTO;
 import eg.gov.iti.jets.enums.FilterTypes;
+import eg.gov.iti.jets.exceptions.ProductNotFoundException;
 import eg.gov.iti.jets.mappers.MinimalProductMapper;
 import eg.gov.iti.jets.mappers.ProductMapper;
-import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
 import eg.gov.iti.jets.repository.impl.ProductRepositoryImpl;
@@ -58,14 +58,31 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public OrderedProductDTO getInStockProduct(int productId, int quantity) {
+        try {
+            Product product = getProductById(productId);
+            if (!product.isDeleted() && product.getQuantity() > quantity) {
+                System.out.println("The returned Product Id is " + product.getProductId() +
+                        " and its name is " + product.getProductName());
+                return OrderedProductAdapter.convertProductModelToOrderedItem(product);
+            }
+        } catch (ProductNotFoundException e) {
+            return null;
+        }
+        return null;
+    }
+
+    @Override
     public OrderedProductDTO getInStockProduct(int productId) {
-        Product product = getProductById(productId);
-        if (product != null) {
+        try {
+            Product product = getProductById(productId);
             if (!product.isDeleted() && product.getQuantity() > 0) {
                 System.out.println("The returned Product Id is " + product.getProductId() +
                         " and its name is " + product.getProductName());
                 return OrderedProductAdapter.convertProductModelToOrderedItem(product);
             }
+        } catch (ProductNotFoundException e) {
+            return null;
         }
         return null;
     }

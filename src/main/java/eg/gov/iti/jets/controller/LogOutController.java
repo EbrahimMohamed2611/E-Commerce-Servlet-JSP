@@ -32,7 +32,7 @@ public class LogOutController extends HttpServlet {
         List<OrderDTO> userNotCompletedOrders = (List<OrderDTO>) session.getAttribute("userNotCompletedOrders");
         UserDTO currentUserDto = (UserDTO) session.getAttribute("userDto");
 
-        if (!userNotCompletedOrders.isEmpty()) {
+        if (userNotCompletedOrders != null && !userNotCompletedOrders.isEmpty()) {
             if (userNotCompletedOrders.get(0).getItemsOrdered().isEmpty()) {
                 if (orderService.deleteOrder(userNotCompletedOrders.get(0).getId())) {
                     userNotCompletedOrders.remove(0);

@@ -17,9 +17,10 @@ $(function () {
             data: {"orderedProductId": link.data("product")}
         })
             .done(function (response) {
+                console.log(response);
                 $("#shoppingCardContainer").append(`<li>
                                                         <a href="single-product.jsp" class="minicart-product-image">
-                                                            <img src="${response.productImage.path}"
+                                                            <img src="${response.productImage.imagePath}"
                                                                 alt="cart products">
                                                         </a>
                                                         <div class="minicart-product-details">

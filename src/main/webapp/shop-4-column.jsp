@@ -562,14 +562,12 @@
                         <div class="product-select-box">
                             <div class="product-short">
                                 <p>Sort By:</p>
-                                <select class="nice-select">
+                                <select id="sortSelector" class="nice-select">
                                     <option value="trending">Relevance</option>
-                                    <option value="sales">Name (A - Z)</option>
-                                    <option value="sales">Name (Z - A)</option>
-                                    <option value="rating">Price (Low &gt; High)</option>
-                                    <option value="date">Rating (Lowest)</option>
-                                    <option value="price-asc">Model (A - Z)</option>
-                                    <option value="price-asc">Model (Z - A)</option>
+                                    <option value="n-asc">Name (A - Z)</option>
+                                    <option value="n-desc">Name (Z - A)</option>
+                                    <option value="p-asc">Price (Low &gt; High)</option>
+                                    <option value="p-desc">Price (High &gt; Low)</option>
                                 </select>
                             </div>
                         </div>
@@ -604,8 +602,7 @@
                                                     <div class="product_desc_info">
                                                         <div class="product-review">
                                                             <h5 class="manufacturer">
-                                                                <a href="product-details.jsp
-">Graphic Corner</a>
+                                                                <a href="product-details.jsp">Graphic Corner</a>
                                                             </h5>
                                                             <div class="rating-box">
                                                                 <ul class="rating">
@@ -1790,6 +1787,7 @@
     });
 </script>
 <script src="js/ajax-filter.js"></script>
+<script src="js/product-sort.js"></script>
 </body>
 
 <!-- shop-4-column31:48-->
