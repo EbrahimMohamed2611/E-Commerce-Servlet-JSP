@@ -1,6 +1,7 @@
 package eg.gov.iti.jets.controller;
 
 import com.google.gson.Gson;
+import eg.gov.iti.jets.convertors.JsonConvertor;
 import eg.gov.iti.jets.dto.OrderDTO;
 import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.CheckoutServiceFactory;
@@ -30,7 +31,7 @@ public class CheckoutController extends HttpServlet {
     private final CheckoutService checkoutService = CheckoutServiceFactory.getCheckOutServiceInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //Check Balance
         HttpSession session = req.getSession();
@@ -45,16 +46,16 @@ public class CheckoutController extends HttpServlet {
             double totalPrice = orderService.totalPrice(orderToCheckout);
             boolean isUserBalanceEnough = userService.isUserBalanceEnough(totalPrice, currentUserDto.getEmail());
 
+            resp.setContentType("application/json");
             if (isUserBalanceEnough){
                 //Check isInStock
                 Map<Integer, Boolean> checkoutInStock = checkoutService.isCheckoutInStock(orderToCheckout);
                 boolean isContainOutOfStockProduct = checkoutInStock.containsValue(false);
+                System.out.println("MAPPPPPPPPPPPPPPPPPPPPPPP => " + checkoutInStock + " BOOLEAN => " + isContainOutOfStockProduct);
                 if (isContainOutOfStockProduct){
-                    resp.setContentType("application/json");
-                    Gson gson = new Gson();
-                    String checkoutJson = gson.toJson(checkoutInStock);
-                    System.out.println("Checkout Json : " + checkoutJson);
-                    writer.write(checkoutJson);
+                    String jsonCheckout = JsonConvertor.toJson(checkoutInStock);
+                    System.out.println("Checkout Json : " + jsonCheckout);
+                    writer.write(jsonCheckout);
                     writer.close();
                 }else{
                     // if ok ---> Update database
@@ -64,10 +65,9 @@ public class CheckoutController extends HttpServlet {
                         userNotCompletedOrder.clear();
                         session.setAttribute("userNotCompletedOrders", userNotCompletedOrder);
                     }
-
                 }
             }else{
-                writer.write("No sufficient Balance");
+                writer.write("{\"error\": \"Low Balance\"}");
                 writer.close();
             }
         }
@@ -75,10 +75,5 @@ public class CheckoutController extends HttpServlet {
 
 
 
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
     }
 }

@@ -51,13 +51,14 @@ public class AddToShoppingCartController extends HttpServlet {
 
         PrintWriter writer = resp.getWriter();
         Gson gson = new Gson();
+        resp.setContentType("application/json");
         if (inStockProductDTO == null) {
             System.out.println("Sorry Product out of Stock");
             // ToDO : inform user with that through response
             writer.write("OutOfStock");
             writer.close();
         } else {
-            if (!userNotCompletedOrders.isEmpty()) {
+            if (userNotCompletedOrders != null && !userNotCompletedOrders.isEmpty()) {
                 OrderDTO orderDTO = userNotCompletedOrders.get(0);
                 boolean productAlreadyOrdered = orderService.isProductAlreadyOrdered(orderDTO, productTobeAddedId);
                 if (productAlreadyOrdered) {

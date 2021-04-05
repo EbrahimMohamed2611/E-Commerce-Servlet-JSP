@@ -34,7 +34,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         Map<Integer, Boolean> checkoutMap = new HashMap<>();
         orderDTO.getItemsOrdered().forEach(purchaseDTO -> {
             int productId = purchaseDTO.getOrderedProductDTO().getProductId();
-            OrderedProductDTO inStockProduct = productService.getInStockProduct(productId);
+            OrderedProductDTO inStockProduct = productService.getInStockProduct(productId, purchaseDTO.getQuantity());
             if(inStockProduct != null){
                 checkoutMap.put(productId, true);
             }else{

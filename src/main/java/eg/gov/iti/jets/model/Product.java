@@ -22,6 +22,12 @@ import java.util.Set;
                 query = "SELECT p from Product p where p.productName like :productName and p.isDeleted = false"),
         @NamedQuery(name = "Product.findBetweenTwoPrices",
                 query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false"),
+        @NamedQuery(name = "Product.findBetweenTwoPricesUsingCategory",
+                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false and p.category.categoryId = :categoryId"),
+        @NamedQuery(name = "Product.findBetweenTwoPricesUsingName",
+                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false and p.productName like :productName"),
+        @NamedQuery(name = "Product.findBetweenTwoPricesUsingNameAndCategory",
+                query = "SELECT p from Product  p where p.price between :price1 and :price2 and p.isDeleted = false and p.category.categoryId = :categoryId and p.productName like :productName"),
         @NamedQuery(name = "Product.getAvgRating",
                 query = "SELECT AVG(r.reviewStars) from Product  p, Review r where p.productId = :productId")
 })

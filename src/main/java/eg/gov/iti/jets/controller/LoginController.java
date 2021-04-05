@@ -56,7 +56,7 @@ public class LoginController extends HttpServlet {
 
                 //------------------- Put User Orders on Session----------------------//
                 List<OrderDTO> userNotCompletedOrders = orderService.getUserOrders(userDto.getUserId(), OrderStatus.NOT_COMPLETED);
-                if(userNotCompletedOrders == null){
+                if(userNotCompletedOrders == null || userNotCompletedOrders.size() <= 0){
                     System.out.println("userNotCompletedOrders == null ");
                     userNotCompletedOrders = new ArrayList<>();
                 }

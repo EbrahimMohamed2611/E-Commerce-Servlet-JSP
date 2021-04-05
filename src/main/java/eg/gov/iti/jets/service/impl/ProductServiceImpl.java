@@ -4,9 +4,10 @@ import eg.gov.iti.jets.adapter.OrderedProductAdapter;
 import eg.gov.iti.jets.dto.FullyProductDto;
 import eg.gov.iti.jets.dto.MinimalProductDto;
 import eg.gov.iti.jets.dto.OrderedProductDTO;
+import eg.gov.iti.jets.enums.FilterTypes;
+import eg.gov.iti.jets.exceptions.ProductNotFoundException;
 import eg.gov.iti.jets.mappers.MinimalProductMapper;
 import eg.gov.iti.jets.mappers.ProductMapper;
-import eg.gov.iti.jets.model.Category;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.repository.ProductRepository;
 import eg.gov.iti.jets.repository.impl.ProductRepositoryImpl;
@@ -57,14 +58,31 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public OrderedProductDTO getInStockProduct(int productId, int quantity) {
+        try {
+            Product product = getProductById(productId);
+            if (!product.isDeleted() && product.getQuantity() > quantity) {
+                System.out.println("The returned Product Id is " + product.getProductId() +
+                        " and its name is " + product.getProductName());
+                return OrderedProductAdapter.convertProductModelToOrderedItem(product);
+            }
+        } catch (ProductNotFoundException e) {
+            return null;
+        }
+        return null;
+    }
+
+    @Override
     public OrderedProductDTO getInStockProduct(int productId) {
-        Product product = getProductById(productId);
-        if (product != null) {
+        try {
+            Product product = getProductById(productId);
             if (!product.isDeleted() && product.getQuantity() > 0) {
                 System.out.println("The returned Product Id is " + product.getProductId() +
                         " and its name is " + product.getProductName());
                 return OrderedProductAdapter.convertProductModelToOrderedItem(product);
             }
+        } catch (ProductNotFoundException e) {
+            return null;
         }
         return null;
     }
@@ -72,6 +90,28 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void updateProduct(Product product) {
         PRODUCT_REPOSITORY.updateProduct(product);
+    }
+
+
+    @Override
+    public List<MinimalProductDto> getProductsByPrice(int min, int max, FilterTypes type, String... inputs) {
+        List<Product> products = null;
+        switch (type) {
+            case NORMAL:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPrices((double) min, (double) max);
+                break;
+            case SEARCH:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPricesUsingName((double) min, (double) max, inputs[0]);
+                break;
+            case CATEGORY:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPricesUsingCategory((double) min, (double) max, Integer.parseInt(inputs[0]));
+                break;
+            case SEARCH_CATEGORY:
+                products = PRODUCT_REPOSITORY.findBetweenTwoPricesUsingNameAndCategory((double) min, (double) max, inputs[0], Integer.parseInt(inputs[1]));
+        }
+        return products.stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
     }
 
     @Override
