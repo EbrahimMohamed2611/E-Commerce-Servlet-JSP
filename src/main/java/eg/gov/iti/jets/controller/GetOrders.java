@@ -123,7 +123,7 @@ public class GetOrders extends HttpServlet {
         orderss.add(order11);
 
         //purchase.setPurchasesId();
-        out.write(String.valueOf(orderss));
+        //out.write(String.valueOf(orderss));
         //todo must pass the orderlist to the attribute
         System.out.println("-------------befor setting att on the request----------------");
         req.setAttribute("orders", orderss);

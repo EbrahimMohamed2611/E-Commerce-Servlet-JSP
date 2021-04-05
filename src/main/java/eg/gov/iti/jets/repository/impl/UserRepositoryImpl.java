@@ -110,11 +110,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> findALlCustomerUsers() {
+    public List<UserDto> findALlCustomerUsers() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
-        List<User> resultList = (List<User>)  entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
+        List<UserDto> resultList = (List<UserDto>)  entityManager.createNamedQuery("User.getAllUsers").getResultList();
         return resultList;
     }
 

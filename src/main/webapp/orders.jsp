@@ -48,7 +48,7 @@
                             <c:forEach items="${o.getPurchase()}" var="p">
 
                                 <tr>
-                                          <td class="li-product-thumbnail"><a href="#"><img src="" alt="Li's Product Image"></a></td>--%>
+
                                     <td><img
                                             src="${p.getProduct().getProductImage().getImagePath()}${'\\'}${p.getProduct().getProductImage().getImageName()}">
                                     </td>

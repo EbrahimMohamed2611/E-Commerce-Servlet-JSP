@@ -5,8 +5,10 @@ import eg.gov.iti.jets.config.PersistenceManager;
 
 
 import eg.gov.iti.jets.dto.UserDto;
+import eg.gov.iti.jets.factory.UserRepositoryFactory;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.User;
+import eg.gov.iti.jets.repository.UserRepository;
 import eg.gov.iti.jets.service.UserService;
 
 import eg.gov.iti.jets.utils.AllCountries;
@@ -28,6 +30,7 @@ public class ApplicationStartingListener implements ServletContextListener{
     EntityManagerFactory factory ;
 
     private final UserService userService = UserServiceFactory.getUserRepositoryInstance();
+    private final UserRepository userRepository = UserRepositoryFactory.getUserRepositoryInstance();
 
 
     @Override
@@ -44,7 +47,7 @@ public class ApplicationStartingListener implements ServletContextListener{
         System.out.println("Database is Opened");
         sce.getServletContext().setAttribute("countries",stringStringMap);
 
-        List<UserDto> userList = userService.fetchAllUsers();
+        List<UserDto> userList = userRepository.findALlCustomerUsers();
         System.out.println("Inside initialize of conttext->userlist "+userList);
         sce.getServletContext().setAttribute("userList",userList);
         System.out.println("put it into the ocntext scope ");

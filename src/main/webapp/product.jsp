@@ -26,7 +26,18 @@
     <link rel="stylesheet" href="pages/assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
     <link rel='stylesheet' href='css/style.css'/>
+<style>
+    table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 350px;
+    }
 
+    table td {
+        word-wrap: break-word;
+    }
+
+</style>
     <script>
         function deleteProd(productId) {
             console.log(productId)
