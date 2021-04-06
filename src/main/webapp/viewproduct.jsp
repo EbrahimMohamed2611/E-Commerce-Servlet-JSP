@@ -433,7 +433,7 @@
                                         <c:forEach items="${requestScope.products2}" var="p">
                                             <tr>
                                                 <td>
-                                                    <img src="${requestScope.productImage.imagePath}"
+                                                    <img src="${p.productImage.imagePath}"
                                                          style="width:100%;white-space:pre">
                                                 </td>
                                                 <td class="align-middle">
