@@ -5,12 +5,10 @@ import eg.gov.iti.jets.model.OrderStatus;
 import eg.gov.iti.jets.model.Purchase;
 import eg.gov.iti.jets.model.User;
 
-
 import java.util.List;
 import java.util.Set;
 
 public interface OrderRepository {
-
 
     Set<Order> getAllOrders(int userID);
 
@@ -23,6 +21,8 @@ public interface OrderRepository {
     Order getOrder(int id);
 
     List<Order> getUserOrdersByStatus(int userId, OrderStatus orderStatus);
+
+      List<Order> getUserOrders(int userId);
 
 }
 

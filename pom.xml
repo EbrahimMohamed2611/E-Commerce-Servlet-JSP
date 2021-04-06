@@ -296,8 +296,9 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <server>mak-tomcat-server</server>
-                    <url>http://localhost:9595/manager/text</url>
+                   <username>admin</username>
+                   <password>admin</password>
+                    <url>http://localhost:9090/manager/text</url>
                     <path>/PT</path>
                 </configuration>
             </plugin>

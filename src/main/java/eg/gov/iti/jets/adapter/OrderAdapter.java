@@ -2,7 +2,6 @@ package eg.gov.iti.jets.adapter;
 
 import eg.gov.iti.jets.dto.OrderDTO;
 import eg.gov.iti.jets.model.Order;
-import eg.gov.iti.jets.model.Purchase;
 
 public class OrderAdapter {
 

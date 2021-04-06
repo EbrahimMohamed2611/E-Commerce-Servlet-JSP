@@ -5,7 +5,6 @@ import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.ProductServiceFactory;
 import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.model.Review;
-import eg.gov.iti.jets.model.User;
 import eg.gov.iti.jets.service.ProductService;
 import eg.gov.iti.jets.service.UserService;
 

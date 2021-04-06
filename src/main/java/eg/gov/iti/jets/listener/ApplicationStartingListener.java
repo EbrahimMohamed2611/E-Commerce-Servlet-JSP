@@ -1,14 +1,20 @@
 package eg.gov.iti.jets.listener;
 
+
 import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
 import eg.gov.iti.jets.config.PersistenceManager;
 
 
-import eg.gov.iti.jets.dto.UserDTO;
+import eg.gov.iti.jets.adapter.UserAdapter;
 
-import eg.gov.iti.jets.factory.UserServiceFactory;
 
-import eg.gov.iti.jets.service.UserService;
+import eg.gov.iti.jets.dto.UserDataDto;
+
+import eg.gov.iti.jets.factory.UserRepositoryFactory;
+import eg.gov.iti.jets.model.User;
+import eg.gov.iti.jets.repository.UserRepository;
+
+
 import eg.gov.iti.jets.utils.AllCountries;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
@@ -23,11 +29,12 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebListener
 public class ApplicationStartingListener implements ServletContextListener {
 
-    private final UserService userService = UserServiceFactory.getUserServiceInstance();
+    private final UserRepository userRepository = UserRepositoryFactory.getUserRepositoryInstance();
 
 
     @Override
@@ -43,10 +50,11 @@ public class ApplicationStartingListener implements ServletContextListener {
         System.out.println("Database is Opened");
         sce.getServletContext().setAttribute("countries", stringStringMap);
 
-        List<UserDTO> userList = userService.fetchAllUsers();
-        System.out.println("Inside initialize of conttext->userlist "+userList);
-        sce.getServletContext().setAttribute("userList",userList);
 
+        List<User> userList = userRepository.findALlCustomerUsers();
+        List<UserDataDto> userDataDtoList = userList.stream().map(UserAdapter::convertFromUsertoUserDataDto).collect(Collectors.toList());
+        System.out.println("Inside initialize of conttext->userlist " + userList);
+        sce.getServletContext().setAttribute("userList", userDataDtoList);
         System.out.println("put it into the ocntext scope ");
 
 

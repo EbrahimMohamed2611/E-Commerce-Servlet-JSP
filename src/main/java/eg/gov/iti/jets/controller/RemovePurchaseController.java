@@ -2,14 +2,8 @@ package eg.gov.iti.jets.controller;
 
 import com.google.gson.Gson;
 import eg.gov.iti.jets.dto.OrderDTO;
-import eg.gov.iti.jets.dto.OrderedProductDTO;
-import eg.gov.iti.jets.dto.UserDTO;
 import eg.gov.iti.jets.factory.OrderServiceFactory;
-import eg.gov.iti.jets.factory.ProductServiceFactory;
-import eg.gov.iti.jets.factory.UserServiceFactory;
 import eg.gov.iti.jets.service.OrderService;
-import eg.gov.iti.jets.service.ProductService;
-import eg.gov.iti.jets.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

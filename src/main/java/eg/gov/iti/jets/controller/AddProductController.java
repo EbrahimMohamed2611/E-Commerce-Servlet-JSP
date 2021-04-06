@@ -33,6 +33,8 @@ public class AddProductController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Part filePart = req.getPart("picturePicture");
         String submittedFileName = filePart.getSubmittedFileName();
+        System.out.println("paaaaaart" +filePart);
+        System.out.println("submiteee "+submittedFileName);
         String imageExtension = getExtensionFormImage(submittedFileName);
         String newImageName = UUID.randomUUID().toString() + imageExtension;
         Path path = Path.of(req.getServletContext().getRealPath("/")).resolve("../products").resolve(newImageName);
@@ -70,8 +72,10 @@ public class AddProductController extends HttpServlet {
         productCategory.setCategoryId(categoryId);
         productCategory.setCategoryName(categoryName);
         product.setCategory(productCategory);
-        productRepository.addNewProduct(product);
-        resp.sendRedirect("product.jsp?added");
+
+        Product product1 = productRepository.addNewProduct(product);
+        System.out.println(product1);
+        resp.sendRedirect(req.getContextPath()+"/adminhome");
     }
 
 

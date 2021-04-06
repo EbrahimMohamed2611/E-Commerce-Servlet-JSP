@@ -42,6 +42,7 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "order", cascade={CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private Set<Purchase> purchase = new HashSet<>();
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,4 +55,5 @@ public class Order implements Serializable {
     public int hashCode() {
         return Objects.hash(orderId, user);
     }
+
 }

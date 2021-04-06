@@ -21,7 +21,7 @@ public class LoginFilter  implements Filter {
         System.out.println("From Filter");
         UserDTO user = (UserDTO) httpRequest.getSession().getAttribute("userDto");
         if (user != null) {
-            ((HttpServletResponse) response).sendRedirect("index.jsp");
+            ((HttpServletResponse) response).sendRedirect("dashboard.jsp");
         } else {
             chain.doFilter(request, response);
         }

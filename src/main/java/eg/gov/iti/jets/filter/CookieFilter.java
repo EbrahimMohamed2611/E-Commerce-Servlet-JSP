@@ -11,7 +11,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class CookieFilter implements Filter {
-
     private static List<String> excludedUrls = null;
 
     public void init(FilterConfig config) throws ServletException {
@@ -77,8 +76,8 @@ public class CookieFilter implements Filter {
         for (String headerName : headerNames) {
 
             if (headerName.equals("Set-Cookie")) {
-                key =true;
-            }else {
+                key = true;
+            } else {
                 key = false;
             }
         }

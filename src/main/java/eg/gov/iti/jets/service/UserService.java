@@ -1,6 +1,7 @@
 package eg.gov.iti.jets.service;
 
 import eg.gov.iti.jets.dto.UserDTO;
+
 import eg.gov.iti.jets.dto.UserProfileDto;
 import eg.gov.iti.jets.model.User;
 
@@ -23,9 +24,6 @@ public interface UserService {
     List<UserDTO> fetchAllUsers();
 
     boolean isUserBalanceEnough(double totalPrice, String userEmail);
-
-
-
 
 
 }

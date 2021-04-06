@@ -10,7 +10,6 @@ import java.util.List;
 public interface OrderService {
 
 
-
     Set<Order> getAllOrders(int userID);
 
     List<OrderDTO> getUserOrders(int userId, OrderStatus orderStatus);

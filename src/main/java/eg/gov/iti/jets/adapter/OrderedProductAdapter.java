@@ -1,9 +1,7 @@
 package eg.gov.iti.jets.adapter;
 
 import eg.gov.iti.jets.dto.OrderedProductDTO;
-import eg.gov.iti.jets.dto.ProductDTO;
 import eg.gov.iti.jets.factory.ProductServiceFactory;
-import eg.gov.iti.jets.model.Order;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.service.ProductService;
 

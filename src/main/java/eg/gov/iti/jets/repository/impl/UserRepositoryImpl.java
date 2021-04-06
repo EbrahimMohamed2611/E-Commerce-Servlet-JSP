@@ -118,10 +118,7 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> findALlCustomerUsers() {
         EntityManager entityManager = persistenceManager.getEntityManager();
         entityManager.getTransaction().begin();
-        List<User> resultList = (List<User>) entityManager.createNamedQuery("User.getAllCustomerUsers").getResultList();
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
+        List<User> resultList = (List<User>)  entityManager.createNamedQuery("User.getAllUsers").getResultList();
         return resultList;
     }
 

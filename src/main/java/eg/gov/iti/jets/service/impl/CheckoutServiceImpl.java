@@ -1,7 +1,6 @@
 package eg.gov.iti.jets.service.impl;
 
 import eg.gov.iti.jets.adapter.OrderAdapter;
-import eg.gov.iti.jets.adapter.OrderedProductAdapter;
 import eg.gov.iti.jets.adapter.UserAdapter;
 import eg.gov.iti.jets.dto.OrderDTO;
 import eg.gov.iti.jets.dto.OrderedProductDTO;
@@ -14,7 +13,6 @@ import eg.gov.iti.jets.model.Order;
 import eg.gov.iti.jets.model.OrderStatus;
 import eg.gov.iti.jets.model.Product;
 import eg.gov.iti.jets.model.User;
-import eg.gov.iti.jets.repository.UserRepository;
 import eg.gov.iti.jets.service.CheckoutService;
 import eg.gov.iti.jets.service.OrderService;
 import eg.gov.iti.jets.service.ProductService;

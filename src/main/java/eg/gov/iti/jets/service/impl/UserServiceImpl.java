@@ -9,7 +9,6 @@ import eg.gov.iti.jets.repository.UserRepository;
 import eg.gov.iti.jets.service.UserService;
 import eg.gov.iti.jets.factory.UserRepositoryFactory;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 

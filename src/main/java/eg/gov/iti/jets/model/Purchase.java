@@ -32,6 +32,7 @@ public class Purchase implements Serializable {
     @JoinColumn(name = "PRODUCT_ID", insertable = false, updatable = false)
     private Product product;
 
+
     public Purchase(int quantity, Order order, Product product) {
         this.quantity = quantity;
         this.order = order;

@@ -18,7 +18,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
-
 @WebServlet(name = "LogOutController", urlPatterns = {"/logout", "/closeBrowser"})
 public class LogOutController extends HttpServlet {
     private static final OrderService orderService = OrderServiceFactory.getOrderServiceInstance();
@@ -68,6 +67,6 @@ public class LogOutController extends HttpServlet {
         }
         req.getSession().setAttribute("userDto",null);
 //            session.invalidate();
-            res.sendRedirect("index.jsp");
+        res.sendRedirect("index.jsp");
     }
 }

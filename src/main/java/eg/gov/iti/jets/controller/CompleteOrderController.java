@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "CompleteOrderController", urlPatterns = "/completeOrderController")
 public class CompleteOrderController extends HttpServlet {

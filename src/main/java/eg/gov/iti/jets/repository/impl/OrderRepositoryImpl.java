@@ -6,17 +6,20 @@ import eg.gov.iti.jets.repository.OrderRepository;
 
 import javax.persistence.EntityManager;
 
+
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+
 public class OrderRepositoryImpl implements OrderRepository {
 
     private final PersistenceManager persistenceManager = PersistenceManager.INSTANCE;
-
-
 
 
     @Override
@@ -105,5 +108,24 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     }
 
+
+    @Override
+    public List<Order> getUserOrders(int userId) {
+        System.out.println("entityManager is opened");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("e-commerce");
+        EntityManager entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        TypedQuery<Order> query =
+                entityManager.createQuery("select o from Order o where o.user.userId = :userId", Order.class);
+
+        query.setParameter("userId", userId);
+        List<Order> listOfOrders = (List<Order>) query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return listOfOrders;
+
+    }
 
 }

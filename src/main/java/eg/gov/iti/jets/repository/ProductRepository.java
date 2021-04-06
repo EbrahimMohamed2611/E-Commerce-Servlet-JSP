@@ -27,6 +27,13 @@ public interface ProductRepository {
 
     List<Product> findAll();
 
+    void removeProduct(int productId);
+
+
+
+    void removePurchase(int productId);
+
+
     double getAvgRating(int id);
 
     void updateProduct(Product product);
