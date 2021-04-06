@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
 
     private final static ProductRepository PRODUCT_REPOSITORY = new ProductRepositoryImpl();
+    private final static int PAGE_THRESHOLDING = 10;
 
     @Override
     public List<MinimalProductDto> getProducts() {
@@ -61,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
     public OrderedProductDTO getInStockProduct(int productId, int quantity) {
         try {
             Product product = getProductById(productId);
-            if (!product.isDeleted() && product.getQuantity() > quantity) {
+            if (!product.isDeleted() && product.getQuantity() >= quantity) {
                 System.out.println("The returned Product Id is " + product.getProductId() +
                         " and its name is " + product.getProductName());
                 return OrderedProductAdapter.convertProductModelToOrderedItem(product);

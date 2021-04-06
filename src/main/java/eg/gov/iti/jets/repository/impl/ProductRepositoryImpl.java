@@ -23,6 +23,15 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
+    public List<Product> findByNameLikeUsingLimit(String productName, int start, int limit) {
+        return (List<Product>) ENTITY_MANAGER.createNamedQuery("Product.findByNameLike").
+                setParameter("productName", "%" + productName + "%")
+                .setFirstResult(start)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
+    @Override
     public double getMaxPriceForName(String productName) {
         return (double) ENTITY_MANAGER.createNamedQuery("Product.getMaxPriceForName").
                 setParameter("productName", "%" + productName + "%")
@@ -35,6 +44,16 @@ public class ProductRepositoryImpl implements ProductRepository {
         return ENTITY_MANAGER.createNamedQuery("Product.findByNameAndCategory").
                 setParameter("productName", "%" + productName + "%")
                 .setParameter("categoryId", categoryId)
+                .getResultList();
+    }
+
+    @Override
+    public List<Product> findByNameAndCategoryUsingLimit(String productName, int categoryId, int start, int limit) {
+        return ENTITY_MANAGER.createNamedQuery("Product.findByNameAndCategory").
+                setParameter("productName", "%" + productName + "%")
+                .setParameter("categoryId", categoryId)
+                .setFirstResult(start)
+                .setMaxResults(limit)
                 .getResultList();
     }
 
@@ -65,6 +84,14 @@ public class ProductRepositoryImpl implements ProductRepository {
     public List<Product> findByCategoryId(int categoryId) {
         return ENTITY_MANAGER.createQuery("from Product where isDeleted = false and quantity > 0 and category.categoryId = :categoryId")
                 .setParameter("categoryId", categoryId)
+                .getResultList();
+    }
+    @Override
+    public List<Product> findByCategoryIdUsingLimit(int categoryId, int start, int limit) {
+        return ENTITY_MANAGER.createQuery("from Product where isDeleted = false and quantity > 0 and category.categoryId = :categoryId")
+                .setParameter("categoryId", categoryId)
+                .setFirstResult(start)
+                .setMaxResults(limit)
                 .getResultList();
     }
 
@@ -137,6 +164,30 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public double getMaxPriceForAll() {
         return (double) ENTITY_MANAGER.createQuery("SELECT MAX(price) FROM Product where isDeleted = false and quantity > 0").getResultList().get(0);
+    }
+
+    @Override
+    public List<Product> getProductsWithLimit(int offset, int limit) {
+        return ENTITY_MANAGER.createQuery("FROM Product where isDeleted = false and quantity > 0")
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
+    @Override
+    public long getCountForAllProducts() {
+        return (long) ENTITY_MANAGER.createQuery("SELECT COUNT(productId) FROM Product where isDeleted = false and quantity > 0")
+                .getResultList()
+                .get(0);
+    }
+
+    @Override
+    public double getAvgRating(int id) {
+        try {
+            return (double) ENTITY_MANAGER.createNamedQuery("Product.getAvgRating").setParameter("productId", id).getSingleResult();
+        } catch (PersistenceException exception) {
+            throw new ProductNotFoundException("Product with id=" + id + " not found!");
+        }
     }
 
     @Override
