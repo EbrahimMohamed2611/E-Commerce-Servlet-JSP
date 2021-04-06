@@ -42,6 +42,7 @@ public class ProductDisplayController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String pageOffset = request.getParameter("page");
         String categoryId = request.getParameter("cat");
         String search = request.getParameter("search");
         if (categoryId != null && categoryId.equals("0")) {
@@ -75,7 +76,11 @@ public class ProductDisplayController extends HttpServlet {
                 response.sendError(404);
             }
         } else {
-            request.setAttribute("products", PRODUCT_SERVICE.getProducts());
+            if (pageOffset == null || pageOffset.isEmpty()) {
+                pageOffset = "1";
+                request.setAttribute("pages", PRODUCT_SERVICE.getNumberOfPagesForAllProducts());
+            }
+            request.setAttribute("products", PRODUCT_SERVICE.getProductsUsingOffset(Integer.parseInt(pageOffset)));
             request.setAttribute("maxPrice", PRODUCT_SERVICE.getMaxPriceForAll());
             request.getRequestDispatcher("shop-4-column.jsp").forward(request, response);
         }

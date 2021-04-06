@@ -154,4 +154,53 @@ public class ProductServiceImpl implements ProductService {
     public double getMaxPriceForNameAndCategory(String productName, int productId) {
         return PRODUCT_REPOSITORY.getMaxPriceForNameAndCategory(productName, productId);
     }
+
+    @Override
+    public int getNumberOfPagesForAllProducts() {
+        return (int) Math.ceil((double) PRODUCT_REPOSITORY.getCountForAllProducts() / PAGE_THRESHOLDING);
+    }
+
+    @Override
+    public List<MinimalProductDto> getProductsUsingOffset(int offset) {
+        int start = startPositionCalculator(offset);
+        List<Product> products = PRODUCT_REPOSITORY.getProductsWithLimit(start, PAGE_THRESHOLDING);
+        return products.stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MinimalProductDto> getProductsByNameUsingLimit(String productName, int offset) {
+        int start = startPositionCalculator(offset);
+        return PRODUCT_REPOSITORY.findByNameLikeUsingLimit(productName, start, PAGE_THRESHOLDING)
+                .stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MinimalProductDto> getProductsByNameAndCategoryUsingLimit(String productName, int categoryId, int offset) {
+        int start = startPositionCalculator(offset);
+        return PRODUCT_REPOSITORY.findByNameAndCategoryUsingLimit(productName, categoryId, start, PAGE_THRESHOLDING)
+                .stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MinimalProductDto> getProductsByCategoryIdUsingLimit(int categoryId, int offset) {
+        int start = startPositionCalculator(offset);
+        List<Product> products = PRODUCT_REPOSITORY.findByCategoryIdUsingLimit(categoryId, start, PAGE_THRESHOLDING);
+        return products.stream()
+                .map(MinimalProductMapper.INSTANCE::productToMinimalProductDto)
+                .collect(Collectors.toList());
+    }
+
+    private int startPositionCalculator(int offset) {
+        int start = 0;
+        if (offset != 1) {
+            start = (PAGE_THRESHOLDING + 1) * (offset - 1);
+        }
+        return start;
+    }
 }

@@ -40,4 +40,15 @@ public interface ProductRepository {
     List<Product> findByNameAndCategory(String productName, int categoryId);
 
     double getMaxPriceForNameAndCategory(String productName, int categoryId);
+
+    long getCountForAllProducts();
+
+    List<Product> getProductsWithLimit(int offset, int limit);
+
+    List<Product> findByCategoryIdUsingLimit(int categoryId, int start, int limit);
+
+    List<Product> findByNameAndCategoryUsingLimit(String productName, int categoryId, int start, int limit);
+
+    List<Product> findByNameLikeUsingLimit(String productName, int start, int limit);
+
 }

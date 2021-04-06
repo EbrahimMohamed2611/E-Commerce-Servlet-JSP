@@ -88,4 +88,14 @@ public interface ProductService {
 
     List<MinimalProductDto> getProductsByName(String productName);
 
+    int getNumberOfPagesForAllProducts();
+
+    List<MinimalProductDto> getProductsUsingOffset(int offset);
+
+    List<MinimalProductDto> getProductsByCategoryIdUsingLimit(int categoryId, int offset);
+
+    List<MinimalProductDto> getProductsByNameAndCategoryUsingLimit(String productName, int categoryId, int offset);
+
+    List<MinimalProductDto> getProductsByNameUsingLimit(String productName, int offset);
+
 }

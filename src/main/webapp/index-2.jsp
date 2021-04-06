@@ -84,8 +84,7 @@
                                             <h2>Chamcham Galaxy S9 | S9+</h2>
                                             <h3>Starting at <span>$589.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.jsp
-">Shopping Now</a>
+                                                <a class="links" href="shop-left-sidebar.jsp">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -98,8 +97,7 @@
                                             <h2>Work Desk Surface Studio 2018</h2>
                                             <h3>Starting at <span>$1599.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.jsp
-">Shopping Now</a>
+                                                <a class="links" href="shop-left-sidebar.jsp">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -112,8 +110,7 @@
                                             <h2>Phantom 4 Pro+ Obsidian</h2>
                                             <h3>Starting at <span>$809.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.jsp
-">Shopping Now</a>
+                                                <a class="links" href="shop-left-sidebar.jsp">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>

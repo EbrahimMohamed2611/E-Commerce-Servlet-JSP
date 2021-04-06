@@ -44,6 +44,11 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Modernizr js -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <c:if test="${not empty requestScope.pages}">
+        <script>
+            var maxPages = ${requestScope.pages};
+        </script>
+    </c:if>
 </head>
 
 <body>
@@ -65,7 +70,7 @@
             <div class="breadcrumb-content">
                 <ul>
                     <li><a href="index.jsp">Home</a></li>
-                    <li class="active">Shop 4 Column</li>
+                    <li class="active">Shop</li>
                 </ul>
             </div>
         </div>
@@ -103,7 +108,7 @@
                                 <!-- shop-item-filter-list end -->
                             </div>
                             <div class="toolbar-amount">
-                                <span>Showing 1 to 9 of 15</span>
+                                <span></span>
                             </div>
                         </div>
                         <div>
@@ -889,25 +894,7 @@
                                 </div>
                             </div>
                             <div class="paginatoin-area">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <p>Showing 1-12 of 13 item(s)</p>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <ul class="pagination-box">
-                                            <li><a href="#" class="Previous"><i class="fa fa-chevron-left"></i>
-                                                Previous</a>
-                                            </li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li>
-                                                <a href="#" class="Next"> Next <i
-                                                        class="fa fa-chevron-right"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1349,6 +1336,7 @@
 
 <script src="js/ajax-filter.js"></script>
 <script src="js/product-sort.js"></script>
+<script src="js/ajax-pagination.js"></script>
 <script src="js/user.js"></script>
 
 </body>
