@@ -140,15 +140,6 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public double getAvgRating(int id) {
-        try {
-            return (double) ENTITY_MANAGER.createNamedQuery("Product.getAvgRating").setParameter("productId", id).getSingleResult();
-        } catch (PersistenceException exception) {
-            throw new ProductNotFoundException("Product with id=" + id + " not found!");
-        }
-    }
-
-    @Override
     public void updateProduct(Product product) {
         EntityManager entityManager = persistenceManager.getEntityManager();
         EntityTransaction transaction = ENTITY_MANAGER.getTransaction();
