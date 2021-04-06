@@ -24,12 +24,13 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="pages/assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
-    <link rel='stylesheet'  href='css/style.css'/>
+    <link rel='stylesheet' href='css/style.css'/>
     <style>
         .product-img {
 
             text-align: center;
         }
+
         .product-img .file {
             position: relative;
             overflow: hidden;
@@ -39,6 +40,7 @@
             border-radius: 4px;
             font-size: 15px;
         }
+
         .product-img .file input {
             position: absolute;
             opacity: 0;
@@ -52,6 +54,7 @@
             table-layout: fixed;
             width: 350px;
         }
+
         table td {
             word-wrap: break-word;
         }
@@ -73,7 +76,7 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="pages/assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='pages/assets/img/favicon.ico'/>
-    <link rel='stylesheet'  href='css/style.css'/>
+    <link rel='stylesheet' href='css/style.css'/>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -124,35 +127,34 @@
             window.location.href = "remove?data=" + productId;
 
         }
-function nav()
-{
-    window.location.href="dashboard.jsp";
-}
-        function navcat()
-        {
-            window.location.href="categories.jsp";
+
+        function nav() {
+            window.location.href = "dashboard.jsp";
         }
-        function navpro()
-        {
-            window.location.href="product.jsp";
+
+        function navcat() {
+            window.location.href = "categories.jsp";
         }
-        function edit(id ,name , desc , price , quantity , cat , imgPath , imgName)
-        {
-            console.log(name+" "+desc + " " + price +" " +quantity +" "+ cat , " "+imgPath+" "+imgName)
+
+        function navpro() {
+            window.location.href = "product.jsp";
+        }
+
+        function edit(id, name, desc, price, quantity, cat, imgPath, imgName) {
+            console.log(name + " " + desc + " " + price + " " + quantity + " " + cat, " " + imgPath + " " + imgName)
 
             // <a href="/servlets/messageServlet?param1=value&amp;param2=value2">Send Messages</a>
-           window.location.href = "editproduct?name="+name+"&desc="+desc+"&price="+price+"&quantity="+quantity+"&id="+id+"&cat="+cat+"&imgPath="+imgPath+"&imgName="+imgName;
-       //   console.log(name+" "+desc + " " + price +" " +quantity +" "+ cat , " "+imgPath+" "+imgName)
+            window.location.href = "editproduct?name=" + name + "&desc=" + desc + "&price=" + price + "&quantity=" + quantity + "&id=" + id + "&cat=" + cat + "&imgPath=" + imgPath + "&imgName=" + imgName;
+            //   console.log(name+" "+desc + " " + price +" " +quantity +" "+ cat , " "+imgPath+" "+imgName)
 
         }
-        function navpro()
-        {
-            window.location.href=" addNewProduct";
+
+        function navpro() {
+            window.location.href = " addNewProduct";
         }
 
 
-        function editDb(id, name, des, price, quan, cat)
-        {
+        function editDb(id, name, des, price, quan, cat) {
             console.log("inside the fndbbb")
             console.log(name)
             console.log(des)
@@ -162,7 +164,7 @@ function nav()
             document.getElementById("productName").value = name;
             document.getElementById("productDesc").value = des;
             document.getElementById("productQuantity").value = price;
-            document.getElementById("productPrice").value =quan;
+            document.getElementById("productPrice").value = quan;
             document.getElementById("productCategory").value = cat;
 
         }
@@ -307,14 +309,14 @@ function nav()
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
                     <li class="dropdown active">
-<%--                        <button type="button" class="nav-link" onclick="nav()">Dashboard</button>--%>
+                        <%--                        <button type="button" class="nav-link" onclick="nav()">Dashboard</button>--%>
                         <a href="" onclick="nav()" class="nav-link">Dashboard</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="menu-toggle nav-link has-dropdown"><i
                                 data-feather="briefcase"></i><span>Add</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href=""onclick="navcat()">Categories</a></li>
+                            <li><a class="nav-link" href="" onclick="navcat()">Categories</a></li>
                             <li><a class="nav-link" href="" onclick="navpro()">Products</a></li>
                         </ul>
                     </li>
@@ -326,85 +328,84 @@ function nav()
                     </li>
 
 
-
-
-
                 </ul>
             </aside>
         </div>
         <!-- Main Content -->
         <div class="main-content">
             <section class="section">
-<%--                <div class="row ">--%>
+                <%--                <div class="row ">--%>
 
-<%--                    <div class="col-xl-4 col-md-12 col-lg-3">--%>
+                <%--                    <div class="col-xl-4 col-md-12 col-lg-3">--%>
 
-<%--                        <div class="card l-bg-orange">--%>
-<%--                            <div class="card-body">--%>
-<%--                                <div class="text-white">--%>
-<%--                                    <div class="row">--%>
-<%--                                        <div class="col-md-6 col-lg-5">--%>
-<%--                                            <h4 class="mb-0 font-26">12000</h4>--%>
-<%--                                            <p class="mb-2">Number of Users</p>--%>
-<%--                                            <p class="mb-0">--%>
-<%--                                                <span class="font-20">+11.25% </span>Increase--%>
-<%--                                            </p>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col-md-6 col-lg-7">--%>
-<%--                                            <div class="sparkline-bar p-t-50"></div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-xl-4 col-md-12 col-lg-3">--%>
+                <%--                        <div class="card l-bg-orange">--%>
+                <%--                            <div class="card-body">--%>
+                <%--                                <div class="text-white">--%>
+                <%--                                    <div class="row">--%>
+                <%--                                        <div class="col-md-6 col-lg-5">--%>
+                <%--                                            <h4 class="mb-0 font-26">12000</h4>--%>
+                <%--                                            <p class="mb-2">Number of Users</p>--%>
+                <%--                                            <p class="mb-0">--%>
+                <%--                                                <span class="font-20">+11.25% </span>Increase--%>
+                <%--                                            </p>--%>
+                <%--                                        </div>--%>
+                <%--                                        <div class="col-md-6 col-lg-7">--%>
+                <%--                                            <div class="sparkline-bar p-t-50"></div>--%>
+                <%--                                        </div>--%>
+                <%--                                    </div>--%>
+                <%--                                </div>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="col-xl-4 col-md-12 col-lg-3">--%>
 
-<%--                        <div class="card l-bg-cyan">--%>
-<%--                            <div class="card-body">--%>
-<%--                                <div class="text-white">--%>
-<%--                                    <div class="row">--%>
-<%--                                        <div class="col-md-6 col-lg-5">--%>
-<%--                                            <h4 class="mb-0 font-26">758</h4>--%>
-<%--                                            <p class="mb-2">Number Of Orders</p>--%>
-<%--                                            <p class="mb-0">--%>
-<%--                                                <span class="font-20">+25.11%</span> Increase--%>
-<%--                                            </p>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col-md-6 col-lg-7">--%>
-<%--                                            <div class="sparkline-line-chart2 p-t-50"></div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-xl-4 col-md-12 col-lg-3">--%>
-<%--                        <div class="card l-bg-green">--%>
-<%--                            <div class="card-body">--%>
-<%--                                <div class="text-white">--%>
-<%--                                    <div class="row">--%>
-<%--                                        <div class="col-md-6 col-lg-5">--%>
-<%--                                            <h4 class="mb-0 font-26">758</h4>--%>
-<%--                                            <p class="mb-2">Number Of Requests</p>--%>
-<%--                                            <p class="mb-0">--%>
-<%--                                                <span class="font-20">+25.11%</span> Increase--%>
-<%--                                            </p>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col-md-6 col-lg-7">--%>
-<%--                                            <div class="sparkline-line-chart2 p-t-50"></div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                <%--                        <div class="card l-bg-cyan">--%>
+                <%--                            <div class="card-body">--%>
+                <%--                                <div class="text-white">--%>
+                <%--                                    <div class="row">--%>
+                <%--                                        <div class="col-md-6 col-lg-5">--%>
+                <%--                                            <h4 class="mb-0 font-26">758</h4>--%>
+                <%--                                            <p class="mb-2">Number Of Orders</p>--%>
+                <%--                                            <p class="mb-0">--%>
+                <%--                                                <span class="font-20">+25.11%</span> Increase--%>
+                <%--                                            </p>--%>
+                <%--                                        </div>--%>
+                <%--                                        <div class="col-md-6 col-lg-7">--%>
+                <%--                                            <div class="sparkline-line-chart2 p-t-50"></div>--%>
+                <%--                                        </div>--%>
+                <%--                                    </div>--%>
+                <%--                                </div>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="col-xl-4 col-md-12 col-lg-3">--%>
+                <%--                        <div class="card l-bg-green">--%>
+                <%--                            <div class="card-body">--%>
+                <%--                                <div class="text-white">--%>
+                <%--                                    <div class="row">--%>
+                <%--                                        <div class="col-md-6 col-lg-5">--%>
+                <%--                                            <h4 class="mb-0 font-26">758</h4>--%>
+                <%--                                            <p class="mb-2">Number Of Requests</p>--%>
+                <%--                                            <p class="mb-0">--%>
+                <%--                                                <span class="font-20">+25.11%</span> Increase--%>
+                <%--                                            </p>--%>
+                <%--                                        </div>--%>
+                <%--                                        <div class="col-md-6 col-lg-7">--%>
+                <%--                                            <div class="sparkline-line-chart2 p-t-50"></div>--%>
+                <%--                                        </div>--%>
+                <%--                                    </div>--%>
+                <%--                                </div>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
 
-    <div class="col-12 col-md-12 col-lg-12 text-right text-right" style=" margin-bottom: 11px;">
-        <button class="btn btn-primary mr-1" type="submit" data-toggle="modal" data-target="#exampleModal">Add New Product</button>
-    </div>
+                <div class="col-12 col-md-12 col-lg-12 text-right text-right" style=" margin-bottom: 11px;">
+                    <button class="btn btn-primary mr-1" type="submit" data-toggle="modal" data-target="#exampleModal">
+                        Add New Product
+                    </button>
+                </div>
 
-<%--                </div>--%>
+                <%--                </div>--%>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -429,77 +430,32 @@ function nav()
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${requestScope.products}" var="p">
+                                        <c:forEach items="${requestScope.products2}" var="p">
                                             <tr>
                                                 <td>
-                                                    <img src=" C:\Users\A\ProductImage\cae85477-0787-42ca-a763-d404346b20d1.png" style="width:100%;white-space:pre">
+                                                    <img src="${requestScope.productImage.imagePath}"
+                                                         style="width:100%;white-space:pre">
                                                 </td>
                                                 <td class="align-middle">
-                                                        ${p.getProductName()}
+                                                        ${p.productName}
                                                 </td>
                                                 <td style="word-wrap: break-word">
-                                                        ${p.getDescription()}
+                                                        ${p.description}
                                                 </td>
-                                                <td>${p.getPrice()}</td>
+                                                <td>${p.price}</td>
                                                 <td>
-                                                        ${p.getQuantity()}
+                                                        ${p.quantity}
                                                 </td>
 
-                                                <td> ${p.category.getCategoryName()}</td>
-
-<%--                                                <div data-role="popup" id="popupLogin" data-theme="a"--%>
-<%--                                                     class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">--%>
-<%--                                                    <form>--%>
-<%--                                                        <div style="padding:10px 20px;">--%>
-<%--                                                            <h3>Edit the below info</h3>--%>
-<%--                                                            <img src="images/menu/logo/laptop.png"/>--%>
-<%--                                                            <label for="productName">Name:</label>--%>
-<%--                                                            <input type="text" name="name" id="productName" value="${p.getProductName()} " placeholder="name"--%>
-<%--                                                                   data-theme="a">--%>
-<%--                                                            <label for="productDesc" class="ui-hidden-accessible">Phone:</label>--%>
-<%--                                                            <input type="text" name="phone" id="productDesc" value="${p.getDescription()} "--%>
-<%--                                                                   placeholder="phone" data-theme="a" required>--%>
-<%--                                                            <label for="productPrice" class="ui-hidden-accessible">Email:</label>--%>
-<%--                                                            <input type="number" name="email" id="productPrice" value="${p.getPrice()}"--%>
-<%--                                                                   placeholder="email" data-theme="a" required>--%>
-<%--                                                            <input type="number" name="email" id="productQuantity" value="${p.getQuantity()}"--%>
-<%--                                                                   placeholder="email" data-theme="a" required>--%>
-<%--                                                            <input type="text" name="email" id="productCategory" value="${p.category.getCategoryName()}"--%>
-<%--                                                                   placeholder="email" data-theme="a" required>--%>
-
-<%--                                                            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-edit"--%>
-<%--                                                                    type="submit"--%>
-<%--                                                                    onclick="edit(${p.getProductId()})">--%>
-<%--                                                                Edit--%>
-<%--                                                            </button>--%>
-<%--                                                        </div>--%>
-
-<%--                                                    </form>--%>
-
-<%--                                                </div>ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b"--%>
-                                                    <%--                                                                <td><a href="#popupDialog"data-rel="popup"data-position-to="window" data-transition="pop"  class="btn btn-primary ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b" onclick="deleteProd(${p.getProductId()})">Delete</a></td>--%>
-                                                    <%--                                                                <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop"--%>
-                                                    <%--
-           class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Delete</a>--%>
-                                                <td><a href="" type="button" class="btn btn-primary" style="color: white;" onclick="edit('${p.getProductId()}','${p.getProductName()}' ,'${p.getDescription()} ' ,'${p.getPrice()}' , '${p.getQuantity()}','${p.category.getCategoryName()}','${p.productImage.getImagePath()}' ,'${p.productImage.getImageName()}')">Edit</a> </td>
+                                                <td> ${p.category.categoryName}</td>
+                                                <td><a href="" type="button" class="btn btn-primary"
+                                                       style="color: white;"
+                                                       onclick="edit('${p.getProductId()}','${p.getProductName()}' ,'${p.getDescription()} ' ,'${p.getPrice()}' , '${p.getQuantity()}','${p.category.getCategoryName()}','${p.productImage.getImagePath()}' ,'${p.productImage.getImageName()}')">Edit</a>
+                                                </td>
                                                 <td><a href=""
-                                                       class="btn btn-primary" style="color: white;" onclick="deleteProd('${p.getProductId()}')">Delete</a>
+                                                       class="btn btn-primary" style="color: white;"
+                                                       onclick="deleteProd('${p.getProductId()}')">Delete</a>
                                                 </td>
-<%--                                                <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b"--%>
-<%--                                                     data-dismissible="false"--%>
-<%--                                                     style="max-width:400px;">--%>
-<%--                                                    <div data-role="header" data-theme="a">--%>
-<%--                                                        <h1>Delete Contact</h1>--%>
-<%--                                                    </div>--%>
-<%--                                                    <div role="main" class="ui-content">--%>
-<%--                                                        <h3 class="ui-title">Are you sure you want to delete this product?</h3>--%>
-<%--                                                        <p>This action cannot be undone.</p>--%>
-<%--                                                        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"--%>
-<%--                                                           data-rel="back">Cancel</a>--%>
-<%--                                                        <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b"--%>
-<%--                                                           data-transition="flow" onclick="deleteProd(${requestScope.id})">Delete</a>--%>
-<%--                                                    </div>--%>
-<%--                                                </div>--%>
 
 
                                             </tr>
@@ -515,7 +471,8 @@ function nav()
 
 
             </section>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -525,7 +482,7 @@ function nav()
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post"  action="addNewProduct" enctype="multipart/form-data">
+                            <form method="post" action="addNewProduct" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="category-id">Select Product Category </label>
                                     <select class="form-control" name="categoryName" id="category-id">
@@ -536,11 +493,13 @@ function nav()
 
                                 <div class="form-group">
                                     <div class="product-img">
-                                        <img src="images/product/small-size/2.jpg" style="width: 50%;border-radius: 6px; object-fit: contain;" class="col-lg-12"
-                                             alt="" id="product-pic" />
+                                        <img src="images/product/small-size/2.jpg"
+                                             style="width: 50%;border-radius: 6px; object-fit: contain;"
+                                             class="col-lg-12"
+                                             alt="" id="product-pic"/>
                                         <div class="file btn btn-lg btn-primary">
                                             Product Picture
-                                            <input type="file" name="picturePicture" id="product-img" />
+                                            <input type="file" name="picturePicture" id="product-img"/>
                                         </div>
                                     </div>
 
@@ -553,7 +512,8 @@ function nav()
 
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Description</label>
-                                    <textarea class="form-control" name="productDescription" id="message-text"></textarea>
+                                    <textarea class="form-control" name="productDescription"
+                                              id="message-text"></textarea>
                                 </div>
 
                                 <div class="form-group">
@@ -568,7 +528,7 @@ function nav()
 
 
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
                             </form>
@@ -611,24 +571,6 @@ function nav()
 <script src="assets/js/scripts.js"></script>
 <!-- Custom JS File -->
 <script src="assets/js/custom.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- General JS Scripts -->

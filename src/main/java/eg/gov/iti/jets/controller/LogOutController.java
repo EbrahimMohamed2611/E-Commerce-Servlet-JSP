@@ -65,8 +65,8 @@ public class LogOutController extends HttpServlet {
             }
 
         }
-        req.getSession().setAttribute("userDto",null);
-//            session.invalidate();
+//        req.getSession().setAttribute("userDto",null);
+            session.invalidate();
         res.sendRedirect("index.jsp");
     }
 }

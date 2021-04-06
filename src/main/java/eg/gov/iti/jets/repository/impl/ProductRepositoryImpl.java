@@ -11,6 +11,8 @@ import jakarta.persistence.Persistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
+import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepositoryImpl implements ProductRepository {
@@ -22,6 +24,15 @@ public class ProductRepositoryImpl implements ProductRepository {
     public List<Product> findByNameLike(String productName) {
         return (List<Product>) ENTITY_MANAGER.createNamedQuery("Product.findByNameLike").
                 setParameter("productName", "%" + productName + "%").getResultList();
+    }
+
+    @Override
+    public List<Product> findByNameLikeUsingLimit(String productName, int start, int limit) {
+        return (List<Product>) ENTITY_MANAGER.createNamedQuery("Product.findByNameLike").
+                setParameter("productName", "%" + productName + "%")
+                .setFirstResult(start)
+                .setMaxResults(limit)
+                .getResultList();
     }
 
     @Override
@@ -37,6 +48,16 @@ public class ProductRepositoryImpl implements ProductRepository {
         return ENTITY_MANAGER.createNamedQuery("Product.findByNameAndCategory").
                 setParameter("productName", "%" + productName + "%")
                 .setParameter("categoryId", categoryId)
+                .getResultList();
+    }
+
+    @Override
+    public List<Product> findByNameAndCategoryUsingLimit(String productName, int categoryId, int start, int limit) {
+        return ENTITY_MANAGER.createNamedQuery("Product.findByNameAndCategory").
+                setParameter("productName", "%" + productName + "%")
+                .setParameter("categoryId", categoryId)
+                .setFirstResult(start)
+                .setMaxResults(limit)
                 .getResultList();
     }
 
@@ -67,6 +88,14 @@ public class ProductRepositoryImpl implements ProductRepository {
     public List<Product> findByCategoryId(int categoryId) {
         return ENTITY_MANAGER.createQuery("from Product where isDeleted = false and quantity > 0 and category.categoryId = :categoryId")
                 .setParameter("categoryId", categoryId)
+                .getResultList();
+    }
+    @Override
+    public List<Product> findByCategoryIdUsingLimit(int categoryId, int start, int limit) {
+        return ENTITY_MANAGER.createQuery("from Product where isDeleted = false and quantity > 0 and category.categoryId = :categoryId")
+                .setParameter("categoryId", categoryId)
+                .setFirstResult(start)
+                .setMaxResults(limit)
                 .getResultList();
     }
 
@@ -133,12 +162,32 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findAll() {
-        return ENTITY_MANAGER.createQuery("FROM Product where isDeleted = false and quantity > 0").getResultList();
+        EntityManager entityManager = persistenceManager.getEntityManager();
+        Query from_product = entityManager.createQuery("FROM Product");
+        List<Product> resultList = (ArrayList<Product>) from_product.getResultList();
+        return resultList;
+        // TODO Mahmous look at here please
+//        return ENTITY_MANAGER.createQuery("FROM Product where isDeleted = false and quantity > 0").getResultList();
     }
 
     @Override
     public double getMaxPriceForAll() {
         return (double) ENTITY_MANAGER.createQuery("SELECT MAX(price) FROM Product where isDeleted = false and quantity > 0").getResultList().get(0);
+    }
+
+    @Override
+    public List<Product> getProductsWithLimit(int offset, int limit) {
+        return ENTITY_MANAGER.createQuery("FROM Product where isDeleted = false and quantity > 0")
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
+    @Override
+    public long getCountForAllProducts() {
+        return (long) ENTITY_MANAGER.createQuery("SELECT COUNT(productId) FROM Product where isDeleted = false and quantity > 0")
+                .getResultList()
+                .get(0);
     }
 
     @Override

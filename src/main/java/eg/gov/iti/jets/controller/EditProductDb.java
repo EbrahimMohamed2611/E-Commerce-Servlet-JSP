@@ -41,7 +41,7 @@ public class EditProductDb extends HttpServlet {
         System.out.println("pppppppp-> " + product);
         productRepsitory.updateProduct(product);
         List<Product> products2 = productRepsitory.findAll();
-
+        System.out.println("##### After Db Operation products2 " + products2);
         System.out.println("inside Editproduct servlet  name =" + name + " desc" + desc);
         RequestDispatcher rd = req.getRequestDispatcher("product.jsp");
         req.setAttribute("allProducts", products2);
